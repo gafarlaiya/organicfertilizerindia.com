@@ -1,0 +1,9 @@
+{
+  "name": "gujaratbio-site",
+  "version": "1.0.0",
+  "description": "Gujarat Bio Organics static website",
+  "private": true,
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}

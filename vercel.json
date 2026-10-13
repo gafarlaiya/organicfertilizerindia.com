@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {"source": "/bio-stimulants-manufacturer-in-india", "destination": "/biostimulants-manufacturer-india", "permanent": true},
+    {"source": "/bio-stimulants-wholesale", "destination": "/bulk-supply", "permanent": true},
+    {"source": "/dealer", "destination": "/become-a-distributor", "permanent": true},
+    {"source": "/product", "destination": "/products", "permanent": true},
+    {"source": "/products-list", "destination": "/products", "permanent": true},
+    {"source": "/bio-stimulants-products", "destination": "/products", "permanent": true},
+    {"source": "/bio-stimulants", "destination": "/products", "permanent": true},
+    {"source": "/chili-contact", "destination": "/contact", "permanent": true},
+    {"source": "/quote1", "destination": "/contact", "permanent": true}
+  ],
+  "headers": [
+    {"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]}
+  ]
+}
