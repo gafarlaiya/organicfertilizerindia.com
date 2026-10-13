@@ -1,7 +1,7 @@
 (function(){
   var WA='919978791167', MAIL='sales@gujaratbio.com';
-  /* Paste your Google Apps Script web-app URL (or n8n webhook URL) here. Leave empty to skip lead logging. */
-  var LEAD_ENDPOINT='';
+  /* Lead database (Supabase). The key below is the public publishable key: it can only ADD leads, never read them. */
+  var SB_URL='https://filbmvtclfcrrvxckema.supabase.co', SB_KEY='sb_publishable_qbndsVEhemxGLYZa6P3PyQ_iDNmsmmT';
 
   /* first-touch attribution: remember where the visitor came from */
   function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -12,16 +12,19 @@
     if(!load('gbo_ref')&&document.referrer&&document.referrer.indexOf(location.host)<0)store('gbo_ref',document.referrer);
     if(!load('gbo_landing'))store('gbo_landing',location.pathname);
   })();
-  function logLead(data){
-    if(!LEAD_ENDPOINT)return;
-    var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src','article','ref','landing'];
-    keys.forEach(function(k){data[k]=load('gbo_'+k)});
-    data.page=location.href; data.site=location.host;
-    try{data.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
-    try{fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)})}catch(e){}
+  function logLead(d){
+    if(!SB_URL||!SB_KEY)return;
+    var row={
+      name:d.name,company:d.company||d.shop||d.brand,phone:d.phone,email:d.email,country:d.country||d.place,
+      interest:d.interest||d.product||d.type||d.crops,grades:d.grades,qty:d.qty||d.volume,destination:d.dest,
+      form:d.form,channel:d.channel,message:d.message,
+      utm_source:load('gbo_utm_source')||load('gbo_src'),utm_medium:load('gbo_utm_medium'),utm_campaign:load('gbo_utm_campaign'),
+      utm_content:load('gbo_utm_content'),utm_term:load('gbo_utm_term'),article:load('gbo_article'),
+      referrer:load('gbo_ref'),landing:load('gbo_landing'),page:location.href,site:location.host
+    };
+    try{row.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
+    try{fetch(SB_URL+'/rest/v1/leads',{method:'POST',keepalive:true,headers:{'apikey':SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)}).catch(function(){})}catch(e){}
   }
-  var nav=document.getElementById('nav'), mb=document.getElementById('menu-btn');
-  if(mb&&nav){mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)})}
 
   /* enquiry forms -> WhatsApp or email */
   function collect(form){
