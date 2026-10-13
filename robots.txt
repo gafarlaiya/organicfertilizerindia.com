@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /team/
 
 Sitemap: https://www.gujaratbio.com/sitemap.xml
