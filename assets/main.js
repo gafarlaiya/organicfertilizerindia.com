@@ -13,7 +13,7 @@
     if(!load('gbo_landing'))store('gbo_landing',location.pathname);
   })();
   function logLead(d){
-    if(!SB_URL||!SB_KEY)return;
+    if(!SB_URL||!SB_KEY)return Promise.resolve(false);
     var row={
       name:d.name,company:d.company||d.shop||d.brand,phone:d.phone,email:d.email,country:d.country||d.place,
       interest:d.interest||d.product||d.type||d.crops,grades:d.grades,qty:d.qty||d.volume,destination:d.dest,
@@ -23,7 +23,9 @@
       referrer:load('gbo_ref'),landing:load('gbo_landing'),page:location.href,site:location.host
     };
     try{row.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
-    try{fetch(SB_URL+'/rest/v1/leads',{method:'POST',keepalive:true,headers:{'apikey':SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)}).catch(function(){})}catch(e){}
+    var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){if(ctl)ctl.abort()},10000);
+    return fetch(SB_URL+'/rest/v1/leads',{method:'POST',keepalive:true,signal:ctl?ctl.signal:undefined,headers:{'apikey':SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(row)})
+      .then(function(r){clearTimeout(t);return r.ok}).catch(function(){clearTimeout(t);return false});
   }
 
   /* enquiry forms -> WhatsApp or email */
@@ -39,18 +41,34 @@
     if(sel&&sel.length){lines.push('Grades requested:');sel.forEach(function(s){lines.push('- '+s)})}
     return lines.join('\n');
   }
+  function esc(v){return String(v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
   Array.prototype.forEach.call(document.querySelectorAll('form[data-enquiry]'),function(form){
+    var btn=form.querySelector('button[type=submit]'), msg=form.querySelector('.form-msg'), label=btn?btn.textContent:'';
     form.addEventListener('submit',function(e){
       e.preventDefault();
       if(!form.checkValidity()){form.reportValidity();return}
-      var mode=(e.submitter&&e.submitter.getAttribute('data-mode'))||'wa', msg=collect(form);
-      var d={form:form.getAttribute('data-subject')||'Website enquiry',channel:mode,message:msg};
-      Array.prototype.forEach.call(form.elements,function(el){if(el.name&&el.type!=='submit'&&el.type!=='button'&&(el.value||'').trim())d[el.name]=el.value.trim()});
+      var hp=form.elements['website']; if(hp&&hp.value){return} /* spam trap */
+      var text=collect(form);
+      var d={form:form.getAttribute('data-subject')||'Website enquiry',channel:'website',message:text};
+      Array.prototype.forEach.call(form.elements,function(el){if(el.name&&el.name!=='website'&&el.type!=='submit'&&el.type!=='button'&&(el.value||'').trim())d[el.name]=el.value.trim()});
       var sg=window.__selected&&window.__selected(); if(sg&&sg.length)d.grades=sg.join('; ');
-      logLead(d);
-      if(mode==='mail'){location.href='mailto:'+MAIL+'?subject='+encodeURIComponent(form.getAttribute('data-subject')||'Website enquiry')+'&body='+encodeURIComponent(msg)}
-      else{window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+      if(btn){btn.disabled=true;btn.textContent='Sending...'} if(msg){msg.textContent='';msg.className='form-msg'}
+      var wa='https://wa.me/'+WA+'?text='+encodeURIComponent(text);
+      logLead(d).then(function(ok){
+        var box=form.parentNode;
+        if(ok){
+          box.innerHTML='<div class="thanks" role="status"><h3>Thank you'+(d.name?', '+esc(d.name.split(' ')[0]):'')+'. We have your enquiry.</h3><p>Our team will reply within one working day'+(d.email?' at '+esc(d.email):' on the number you gave')+'. You do not need to do anything else.</p><div class="form-actions"><a class="btn btn-wa" target="_blank" rel="noopener" href="'+wa+'">Want a faster reply? Chat on WhatsApp</a></div></div>';
+          try{sessionStorage.removeItem('gbo_grades')}catch(x){}
+          box.scrollIntoView({behavior:'smooth',block:'center'});
+        }else{
+          if(btn){btn.disabled=false;btn.textContent=label}
+          if(msg){msg.className='form-msg err';msg.innerHTML='We could not send this just now. Please try again, or <a target="_blank" rel="noopener" href="'+wa+'">send it on WhatsApp</a> or email <a href="mailto:'+MAIL+'?subject='+encodeURIComponent(d.form)+'&body='+encodeURIComponent(text)+'">'+MAIL+'</a>.'}
+        }
+      });
     });
+    /* grades picked on the products page are carried into the quote form */
+    var gf=form.elements['grades'], saved=null; try{saved=sessionStorage.getItem('gbo_grades')}catch(x){}
+    if(gf&&saved&&!gf.value)gf.value=saved;
   });
 
   /* grade explorer */
@@ -71,9 +89,8 @@
     rows.forEach(function(r){r.querySelector('input').addEventListener('change',upd)});
     document.getElementById('bar-clear').addEventListener('click',function(){rows.forEach(function(r){r.querySelector('input').checked=false});upd()});
     document.getElementById('bar-send').addEventListener('click',function(){
-      var m='Hello Gujarat Bio Organics, please send a quote for these grades:\n'+selected().map(function(s){return '- '+s}).join('\n')+'\n\nQuantity and destination: ';
-      logLead({form:'Grade selection',channel:'wa',grades:selected().join('; '),message:m});
-      window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener');
+      try{sessionStorage.setItem('gbo_grades',selected().join('\n'))}catch(x){}
+      location.href='/bulk-supply/#enquiry';
     });
     var h=(location.hash||'').replace('#','');
     apply(chips.some(function(c){return c.getAttribute('data-g')===h})?h:'all');

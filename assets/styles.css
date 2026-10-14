@@ -244,3 +244,11 @@ body.has-bar .wa-float{bottom:78px}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-msg{margin:.8rem 0 0;font-size:.95rem}
+.form-msg.err{color:#b3261e}
+.thanks{background:#f1f7f3;border:1px solid #cfe3d6;border-radius:4px;padding:1.2rem 1.3rem}
+.thanks h3{margin:0 0 .4rem}
+.thanks .form-actions{margin-top:.8rem}
+button[disabled]{opacity:.65;cursor:wait}

@@ -138,10 +138,12 @@ def field(name, label, typ="text", req=False, opts=None, ph=""):
     return f'<div class="field"><label for="f-{name}">{label}</label><input id="f-{name}" name="{name}" type="{typ}" data-label="{label}" placeholder="{esc(ph)}"{r}></div>'
 
 def form(title, subject, fields, note=None):
-    return f'''<div class="form-box"><h3>{title}</h3><p class="mute" style="font-size:.95rem;margin-bottom:1rem">Fill this in and send it on WhatsApp or email. It opens your own app with the details ready.</p>
+    return f'''<div class="form-box" id="enquiry"><h3>{title}</h3><p class="mute" style="font-size:.95rem;margin-bottom:1rem">Fill this in and press send. Our team replies within one working day.</p>
 <form data-enquiry data-subject="{esc(subject)}" novalidate>{"".join(fields)}
-<div class="form-actions"><button class="btn btn-wa" type="submit" data-mode="wa">{WA_SVG}Send on WhatsApp</button><button class="btn btn-dark" type="submit" data-mode="mail">Send by email</button></div>
-<p class="note">{note or "Free samples. Freight or courier, customs duty and other charges are paid by the buyer."}</p></form></div>'''
+<div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="form-actions"><button class="btn btn-wa" type="submit">Send enquiry</button></div>
+<p class="note">{note or "Free samples. Freight or courier, customs duty and other charges are paid by the buyer."}</p>
+<p class="form-msg" role="status" aria-live="polite"></p></form></div>'''
 
 def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_img="/assets/img/private-label-premium-enriched.webp"):
     url = SITE + (path if path != "/" else "/")
@@ -296,7 +298,7 @@ bs = f'''{page_hero("Biostimulant manufacturer in India: 36 approved grades", "H
 </div></section>
 <section class="section tint"><div class="wrap"><div class="sec-head"><h2>Sample presentation</h2><p>Samples are free. These images show how our grades look in the beaker. They are illustrative renderings, not lab photographs.</p></div>{gal}</div></section>
 <section class="section"><div class="wrap"><div class="sec-head"><h2>Questions about biostimulants</h2></div>{faq_html(bs_faq)}</div></section>
-<div class="bar" id="bar" role="region" aria-label="Selected grades"><div class="wrap"><span id="bar-count">0 grades selected</span><span><button class="linkbtn" id="bar-clear">Clear</button> <button class="btn btn-wa" id="bar-send">{WA_SVG}Send list on WhatsApp</button></span></div></div>
+<div class="bar" id="bar" role="region" aria-label="Selected grades"><div class="wrap"><span id="bar-count">0 grades selected</span><span><button class="linkbtn" id="bar-clear">Clear</button> <button class="btn btn-wa" id="bar-send">Request a quote for these grades</button></span></div></div>
 {cta()}'''
 render("/biostimulants-manufacturer-india", "Biostimulant Manufacturer India: 36 FCO Grades | GBO",
        "Humic, fulvic, seaweed, amino and protein hydrolysate biostimulants from Bhavnagar, Gujarat. 36 grades under Gujarat NOC. Bulk, private label, export.", bs, [faq_ld(bs_faq)], "Biostimulants")
