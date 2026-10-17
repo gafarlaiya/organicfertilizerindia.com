@@ -165,8 +165,8 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#143630">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css">{ldh}</head>
+<link rel="preload" as="style" href="{FONT_URL}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>
+<style>{INLINE_CSS}</style>{ldh}</head>
 <body>{header(path)}<main id="main">{body}</main>{footer()}<script src="/assets/main.js" defer></script></body></html>'''
     d = ROOT if path == "/" else os.path.join(ROOT, path.strip("/"))
     os.makedirs(d, exist_ok=True)
@@ -174,6 +174,9 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
     return path
 
 PAGES = []  # (path, priority)
+FONT_URL = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
+import re as _re0
+INLINE_CSS = _re0.sub(r"\s*([{};:,>])\s*", r"\1", _re0.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", "styles.css"), encoding="utf-8").read(), flags=_re0.S)).replace(";}", "}").strip()
 for _f in ("ext_00_helpers.py", "ext_05_grade_data.py"):
     exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
 
