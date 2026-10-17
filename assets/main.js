@@ -101,5 +101,10 @@
     f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=b.getAttribute('aria-label')||'Video';
     b.replaceChildren(f);b.removeAttribute('aria-label');
   });
+  var co=document.getElementById('chat-open');
+  if(co){co.addEventListener('click',function(){
+    if(window.GBOChat){window.GBOChat.open();return}
+    var s=document.createElement('script');s.src='/assets/chat.js?v='+(window.GBO_CHAT_V||'1');s.onload=function(){window.GBOChat&&window.GBOChat.open()};document.head.appendChild(s);
+  })}
   var y=document.getElementById('yr'); if(y)y.textContent=new Date().getFullYear();
 })();

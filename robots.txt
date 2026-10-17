@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /team/
+Disallow: /chat-kb.txt
 
 Sitemap: https://b2b.gujaratbio.com/sitemap.xml

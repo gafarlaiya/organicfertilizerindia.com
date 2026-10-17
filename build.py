@@ -126,7 +126,7 @@ def footer():
 <div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
 </div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Product images on this site are illustrative samples.</span></div></div></footer>
-<aside aria-label="WhatsApp chat"><a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a></aside>'''
+<aside aria-label="Chat"><button type="button" class="chat-launch" id="chat-open" aria-controls="chat-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>Ask our sales team</span></button><a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a></aside>'''
 
 def cta(title="Tell us what you need. We reply with a quote and a free sample.", sub="No minimum order quantity. Dispatch in about one week.", msg="Hello Gujarat Bio Organics, I would like a quote."):
     return f'''<section class="cta"><div class="wrap"><div><h2>{title}</h2><p>{sub}</p></div>
@@ -173,7 +173,7 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="{FONT_URL}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>
 <style>{INLINE_CSS}</style>{ldh}</head>
-<body>{header(path)}<main id="main">{body}</main>{footer()}<script src="/assets/main.js?v={JS_VER}" defer></script></body></html>'''
+<body>{header(path)}<main id="main">{body}</main>{footer()}<script>window.GBO_CHAT_V="{JS_VER}"</script><script src="/assets/main.js?v={JS_VER}" defer></script></body></html>'''
     d = ROOT if path == "/" else os.path.join(ROOT, path.strip("/"))
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(out)
@@ -181,7 +181,7 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
 
 PAGES = []  # (path, priority)
 import hashlib as _hl
-JS_VER = _hl.md5(open(os.path.join(ROOT, "assets", "main.js"), "rb").read()).hexdigest()[:8]
+JS_VER = _hl.md5(open(os.path.join(ROOT, "assets", "main.js"), "rb").read() + open(os.path.join(ROOT, "assets", "chat.js"), "rb").read()).hexdigest()[:8]
 FONT_URL = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
 import re as _re0
 INLINE_CSS = _re0.sub(r"\s*([{};:,>])\s*", r"\1", _re0.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", "styles.css"), encoding="utf-8").read(), flags=_re0.S)).replace(";}", "}").strip()
@@ -557,7 +557,7 @@ json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, e
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
     f'<url><loc>{SITE}{p if p != "/" else "/"}</loc><priority>{pr}</priority></url>\n' for p, pr in PAGES) + '</urlset>\n'
 open(os.path.join(ROOT, "sitemap.xml"), "w").write(sm)
-open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /team/\n\nSitemap: {SITE}/sitemap.xml\n")
+open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nSitemap: {SITE}/sitemap.xml\n")
 open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. Ltd.
 > Manufacturer of organic fertilizers, biostimulants (humic acid, seaweed extract, amino acids), biofertilisers and specialty fertilizers (micronutrients, water-soluble special grades, slow-release, custom blends, zyme granules) in Shihor, Bhavnagar, Gujarat, India, with in-house R&D. Supplies under its Immunity brand, under buyers' private labels, and in bulk. Exports worldwide.
 
@@ -597,4 +597,41 @@ open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. 
 - {SITE}/glossary
 - {SITE}/faq
 """)
+
+# ------------------------------------------------------------------ CHATBOT KNOWLEDGE BASE
+_kb = f"""COMPANY
+Gujarat Bio Organics Pvt. Ltd. (GBO), Bhavnagar, Gujarat, India. Brand: Immunity. About 20 years of in-house R&D and field work with growers.
+Factory: {FACTORY}. Registered office: {REGOFF}.
+Contact: WhatsApp {PHONE} (https://wa.me/{WA}), email {MAIL}. Facebook {FB}. YouTube {YT}.
+Capacity: 100 KL liquid and 2,500 tonnes solid/granular per month. No minimum order quantity (trial quantities quoted). Lead time about one week from confirmed order.
+Samples: free; buyer pays freight or courier, customs duty and other charges.
+Ways to buy: (1) Immunity brand products, (2) private label / OEM under the buyer's brand (we formulate, make and pack), (3) bulk supply (IBC, drums, bags). Export, FOB or CIF. Ports: Pipavav, Kandla, Dahej, Mundra, JNPT and all Indian ports. Export regions: GCC, Africa, Russian Federation countries, Europe, North America, South America, and all of India.
+Liquid packs: {PACKS_L}. Solid packs: {PACKS_S}.
+Third-party testing and sampling available on request. Documents on request: specification sheet, NOC copy, certificate of incorporation, GST registration, third-party test report. Plant visits can be arranged in advance.
+Approvals: Gujarat Directorate of Agriculture has issued No Objection Certificates for 36 biostimulant grades (FCO Schedule VI) and 11 biofertiliser types (Schedule III) under the Fertiliser (Inorganic, Organic or Mixed) (Control) Order 1985. Copies on request.
+Distributors: GBO gives bulk prices, distributors set their own margins.
+Pricing: no public price list. Price depends on grade, concentration, form, pack size, quantity and, for export, Incoterm and destination port. A quote usually follows within one working day.
+Vision: make food cultivation hazardous-chemical-free and sustainable for generations; the field-proven formula is open to importers, brand owners, distributors and growers worldwide.
+
+PRODUCT CATEGORIES (page URLs)
+{chr(10).join(f"- {t}: {SITE}{u} ({d})" for u, t, d in CAT_HUB)}
+
+BIOSTIMULANT GRADES (36). Format: group | grade | form | page
+{chr(10).join(f"- {g} | {n} | {f} | {SITE}{grade_path(n, f)}" for g, n, f in GRADES)}
+
+BIOFERTILISERS (11)
+{chr(10).join(f"- {b}: {BIO_INFO[b][2]}. {SITE}{BIO_INFO[b][0]}" for b in BIOS)}
+
+CROP PROGRAMMES
+{chr(10).join(f"- {c['name']}: {c['special']}; regions {c.get('regions','')}. {SITE}/crops/{c['slug']}" for c in CROPS)}
+Also worked with: citrus, coconut, cotton.
+
+OTHER PAGES
+- Private label / OEM {SITE}/private-label-oem ; Bulk supply {SITE}/bulk-supply ; Export {SITE}/export ; Distributor {SITE}/become-a-distributor
+- R&D {SITE}/research-development ; Manufacturing {SITE}/manufacturing-facility ; Quality {SITE}/quality-compliance ; Field record and grower videos {SITE}/impact ; Contact {SITE}/contact ; FCO Schedule VI explainer {SITE}/fco-schedule-vi-biostimulants
+
+FAQ
+{chr(10).join(f"Q: {q} A: {a}" for q, a in home_faq)}
+"""
+open(os.path.join(ROOT, "chat-kb.txt"), "w", encoding="utf-8").write(_kb)
 print("built", len(PAGES) + 1, "pages")
