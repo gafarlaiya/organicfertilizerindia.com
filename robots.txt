@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /team/
 
-Sitemap: https://www.gujaratbio.com/sitemap.xml
+Sitemap: https://b2b.gujaratbio.com/sitemap.xml

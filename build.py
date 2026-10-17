@@ -3,7 +3,7 @@
 import json, os, html as H
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = "https://www.gujaratbio.com"
+SITE = "https://b2b.gujaratbio.com"
 WA = "919978791167"
 PHONE = "+91 99787 91167"
 MAIL = "sales@gujaratbio.com"
