@@ -57,9 +57,8 @@ BIOS = ["Azotobacter", "Carrier-based consortia", "Azospirillum", "Liquid consor
         "Zinc solubilising bacteria", "Phosphate solubilising fungal biofertilisers"]
 assert len(BIOS) == 11
 
-NAV = [("/products", "Products"), ("/private-label-oem", "Private label"), ("/export", "Export"),
-       ("/bulk-supply", "Bulk supply"), ("/become-a-distributor", "Distributors"),
-       ("/field-solutions", "Field solutions"), ("/quality-compliance", "Quality")]
+NAV = [("/products", "Products"), ("/crops", "Crops"), ("/private-label-oem", "Private label"), ("/export", "Export"),
+       ("/bulk-supply", "Bulk supply"), ("/research-development", "R&amp;D"), ("/resources", "Knowledge")]
 
 # ------------------------------------------------------------------ components
 def img(name, alt, cls="", w=None, h=None, lazy=True, caption=None):
@@ -89,8 +88,10 @@ def org_ld():
             "address": {"@type": "PostalAddress", "streetAddress": "Plot No. 321, GIDC 2, Ghanghli Road, Shihor",
                         "addressLocality": "Bhavnagar", "addressRegion": "Gujarat", "postalCode": "364240", "addressCountry": "IN"},
             "areaServed": ["GCC countries", "Africa", "Russian Federation", "Europe", "North America", "South America", "India"],
-            "knowsAbout": ["Biostimulants", "Humic acid", "Fulvic acid", "Seaweed extract", "Protein hydrolysate",
-                           "Amino acids", "Biofertilisers", "Private label fertilizer manufacturing"],
+            "knowsAbout": ["Organic fertilizers", "Biostimulants", "Humic acid", "Fulvic acid", "Potassium humate", "Seaweed extract",
+                           "Protein hydrolysate", "Amino acids", "Biofertilisers", "Micronutrient fertilizers", "Water-soluble fertilizers",
+                           "Slow-release fertilizers", "Custom fertilizer blends", "Crop-specific fertilizers", "Zyme granules",
+                           "FCO Schedule VI", "Private label fertilizer manufacturing"],
             "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "telephone": "+919978791167",
                               "email": MAIL, "availableLanguage": ["English", "Hindi", "Gujarati"]}],
             "sameAs": [FB, YT]}
@@ -105,7 +106,7 @@ def header(path):
     links = "".join(f'<a href="{u}"' + (' aria-current="page"' if path == u else '') + f'>{t}</a>' for u, t in NAV)
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><div class="wrap hdr">
-<a class="brand" href="/">{LOGO}<span>Gujarat Bio Organics<small>Biostimulants and biofertilisers, Bhavnagar</small></span></a>
+<a class="brand" href="/">{LOGO}<span>Gujarat Bio Organics<small>Organic fertilizers, biostimulants, biofertilisers</small></span></a>
 <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
 <nav class="nav" id="nav" aria-label="Main">{links}<a class="btn btn-primary" href="/contact">Request a quote</a></nav>
 </div></header>'''
@@ -114,8 +115,9 @@ def footer():
     return f'''<footer class="site-footer"><div class="wrap"><div class="fgrid">
 <div><h4>{NAME}</h4><address>Factory: {FACTORY}<br><br>Registered office: {REGOFF}</address>
 <p style="margin-top:1rem">CIN {CIN}<br>GSTIN {GST}</p></div>
-<div><h4>Buy</h4><ul><li><a href="/products">All products</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li></ul></div>
-<div><h4>Company</h4><ul><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/about">About us</a></li><li><a href="/contact">Contact</a></li></ul></div>
+<div><h4>Products</h4><ul><li><a href="/organic-fertilizer-manufacturer-india">Organic fertilizers</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/humic-acid-manufacturer-india">Humic acid</a></li><li><a href="/seaweed-extract-manufacturer-india">Seaweed extract</a></li><li><a href="/amino-acid-protein-hydrolysate-manufacturer-india">Amino acids</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/micronutrient-fertilizer-manufacturer-india">Micronutrients</a></li><li><a href="/water-soluble-fertilizer-special-grades">Special grades</a></li><li><a href="/slow-release-fertilizer">Slow release</a></li><li><a href="/zyme-granules-manufacturer">Zyme granules</a></li><li><a href="/custom-fertilizer-blends">Custom blends</a></li><li><a href="/crop-specific-fertilizers">Crop-specific</a></li></ul></div>
+<div><h4>Company</h4><ul><li><a href="/about">About us</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
+<div><h4>Knowledge</h4><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h4>Talk to us</h4><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
 </div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Product images on this site are illustrative samples.</span></div></div></footer>
 <a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a>'''
@@ -172,6 +174,21 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
     return path
 
 PAGES = []  # (path, priority)
+for _f in ("ext_00_helpers.py", "ext_05_grade_data.py"):
+    exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
+
+CAT_HUB = [("/organic-fertilizer-manufacturer-india", "Organic fertilizers", "Organic and bio-organic inputs for soil and crop health."),
+           ("/biostimulants-manufacturer-india", "Biostimulants", "36 Schedule VI grades: humic, seaweed, amino, botanical, blends."),
+           ("/humic-acid-manufacturer-india", "Humic acid and fulvic acid", "8 grades, granules, powder and liquid, incl. potassium humate."),
+           ("/seaweed-extract-manufacturer-india", "Seaweed extracts", "Ascophyllum, Kappaphycus, Sargassum and Spirulina."),
+           ("/amino-acid-protein-hydrolysate-manufacturer-india", "Amino acids and protein hydrolysates", "Plant and animal source, 9 grades."),
+           ("/biofertilisers-manufacturer-india", "Biofertilisers", "11 types: N fixers, PSB, KMB, ZSB, mycorrhizae, consortia."),
+           ("/micronutrient-fertilizer-manufacturer-india", "Micronutrients", "Zinc, boron, iron and more, chelated and mixtures, made to order."),
+           ("/water-soluble-fertilizer-special-grades", "Special grade fertilizers", "Water-soluble NPK and fortified grades, made to order."),
+           ("/slow-release-fertilizer", "Slow-release fertilizers", "Granules that feed over weeks, made to order."),
+           ("/zyme-granules-manufacturer", "Zyme granules", "Humic, seaweed and protein granules from listed grades."),
+           ("/custom-fertilizer-blends", "Custom blends", "Formulated by our R&D team for your crop and market."),
+           ("/crop-specific-fertilizers", "Crop-specific products", "The Immunity range for sugarcane, potato, mango, apple, banana.")]
 
 # ------------------------------------------------------------------ HOME
 home_faq = [
@@ -186,7 +203,7 @@ home_faq = [
 home = f'''
 <section class="hero"><div class="wrap"><div>
 <h1>Biostimulants and organic inputs, made in Gujarat. Supplied under your brand or ours.</h1>
-<p class="lead">Humic acid, seaweed extract, protein hydrolysate and biofertilisers from our own plant in GIDC Shihor, Bhavnagar. Built on 20 years of R&amp;D and field work. No minimum order quantity. Dispatch in about one week.</p>
+<p class="lead">Organic fertilizers, humic acid, seaweed extract, amino acids, biofertilisers, micronutrients and custom blends from our own plant in GIDC Shihor, Bhavnagar. Built on 20 years of in-house R&amp;D and field work. No minimum order quantity. Dispatch in about one week.</p>
 <div class="btn-row"><a class="btn btn-primary" href="/contact">Request a quote</a><a class="btn btn-wa" href="{wa("Hello Gujarat Bio Organics, I would like a free sample.")}">{WA_SVG}Request a free sample</a></div>
 </div>
 <div class="label" role="group" aria-label="Supply terms at a glance"><div class="label-top"><span>Supply terms</span><span>Batch ready</span></div>
@@ -211,8 +228,14 @@ home = f'''
 <div class="path"><h3>Bulk and export supply</h3><p>IBC, drum and retail packs, liquids and solids, shipped from Pipavav, Kandla, Dahej, Mundra and JNPT.</p><a class="more" href="/bulk-supply">Bulk supply</a> &nbsp;&middot;&nbsp; <a class="more" href="/export">Export</a></div>
 </div></div></section>
 
+<section class="section"><div class="wrap">
+<div class="sec-head"><h2>Everything we make, in one plant</h2><p>Organic fertilizers, biostimulants, biofertilisers and specialty fertilizers, developed by our in-house R&amp;D team and made at our plant in Shihor, Bhavnagar.</p></div>
+{hub(CAT_HUB)}
+<div class="btn-row"><a class="btn btn-dark" href="/research-development">Our R&amp;D</a><a class="btn btn-ghost" href="/manufacturing-facility">Manufacturing facility</a></div>
+</div></section>
+
 <section class="section tint"><div class="wrap">
-<div class="sec-head"><h2>What we make</h2><p>Three material families, each in several grades. Every grade listed is covered by our Gujarat Directorate of Agriculture No Objection Certificate.</p></div>
+<div class="sec-head"><h2>Our core biostimulant families</h2><p>Three material families, each in several grades. Every grade listed is covered by our Gujarat Directorate of Agriculture No Objection Certificate.</p></div>
 <div class="materials">
 <div class="mat"><a href="/biostimulants-manufacturer-india#humic">{img("humic-acid-51-granular","Humic acid 51% granules in a glass bowl")}<h3>Humic and fulvic</h3><div class="forms">8 grades &middot; liquid, powder, granular</div><p>Soil conditioners that support structure, nutrient holding and root development.</p></a></div>
 <div class="mat"><a href="/biostimulants-manufacturer-india#seaweed">{img("kappaphycus-24-liquid","Kappaphycus alvarezii 24% liquid seaweed extract in a beaker")}<h3>Seaweed and algae</h3><div class="forms">9 grades &middot; Ascophyllum, Kappaphycus, Sargassum, Spirulina</div><p>Extracts used to help crops through stress, flowering and fruit set.</p></a></div>
@@ -246,8 +269,8 @@ home = f'''
 
 <section class="section tint"><div class="wrap"><div class="sec-head"><h2>Common questions</h2></div>{faq_html(home_faq)}</div></section>
 {cta()}'''
-render("/", "Biostimulant & Organic Fertilizer Manufacturer, Gujarat | GBO",
-       "Gujarat Bio Organics manufactures humic, seaweed, amino and biofertiliser products in Bhavnagar. Own brand, private label or bulk. Export worldwide.",
+render("/", "Organic Fertilizer & Biostimulant Manufacturer India | GBO",
+       "Organic fertilizers, humic acid, seaweed extract, amino acids, biofertilisers and custom blends made in Gujarat. Private label, bulk and export.",
        home, [faq_ld(home_faq)])
 PAGES.append(("/", "1.0"))
 
@@ -256,17 +279,13 @@ prod_faq = [("What product types do you manufacture?", "Humic and fulvic acid, s
             ("Can I see which grades are approved?", "Yes. The Biostimulants page lists all 36 grades covered by our Gujarat Directorate of Agriculture NOC, and the Biofertilisers page lists 11 types.")]
 prods = f'''{page_hero("Biostimulants and biofertilisers from one manufacturer", "Choose a family below, or tell us your crop and we will recommend a grade.", "/products", "Products")}
 <section class="section"><div class="wrap">
-<div class="answer">We manufacture 36 biostimulant grades and 11 biofertiliser types at our plant in Shihor, Bhavnagar, Gujarat. Each is available in bulk, under your private label, or under our Immunity brand.</div>
-<div class="materials">
-<div class="mat"><a href="/biostimulants-manufacturer-india">{img("kappaphycus-24-liquid","Seaweed extract sample")}<h3>Biostimulants</h3><div class="forms">36 grades &middot; Schedule VI</div><p>Humic and fulvic, seaweed, protein hydrolysate, amino acid, botanical and blended grades.</p></a></div>
-<div class="mat"><a href="/biofertilisers-manufacturer-india">{img("phosphate-solubilising-bacteria","Phosphate solubilising bacteria bio product")}<h3>Biofertilisers</h3><div class="forms">11 types &middot; Schedule III</div><p>Nitrogen fixers, phosphate, potash and zinc solubilisers, mycorrhizae and consortia.</p></a></div>
-<div class="mat"><a href="{wa("Hello Gujarat Bio Organics, please share the Immunity crop-wise range for my crop and region.")}">{img("private-label-premium-enriched","Immunity-style retail bottles of seaweed and humic liquid")}<h3>Immunity range</h3><div class="forms">Crop-specific retail products</div><p>Our own brand for growers: sugarcane, potato, mango, apple and more. Ask on WhatsApp for the range for your crop.</p></a></div>
-</div>
+<div class="answer">Gujarat Bio Organics manufactures organic fertilizers, 36 biostimulant grades, 11 biofertiliser types, and micronutrient, water-soluble, slow-release and custom fertilizers at its plant in Shihor, Bhavnagar, Gujarat. Each is available in bulk, under your private label, or under our Immunity brand.</div>
+{hub(CAT_HUB)}
 <h2 style="margin-top:3.4rem">Ways to buy</h2>
 <ul class="checks"><li><a href="/bulk-supply">Bulk supply</a>: IBC, drums and jumbo bags, no minimum order</li><li><a href="/private-label-oem">Private label and OEM</a>: your brand, our plant</li><li><a href="/export">Export</a>: FOB or CIF from Indian ports</li><li><a href="/become-a-distributor">Distributor</a>: bulk prices, you set your margin</li></ul>
 </div></section>{cta()}'''
-render("/products", "Products: Biostimulants & Biofertilisers | Gujarat Bio Organics",
-       "36 biostimulant grades and 11 biofertiliser types made in Bhavnagar, Gujarat. Bulk, private label, export and Immunity-brand supply. No MOQ.", prods, [faq_ld(prod_faq)], "Products")
+render("/products", "Products: Organic Fertilizers, Biostimulants & More | GBO",
+       "Organic fertilizers, humic acid, seaweed, amino acids, 11 biofertilisers, micronutrients, special grades and custom blends from Gujarat. Bulk, private label, export.", prods, [faq_ld(prod_faq)], "Products")
 PAGES.append(("/products", "0.9"))
 
 # ------------------------------------------------------------------ BIOSTIMULANTS (grade explorer)
@@ -282,7 +301,7 @@ chips = '<button class="chip" data-g="all" aria-pressed="true">All <small>36</sm
 rows = ""
 gn = dict(GROUPS)
 for i, (g, n, f) in enumerate(GRADES, 1):
-    rows += f'<tr data-g="{g}" data-name="{esc(n)}" data-form="{esc(f)}"><td class="n">{i}</td><td>{esc(n)}</td><td class="f"><span>{esc(f)}</span></td><td>{gn[g]}</td><td class="s"><input type="checkbox" aria-label="Select {esc(n)} ({esc(f)})"></td></tr>'
+    rows += f'<tr data-g="{g}" data-name="{esc(n)}" data-form="{esc(f)}"><td class="n">{i}</td><td><a href="{grade_path(n, f)}">{esc(n)}</a></td><td class="f"><span>{esc(f)}</span></td><td>{gn[g]}</td><td class="s"><input type="checkbox" aria-label="Select {esc(n)} ({esc(f)})"></td></tr>'
 gal = '<div class="gal three">' + "".join(img(n, c, caption=c + ". Illustrative sample.") for _, n, c in GRADE_IMG[:6]) + '</div>'
 bs_faq = [("What is a biostimulant under Indian law?", "In India, biostimulants are regulated under Schedule VI of the Fertiliser (Inorganic, Organic or Mixed) (Control) Order 1985. Each product needs an approved grade. Our No Objection Certificate from the Directorate of Agriculture, Government of Gujarat covers 36 grades."),
           ("What is the difference between Ascophyllum, Kappaphycus and Sargassum extracts?", "They are different seaweeds. Ascophyllum nodosum is a cold-water brown alga, Kappaphycus alvarezii is a red alga farmed in warm waters, and Sargassum is a tropical brown alga. Each gives a different composition, so the right grade depends on your crop and use."),
@@ -315,7 +334,7 @@ bf_faq = [("What are biofertilisers?", "Biofertilisers are products that contain
 bf = f'''{page_hero("Biofertiliser manufacturer in India: 11 approved types", "Nitrogen fixers, phosphate, potash and zinc solubilisers, mycorrhizae and consortia, in liquid and carrier-based forms.", "/biofertilisers-manufacturer-india", "Biofertilisers")}
 <section class="section"><div class="wrap">
 <div class="answer">Gujarat Bio Organics makes 11 types of biofertiliser at Shihor, Bhavnagar, covered by our Gujarat Directorate of Agriculture NOC under Schedule III. Available in bulk, private label or under our brand.</div>
-<ul class="bio">{"".join(f"<li>{b}</li>" for b in BIOS)}</ul>
+<ul class="bio">{"".join(f'<li><a href="{BIO_INFO[b][0]}">{b}</a></li>' for b in BIOS)}</ul>
 <div class="btn-row"><a class="btn btn-wa" href="{wa("Hello Gujarat Bio Organics, please quote these biofertilisers: ")}">{WA_SVG}Ask for a quote</a><a class="btn btn-dark" href="/private-label-oem">Make it under my brand</a></div>
 </div></section>
 <section class="section tint"><div class="wrap"><div class="sec-head"><h2>Sample presentation</h2><p>Illustrative renderings of selected biofertiliser samples.</p></div>
@@ -510,13 +529,18 @@ render("/404", "Page not found | Gujarat Bio Organics", "Page not found.", nf, N
 os.replace(os.path.join(ROOT, "404", "index.html"), os.path.join(ROOT, "404.html"))
 os.rmdir(os.path.join(ROOT, "404"))
 
+# ------------------------------------------------------------------ extended content
+for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
+    exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
+json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, ensure_ascii=False)
+
 # ------------------------------------------------------------------ SEO files
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
     f'<url><loc>{SITE}{p if p != "/" else "/"}</loc><priority>{pr}</priority></url>\n' for p, pr in PAGES) + '</urlset>\n'
 open(os.path.join(ROOT, "sitemap.xml"), "w").write(sm)
 open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /team/\n\nSitemap: {SITE}/sitemap.xml\n")
 open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. Ltd.
-> Biostimulant and biofertiliser manufacturer in Shihor, Bhavnagar, Gujarat, India. Supplies under its Immunity brand, under buyers' private labels, and in bulk. Exports worldwide.
+> Manufacturer of organic fertilizers, biostimulants (humic acid, seaweed extract, amino acids), biofertilisers and specialty fertilizers (micronutrients, water-soluble special grades, slow-release, custom blends, zyme granules) in Shihor, Bhavnagar, Gujarat, India, with in-house R&D. Supplies under its Immunity brand, under buyers' private labels, and in bulk. Exports worldwide.
 
 ## Key facts
 - Legal name: Gujarat Bio Organics Private Limited. CIN {CIN}. GSTIN {GST}. Incorporated 25 Nov 2009.
@@ -526,16 +550,31 @@ open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. 
 - Export: FOB or CIF from Pipavav, Kandla, Dahej, Mundra, JNPT. Markets: GCC, Africa, Russian Federation, Europe, North America, South America. Free samples; buyer pays freight, duty and other charges.
 - Contact: WhatsApp {PHONE}, {MAIL}
 
-## Pages
-- {SITE}/products
-- {SITE}/biostimulants-manufacturer-india
-- {SITE}/biofertilisers-manufacturer-india
-- {SITE}/private-label-oem
-- {SITE}/export
-- {SITE}/bulk-supply
-- {SITE}/become-a-distributor
-- {SITE}/field-solutions
+## Products
+{chr(10).join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in CAT_HUB)}
+
+## Approved grades (one page each)
+{chr(10).join(f"- {SITE}{grade_path(n, f)}" for g, n, f in GRADES)}
+{chr(10).join(f"- {SITE}{BIO_INFO[b][0]}" for b in BIOS)}
+
+## Crops
+{chr(10).join(f"- {SITE}/crops/{c['slug']}: {c['name']} programme ({c['special']})" for c in CROPS)}
+
+## Company
+- {SITE}/about
+- {SITE}/research-development
+- {SITE}/manufacturing-facility
 - {SITE}/quality-compliance
+- {SITE}/private-label-oem
+- {SITE}/bulk-supply
+- {SITE}/export
+- {SITE}/become-a-distributor
 - {SITE}/contact
+
+## Guides
+- [FCO Schedule VI biostimulants]({SITE}/fco-schedule-vi-biostimulants): how India regulates biostimulants
+{chr(10).join(f"- [{t}]({SITE}{u}): {d}" for u, t, d in ARTICLES)}
+- {SITE}/glossary
+- {SITE}/faq
 """)
 print("built", len(PAGES) + 1, "pages")

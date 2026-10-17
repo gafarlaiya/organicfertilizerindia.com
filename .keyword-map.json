@@ -1,0 +1,1955 @@
+[
+ {
+  "path": "/humic-acid-manufacturer-india",
+  "primary": "humic acid manufacturer in india",
+  "secondary": [
+   "humic acid manufacturers in india",
+   "humic acid supplier india",
+   "humic acid granules",
+   "humic acid powder",
+   "humic acid liquid",
+   "potassium humate 49 powder",
+   "fulvic acid fertilizer",
+   "humic acid fertilizer",
+   "humic acid price",
+   "humic acid granules price per kg",
+   "humic acid uses",
+   "humic acid for plants",
+   "bulk humic acid exporter"
+  ],
+  "questions": [
+   "What is humic acid used for in agriculture?",
+   "What is the difference between humic acid and fulvic acid?",
+   "Is potassium humate the same as humic acid?",
+   "Humic acid granules or liquid: which is better?",
+   "Can I mix humic acid with NPK fertiliser, urea or micronutrients?",
+   "What is the dose of humic acid per acre?",
+   "What does 'humic acid 98' mean?",
+   "What is the price of humic acid per kg?",
+   "Do you make humic acid under private label?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/seaweed-extract-manufacturer-india",
+  "primary": "seaweed extract manufacturers in india",
+  "secondary": [
+   "seaweed extract supplier india",
+   "seaweed extract liquid",
+   "seaweed extract powder",
+   "seaweed extract granules",
+   "seaweed granules fertilizer",
+   "kappaphycus alvarezii 24 liquid",
+   "kappaphycus alvarezii 9.5 liquid",
+   "ascophyllum nodosum 15 liquid",
+   "ascophyllum nodosum 7 liquid",
+   "seaweed extract fertilizer",
+   "seaweed extract price",
+   "seaweed extract 25 kg price",
+   "seaweed extract uses in agriculture"
+  ],
+  "questions": [
+   "What is seaweed extract used for in agriculture?",
+   "What is the difference between Ascophyllum, Kappaphycus and Sargassum extracts?",
+   "What does 'Kappaphycus alvarezii 24 (liquid)' mean?",
+   "Seaweed granules or liquid seaweed: which should I use?",
+   "Can seaweed extract be mixed with humic acid?",
+   "What is the dose of seaweed extract per litre of water?",
+   "What is the price of seaweed extract (25 kg or 25 L)?",
+   "Do you export seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/amino-acid-protein-hydrolysate-manufacturer-india",
+  "primary": "amino acid fertilizer manufacturer india",
+  "secondary": [
+   "protein hydrolysate manufacturer india",
+   "protein hydrolysate fertilizer",
+   "protein hydrolysate uses in agriculture",
+   "protein hydrolysate powder",
+   "protein hydrolysate liquid",
+   "amino acid fertilizer uses",
+   "amino acid fertilizer price",
+   "amino acid fertilizer 25 kg price",
+   "amino acid fertilizer powder",
+   "plant based amino acid fertilizer",
+   "amino acid fertilizer dose per acre"
+  ],
+  "questions": [
+   "What is protein hydrolysate in agriculture?",
+   "What is the difference between protein hydrolysate and amino acid fertilizer?",
+   "Plant-based or animal-based amino acids: which is better?",
+   "What are the uses of amino acid fertilizer?",
+   "What is the dose of amino acid fertilizer per acre?",
+   "Do you supply amino acid 80% soybean-based powder?",
+   "What is the price of amino acid fertilizer (25 kg)?",
+   "Can amino acids be mixed with seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/organic-fertilizer-manufacturer-india",
+  "primary": "organic fertilizer manufacturer in india",
+  "secondary": [
+   "organic fertilizer manufacturer in gujarat",
+   "organic fertilizer manufacturer",
+   "organic fertilizer supplier india",
+   "bio organic fertilizer manufacturer",
+   "organic fertilizer for plants",
+   "organic fertilizer for coconut tree",
+   "organic fertilizer for paddy",
+   "organic fertilizer for vegetable plants",
+   "organic manure manufacturer"
+  ],
+  "questions": [
+   "What is organic fertilizer?",
+   "What is the difference between organic and chemical fertilizer?",
+   "Is humic acid an organic fertilizer?",
+   "What is the best organic fertilizer for plants?",
+   "Which organic fertilizer is used for coconut, paddy and vegetables?",
+   "Are you an organic fertilizer manufacturer in Gujarat?",
+   "Can you make organic fertilizer under my brand?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, institutional buyers, growers"
+ },
+ {
+  "path": "/micronutrient-fertilizer-manufacturer-india",
+  "primary": "micronutrient fertilizer manufacturer india",
+  "secondary": [
+   "micronutrient fertilizer",
+   "micronutrient mixture fertilizer",
+   "chelated micronutrients manufacturer",
+   "chelated zinc edta 12",
+   "chelated zinc fertilizer",
+   "micronutrient fertilizer products list",
+   "micronutrient fertilizer price",
+   "micronutrient fertilizer liquid",
+   "micronutrient fertilizer for cotton"
+  ],
+  "questions": [
+   "What are micronutrient fertilizers?",
+   "What is the difference between chelated and non-chelated micronutrients?",
+   "What is chelated zinc EDTA 12%?",
+   "What are micronutrient mixture grades?",
+   "Can micronutrients be mixed with humic acid or amino acids?",
+   "What is the price of micronutrient fertilizer (1 kg, 10 kg, 50 kg)?",
+   "Do you make micronutrients under private label?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/water-soluble-fertilizer-special-grades",
+  "primary": "water soluble fertilizer manufacturer india",
+  "secondary": [
+   "special grade fertilizer",
+   "water soluble fertilizer grades",
+   "water soluble fertilizer grade list",
+   "water soluble fertilizer price list",
+   "19 19 19 fertilizer uses",
+   "13 0 45 fertilizer uses",
+   "0 52 34 fertilizer",
+   "npk water soluble fertilizer",
+   "water soluble fertilizer company list"
+  ],
+  "questions": [
+   "What is water-soluble fertilizer?",
+   "What are the common water-soluble fertilizer grades?",
+   "What is 19:19:19 fertilizer used for?",
+   "When should 13:0:45 and 0:52:34 be used?",
+   "What are special grade fertilizers?",
+   "What is the price of water-soluble fertilizer (25 kg)?",
+   "Can you make a water-soluble grade under my brand?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/custom-fertilizer-blends",
+  "primary": "custom fertilizer blends",
+  "secondary": [
+   "customized fertilizer",
+   "customized fertilizer manufacturer india",
+   "custom fertilizer blend",
+   "custom biostimulant formulation",
+   "fertilizer formulation services",
+   "customized fertilizer example",
+   "crop specific blends"
+  ],
+  "questions": [
+   "What is a customized fertilizer?",
+   "Can you make a blend to my own formula?",
+   "Is there a minimum order quantity for custom blends?",
+   "How long does a custom blend take?",
+   "Will my formula be kept confidential?",
+   "Can custom blends include biofertilisers?"
+  ],
+  "intent": "Commercial",
+  "audience": "Brand owners, distributors, importers, estates"
+ },
+ {
+  "path": "/crop-specific-fertilizers",
+  "primary": "crop specific fertilizer",
+  "secondary": [
+   "crop specific fertilizers india",
+   "crop specific biostimulant",
+   "immunity sugarcane special",
+   "best fertilizer for sugarcane",
+   "fertilizer for mango tree",
+   "fertilizer for potato crop",
+   "fertilizer for banana plant in india"
+  ],
+  "questions": [
+   "What is a crop-specific fertilizer?",
+   "Which crops does the Immunity range cover?",
+   "Can I sell the Immunity range as a distributor?",
+   "Can you make crop-specific products under my brand?",
+   "Do crop-specific products guarantee yield?"
+  ],
+  "intent": "Commercial",
+  "audience": "Growers, distributors, brand owners"
+ },
+ {
+  "path": "/slow-release-fertilizer",
+  "primary": "slow release fertilizer india",
+  "secondary": [
+   "slow release fertilizer manufacturer",
+   "slow release fertilizer granules",
+   "slow release fertilizer npk",
+   "slow release fertilizer examples",
+   "controlled release fertilizer india",
+   "slow release vs controlled release fertilizer"
+  ],
+  "questions": [
+   "What is a slow-release fertilizer?",
+   "What is the difference between slow-release and controlled-release fertilizer?",
+   "What are examples of slow-release fertilizers?",
+   "Slow-release or water-soluble fertilizer: which should I use?",
+   "Is neem-coated urea a slow-release fertilizer?",
+   "Can you make slow-release fertilizer under my brand?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/zyme-granules-manufacturer",
+  "primary": "zyme granules manufacturer",
+  "secondary": [
+   "zyme granules",
+   "zyme granules uses",
+   "zyme granules composition",
+   "zyme granules price per kg",
+   "zyme granules bucket",
+   "bio zyme granules",
+   "seaweed granules fertilizer",
+   "seaweed granules price",
+   "humic granules manufacturer"
+  ],
+  "questions": [
+   "What are zyme granules?",
+   "What is the composition of zyme granules?",
+   "What are the uses of zyme granules?",
+   "What is the price of zyme granules per kg or per bucket?",
+   "What pack sizes do you offer?",
+   "Are zyme granules legal to sell after June 2025?",
+   "Seaweed granules or humic granules: which is better?"
+  ],
+  "intent": "Commercial",
+  "audience": "B2B buyers, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-5-powder",
+  "primary": "humic acid 5 powder",
+  "secondary": [
+   "humic acid 5 manufacturer",
+   "humic acid 5 price",
+   "humic acid 5 uses",
+   "humic acid 5 supplier india"
+  ],
+  "questions": [
+   "What is Humic acid 5% used for?",
+   "How is Humic acid 5% applied?",
+   "Is Humic acid 5% an approved grade?",
+   "What is the price of Humic acid 5%?",
+   "Can I buy Humic acid 5% under my own brand?",
+   "Do you export Humic acid 5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/potassium-humate-49-powder",
+  "primary": "potassium humate 49 powder",
+  "secondary": [
+   "potassium humate 49 manufacturer",
+   "potassium humate 49 price",
+   "potassium humate 49 uses",
+   "potassium humate 49 supplier india"
+  ],
+  "questions": [
+   "What is Potassium humate 49% used for?",
+   "How is Potassium humate 49% applied?",
+   "Is Potassium humate 49% an approved grade?",
+   "What is the price of Potassium humate 49%?",
+   "Can I buy Potassium humate 49% under my own brand?",
+   "Do you export Potassium humate 49%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humate-and-fulvates-22-liquid",
+  "primary": "humate and fulvates 22 liquid",
+  "secondary": [
+   "humate and fulvates 22 manufacturer",
+   "humate and fulvates 22 price",
+   "humate and fulvates 22 uses",
+   "humate and fulvates 22 supplier india"
+  ],
+  "questions": [
+   "What is Humate and fulvates 22% used for?",
+   "How is Humate and fulvates 22% applied?",
+   "Is Humate and fulvates 22% an approved grade?",
+   "What is the price of Humate and fulvates 22%?",
+   "Can I buy Humate and fulvates 22% under my own brand?",
+   "Do you export Humate and fulvates 22%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humates-12-5-liquid",
+  "primary": "humates 12.5 liquid",
+  "secondary": [
+   "humates 12.5 manufacturer",
+   "humates 12.5 price",
+   "humates 12.5 uses",
+   "humates 12.5 supplier india"
+  ],
+  "questions": [
+   "What is Humates 12.5% used for?",
+   "How is Humates 12.5% applied?",
+   "Is Humates 12.5% an approved grade?",
+   "What is the price of Humates 12.5%?",
+   "Can I buy Humates 12.5% under my own brand?",
+   "Do you export Humates 12.5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-51-granular",
+  "primary": "humic acid 51 granular",
+  "secondary": [
+   "humic acid 51 manufacturer",
+   "humic acid 51 price",
+   "humic acid 51 uses",
+   "humic acid 51 supplier india"
+  ],
+  "questions": [
+   "What is Humic acid 51% used for?",
+   "How is Humic acid 51% applied?",
+   "Is Humic acid 51% an approved grade?",
+   "What is the price of Humic acid 51%?",
+   "Can I buy Humic acid 51% under my own brand?",
+   "Do you export Humic acid 51%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-1-5-granules",
+  "primary": "humic acid 1.5 granules",
+  "secondary": [
+   "humic acid 1.5 manufacturer",
+   "humic acid 1.5 price",
+   "humic acid 1.5 uses",
+   "humic acid 1.5 supplier india"
+  ],
+  "questions": [
+   "What is Humic acid 1.5% used for?",
+   "How is Humic acid 1.5% applied?",
+   "Is Humic acid 1.5% an approved grade?",
+   "What is the price of Humic acid 1.5%?",
+   "Can I buy Humic acid 1.5% under my own brand?",
+   "Do you export Humic acid 1.5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-and-fulvic-acid-25-05-liquid",
+  "primary": "humic and fulvic acid 25.05 liquid",
+  "secondary": [
+   "humic and fulvic acid 25.05 manufacturer",
+   "humic and fulvic acid 25.05 price",
+   "humic and fulvic acid 25.05 uses",
+   "humic and fulvic acid 25.05 supplier india"
+  ],
+  "questions": [
+   "What is Humic and fulvic acid 25.05% used for?",
+   "How is Humic and fulvic acid 25.05% applied?",
+   "Is Humic and fulvic acid 25.05% an approved grade?",
+   "What is the price of Humic and fulvic acid 25.05%?",
+   "Can I buy Humic and fulvic acid 25.05% under my own brand?",
+   "Do you export Humic and fulvic acid 25.05%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-and-fulvic-acid-76-powder",
+  "primary": "humic and fulvic acid 76 powder",
+  "secondary": [
+   "humic and fulvic acid 76 manufacturer",
+   "humic and fulvic acid 76 price",
+   "humic and fulvic acid 76 uses",
+   "humic and fulvic acid 76 supplier india"
+  ],
+  "questions": [
+   "What is Humic and fulvic acid 76% used for?",
+   "How is Humic and fulvic acid 76% applied?",
+   "Is Humic and fulvic acid 76% an approved grade?",
+   "What is the price of Humic and fulvic acid 76%?",
+   "Can I buy Humic and fulvic acid 76% under my own brand?",
+   "Do you export Humic and fulvic acid 76%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/ascophyllum-nodosum-15-liquid",
+  "primary": "ascophyllum nodosum 15 liquid",
+  "secondary": [
+   "ascophyllum nodosum 15 manufacturer",
+   "ascophyllum nodosum 15 price",
+   "ascophyllum nodosum 15 uses",
+   "ascophyllum nodosum 15 supplier india"
+  ],
+  "questions": [
+   "What is Ascophyllum nodosum 15% used for?",
+   "How is Ascophyllum nodosum 15% applied?",
+   "Is Ascophyllum nodosum 15% an approved grade?",
+   "What is the price of Ascophyllum nodosum 15%?",
+   "Can I buy Ascophyllum nodosum 15% under my own brand?",
+   "Do you export Ascophyllum nodosum 15%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/ascophyllum-nodosum-7-liquid",
+  "primary": "ascophyllum nodosum 7 liquid",
+  "secondary": [
+   "ascophyllum nodosum 7 manufacturer",
+   "ascophyllum nodosum 7 price",
+   "ascophyllum nodosum 7 uses",
+   "ascophyllum nodosum 7 supplier india"
+  ],
+  "questions": [
+   "What is Ascophyllum nodosum 7% used for?",
+   "How is Ascophyllum nodosum 7% applied?",
+   "Is Ascophyllum nodosum 7% an approved grade?",
+   "What is the price of Ascophyllum nodosum 7%?",
+   "Can I buy Ascophyllum nodosum 7% under my own brand?",
+   "Do you export Ascophyllum nodosum 7%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/kappaphycus-alvarezii-24-liquid",
+  "primary": "kappaphycus alvarezii 24 liquid",
+  "secondary": [
+   "kappaphycus alvarezii 24 manufacturer",
+   "kappaphycus alvarezii 24 price",
+   "kappaphycus alvarezii 24 uses",
+   "kappaphycus alvarezii 24 supplier india"
+  ],
+  "questions": [
+   "What is Kappaphycus alvarezii 24% used for?",
+   "How is Kappaphycus alvarezii 24% applied?",
+   "Is Kappaphycus alvarezii 24% an approved grade?",
+   "What is the price of Kappaphycus alvarezii 24%?",
+   "Can I buy Kappaphycus alvarezii 24% under my own brand?",
+   "Do you export Kappaphycus alvarezii 24%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/kappaphycus-alvarezii-9-5-liquid",
+  "primary": "kappaphycus alvarezii 9.5 liquid",
+  "secondary": [
+   "kappaphycus alvarezii 9.5 manufacturer",
+   "kappaphycus alvarezii 9.5 price",
+   "kappaphycus alvarezii 9.5 uses",
+   "kappaphycus alvarezii 9.5 supplier india"
+  ],
+  "questions": [
+   "What is Kappaphycus alvarezii 9.5% used for?",
+   "How is Kappaphycus alvarezii 9.5% applied?",
+   "Is Kappaphycus alvarezii 9.5% an approved grade?",
+   "What is the price of Kappaphycus alvarezii 9.5%?",
+   "Can I buy Kappaphycus alvarezii 9.5% under my own brand?",
+   "Do you export Kappaphycus alvarezii 9.5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/kappaphycus-alvarezii-7-2-liquid",
+  "primary": "kappaphycus alvarezii 7.2 liquid",
+  "secondary": [
+   "kappaphycus alvarezii 7.2 manufacturer",
+   "kappaphycus alvarezii 7.2 price",
+   "kappaphycus alvarezii 7.2 uses",
+   "kappaphycus alvarezii 7.2 supplier india"
+  ],
+  "questions": [
+   "What is Kappaphycus alvarezii 7.2% used for?",
+   "How is Kappaphycus alvarezii 7.2% applied?",
+   "Is Kappaphycus alvarezii 7.2% an approved grade?",
+   "What is the price of Kappaphycus alvarezii 7.2%?",
+   "Can I buy Kappaphycus alvarezii 7.2% under my own brand?",
+   "Do you export Kappaphycus alvarezii 7.2%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/sargassum-tenerrimum-10-liquid",
+  "primary": "sargassum tenerrimum 10 liquid",
+  "secondary": [
+   "sargassum tenerrimum 10 manufacturer",
+   "sargassum tenerrimum 10 price",
+   "sargassum tenerrimum 10 uses",
+   "sargassum tenerrimum 10 supplier india"
+  ],
+  "questions": [
+   "What is Sargassum tenerrimum 10% used for?",
+   "How is Sargassum tenerrimum 10% applied?",
+   "Is Sargassum tenerrimum 10% an approved grade?",
+   "What is the price of Sargassum tenerrimum 10%?",
+   "Can I buy Sargassum tenerrimum 10% under my own brand?",
+   "Do you export Sargassum tenerrimum 10%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/sargassum-tenerrimum-2-granular",
+  "primary": "sargassum tenerrimum 2 granular",
+  "secondary": [
+   "sargassum tenerrimum 2 manufacturer",
+   "sargassum tenerrimum 2 price",
+   "sargassum tenerrimum 2 uses",
+   "sargassum tenerrimum 2 supplier india"
+  ],
+  "questions": [
+   "What is Sargassum tenerrimum 2% used for?",
+   "How is Sargassum tenerrimum 2% applied?",
+   "Is Sargassum tenerrimum 2% an approved grade?",
+   "What is the price of Sargassum tenerrimum 2%?",
+   "Can I buy Sargassum tenerrimum 2% under my own brand?",
+   "Do you export Sargassum tenerrimum 2%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/kappaphycus-alvarezii-plus-sargassum-swartzii-1-1-liquid",
+  "primary": "kappaphycus alvarezii + sargassum swartzii 1:1 liquid",
+  "secondary": [
+   "kappaphycus alvarezii + sargassum swartzii 1:1 manufacturer",
+   "kappaphycus alvarezii + sargassum swartzii 1:1 price",
+   "kappaphycus alvarezii + sargassum swartzii 1:1 uses",
+   "kappaphycus alvarezii + sargassum swartzii 1:1 supplier india"
+  ],
+  "questions": [
+   "What is Kappaphycus alvarezii + Sargassum swartzii (1:1) used for?",
+   "How is Kappaphycus alvarezii + Sargassum swartzii (1:1) applied?",
+   "Is Kappaphycus alvarezii + Sargassum swartzii (1:1) an approved grade?",
+   "What is the price of Kappaphycus alvarezii + Sargassum swartzii (1:1)?",
+   "Can I buy Kappaphycus alvarezii + Sargassum swartzii (1:1) under my own brand?",
+   "Do you export Kappaphycus alvarezii + Sargassum swartzii (1:1)?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/spirulina-10-liquid",
+  "primary": "spirulina 10 liquid",
+  "secondary": [
+   "spirulina 10 manufacturer",
+   "spirulina 10 price",
+   "spirulina 10 uses",
+   "spirulina 10 supplier india"
+  ],
+  "questions": [
+   "What is Spirulina 10% used for?",
+   "How is Spirulina 10% applied?",
+   "Is Spirulina 10% an approved grade?",
+   "What is the price of Spirulina 10%?",
+   "Can I buy Spirulina 10% under my own brand?",
+   "Do you export Spirulina 10%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/adhatoda-vasica-powder",
+  "primary": "adhatoda vasica powder",
+  "secondary": [
+   "adhatoda vasica manufacturer",
+   "adhatoda vasica price",
+   "adhatoda vasica uses",
+   "adhatoda vasica supplier india"
+  ],
+  "questions": [
+   "What is Adhatoda vasica used for?",
+   "How is Adhatoda vasica applied?",
+   "Is Adhatoda vasica an approved grade?",
+   "What is the price of Adhatoda vasica?",
+   "Can I buy Adhatoda vasica under my own brand?",
+   "Do you export Adhatoda vasica?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/adhatoda-vasica-extract-2-liquid",
+  "primary": "adhatoda vasica extract 2 liquid",
+  "secondary": [
+   "adhatoda vasica extract 2 manufacturer",
+   "adhatoda vasica extract 2 price",
+   "adhatoda vasica extract 2 uses",
+   "adhatoda vasica extract 2 supplier india"
+  ],
+  "questions": [
+   "What is Adhatoda vasica extract 2% used for?",
+   "How is Adhatoda vasica extract 2% applied?",
+   "Is Adhatoda vasica extract 2% an approved grade?",
+   "What is the price of Adhatoda vasica extract 2%?",
+   "Can I buy Adhatoda vasica extract 2% under my own brand?",
+   "Do you export Adhatoda vasica extract 2%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-plus-amino-acid-plus-vitamins-plus-bio-chemicals-powder",
+  "primary": "humic acid + amino acid + vitamins + bio-chemicals powder",
+  "secondary": [
+   "humic acid + amino acid + vitamins + bio-chemicals manufacturer",
+   "humic acid + amino acid + vitamins + bio-chemicals price",
+   "humic acid + amino acid + vitamins + bio-chemicals uses",
+   "humic acid + amino acid + vitamins + bio-chemicals supplier india"
+  ],
+  "questions": [
+   "What is Humic acid + amino acid + vitamins + bio-chemicals used for?",
+   "How is Humic acid + amino acid + vitamins + bio-chemicals applied?",
+   "Is Humic acid + amino acid + vitamins + bio-chemicals an approved grade?",
+   "What is the price of Humic acid + amino acid + vitamins + bio-chemicals?",
+   "Can I buy Humic acid + amino acid + vitamins + bio-chemicals under my own brand?",
+   "Do you export Humic acid + amino acid + vitamins + bio-chemicals?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/seaweed-plus-algal-extract-liquid",
+  "primary": "seaweed + algal extract liquid",
+  "secondary": [
+   "seaweed + algal extract manufacturer",
+   "seaweed + algal extract price",
+   "seaweed + algal extract uses",
+   "seaweed + algal extract supplier india"
+  ],
+  "questions": [
+   "What is Seaweed + algal extract used for?",
+   "How is Seaweed + algal extract applied?",
+   "Is Seaweed + algal extract an approved grade?",
+   "What is the price of Seaweed + algal extract?",
+   "Can I buy Seaweed + algal extract under my own brand?",
+   "Do you export Seaweed + algal extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/seaweed-plus-humic-and-fulvic-acid-plus-amino-acids-plus-vitamins-liquid",
+  "primary": "seaweed + humic and fulvic acid + amino acids + vitamins liquid",
+  "secondary": [
+   "seaweed + humic and fulvic acid + amino acids + vitamins manufacturer",
+   "seaweed + humic and fulvic acid + amino acids + vitamins price",
+   "seaweed + humic and fulvic acid + amino acids + vitamins uses",
+   "seaweed + humic and fulvic acid + amino acids + vitamins supplier india"
+  ],
+  "questions": [
+   "What is Seaweed + humic and fulvic acid + amino acids + vitamins used for?",
+   "How is Seaweed + humic and fulvic acid + amino acids + vitamins applied?",
+   "Is Seaweed + humic and fulvic acid + amino acids + vitamins an approved grade?",
+   "What is the price of Seaweed + humic and fulvic acid + amino acids + vitamins?",
+   "Can I buy Seaweed + humic and fulvic acid + amino acids + vitamins under my own brand?",
+   "Do you export Seaweed + humic and fulvic acid + amino acids + vitamins?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-plus-seaweed-extract-liquid",
+  "primary": "humic acid + seaweed extract liquid",
+  "secondary": [
+   "humic acid + seaweed extract manufacturer",
+   "humic acid + seaweed extract price",
+   "humic acid + seaweed extract uses",
+   "humic acid + seaweed extract supplier india"
+  ],
+  "questions": [
+   "What is Humic acid + seaweed extract used for?",
+   "How is Humic acid + seaweed extract applied?",
+   "Is Humic acid + seaweed extract an approved grade?",
+   "What is the price of Humic acid + seaweed extract?",
+   "Can I buy Humic acid + seaweed extract under my own brand?",
+   "Do you export Humic acid + seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-plus-seaweed-extract-powder",
+  "primary": "humic acid + seaweed extract powder",
+  "secondary": [
+   "humic acid + seaweed extract manufacturer",
+   "humic acid + seaweed extract price",
+   "humic acid + seaweed extract uses",
+   "humic acid + seaweed extract supplier india"
+  ],
+  "questions": [
+   "What is Humic acid + seaweed extract used for?",
+   "How is Humic acid + seaweed extract applied?",
+   "Is Humic acid + seaweed extract an approved grade?",
+   "What is the price of Humic acid + seaweed extract?",
+   "Can I buy Humic acid + seaweed extract under my own brand?",
+   "Do you export Humic acid + seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/humic-acid-plus-seaweed-extract-granules",
+  "primary": "humic acid + seaweed extract granules",
+  "secondary": [
+   "humic acid + seaweed extract manufacturer",
+   "humic acid + seaweed extract price",
+   "humic acid + seaweed extract uses",
+   "humic acid + seaweed extract supplier india"
+  ],
+  "questions": [
+   "What is Humic acid + seaweed extract used for?",
+   "How is Humic acid + seaweed extract applied?",
+   "Is Humic acid + seaweed extract an approved grade?",
+   "What is the price of Humic acid + seaweed extract?",
+   "Can I buy Humic acid + seaweed extract under my own brand?",
+   "Do you export Humic acid + seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/botanical-extract-plus-seaweed-extract-liquid",
+  "primary": "botanical extract + seaweed extract liquid",
+  "secondary": [
+   "botanical extract + seaweed extract manufacturer",
+   "botanical extract + seaweed extract price",
+   "botanical extract + seaweed extract uses",
+   "botanical extract + seaweed extract supplier india"
+  ],
+  "questions": [
+   "What is Botanical extract + seaweed extract used for?",
+   "How is Botanical extract + seaweed extract applied?",
+   "Is Botanical extract + seaweed extract an approved grade?",
+   "What is the price of Botanical extract + seaweed extract?",
+   "Can I buy Botanical extract + seaweed extract under my own brand?",
+   "Do you export Botanical extract + seaweed extract?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/protein-hydrolysate-animal-source-36-04-liquid",
+  "primary": "protein hydrolysate animal source 36.04 liquid",
+  "secondary": [
+   "protein hydrolysate animal source 36.04 manufacturer",
+   "protein hydrolysate animal source 36.04 price",
+   "protein hydrolysate animal source 36.04 uses",
+   "protein hydrolysate animal source 36.04 supplier india"
+  ],
+  "questions": [
+   "What is Protein hydrolysate, animal source 36.04% used for?",
+   "How is Protein hydrolysate, animal source 36.04% applied?",
+   "Is Protein hydrolysate, animal source 36.04% an approved grade?",
+   "What is the price of Protein hydrolysate, animal source 36.04%?",
+   "Can I buy Protein hydrolysate, animal source 36.04% under my own brand?",
+   "Do you export Protein hydrolysate, animal source 36.04%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/protein-hydrolysate-plant-source-25",
+  "primary": "protein hydrolysate plant source 25",
+  "secondary": [
+   "protein hydrolysate plant source 25 manufacturer",
+   "protein hydrolysate plant source 25 price",
+   "protein hydrolysate plant source 25 uses",
+   "protein hydrolysate plant source 25 supplier india"
+  ],
+  "questions": [
+   "What is Protein hydrolysate, plant source 25% used for?",
+   "How is Protein hydrolysate, plant source 25% applied?",
+   "Is Protein hydrolysate, plant source 25% an approved grade?",
+   "What is the price of Protein hydrolysate, plant source 25%?",
+   "Can I buy Protein hydrolysate, plant source 25% under my own brand?",
+   "Do you export Protein hydrolysate, plant source 25%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/protein-hydrolysate-plant-source-16-9",
+  "primary": "protein hydrolysate plant source 16.9",
+  "secondary": [
+   "protein hydrolysate plant source 16.9 manufacturer",
+   "protein hydrolysate plant source 16.9 price",
+   "protein hydrolysate plant source 16.9 uses",
+   "protein hydrolysate plant source 16.9 supplier india"
+  ],
+  "questions": [
+   "What is Protein hydrolysate, plant source 16.9% used for?",
+   "How is Protein hydrolysate, plant source 16.9% applied?",
+   "Is Protein hydrolysate, plant source 16.9% an approved grade?",
+   "What is the price of Protein hydrolysate, plant source 16.9%?",
+   "Can I buy Protein hydrolysate, plant source 16.9% under my own brand?",
+   "Do you export Protein hydrolysate, plant source 16.9%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/protein-hydrolysate-plant-source-1-5",
+  "primary": "protein hydrolysate plant source 1.5",
+  "secondary": [
+   "protein hydrolysate plant source 1.5 manufacturer",
+   "protein hydrolysate plant source 1.5 price",
+   "protein hydrolysate plant source 1.5 uses",
+   "protein hydrolysate plant source 1.5 supplier india"
+  ],
+  "questions": [
+   "What is Protein hydrolysate, plant source 1.5% used for?",
+   "How is Protein hydrolysate, plant source 1.5% applied?",
+   "Is Protein hydrolysate, plant source 1.5% an approved grade?",
+   "What is the price of Protein hydrolysate, plant source 1.5%?",
+   "Can I buy Protein hydrolysate, plant source 1.5% under my own brand?",
+   "Do you export Protein hydrolysate, plant source 1.5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/protein-hydrolysate-plant-source-27",
+  "primary": "protein hydrolysate plant source 27",
+  "secondary": [
+   "protein hydrolysate plant source 27 manufacturer",
+   "protein hydrolysate plant source 27 price",
+   "protein hydrolysate plant source 27 uses",
+   "protein hydrolysate plant source 27 supplier india"
+  ],
+  "questions": [
+   "What is Protein hydrolysate, plant source 27% used for?",
+   "How is Protein hydrolysate, plant source 27% applied?",
+   "Is Protein hydrolysate, plant source 27% an approved grade?",
+   "What is the price of Protein hydrolysate, plant source 27%?",
+   "Can I buy Protein hydrolysate, plant source 27% under my own brand?",
+   "Do you export Protein hydrolysate, plant source 27%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/amino-acid-5",
+  "primary": "amino acid 5",
+  "secondary": [
+   "amino acid 5 manufacturer",
+   "amino acid 5 price",
+   "amino acid 5 uses",
+   "amino acid 5 supplier india"
+  ],
+  "questions": [
+   "What is Amino acid 5% used for?",
+   "How is Amino acid 5% applied?",
+   "Is Amino acid 5% an approved grade?",
+   "What is the price of Amino acid 5%?",
+   "Can I buy Amino acid 5% under my own brand?",
+   "Do you export Amino acid 5%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/amino-acid-10",
+  "primary": "amino acid 10",
+  "secondary": [
+   "amino acid 10 manufacturer",
+   "amino acid 10 price",
+   "amino acid 10 uses",
+   "amino acid 10 supplier india"
+  ],
+  "questions": [
+   "What is Amino acid 10% used for?",
+   "How is Amino acid 10% applied?",
+   "Is Amino acid 10% an approved grade?",
+   "What is the price of Amino acid 10%?",
+   "Can I buy Amino acid 10% under my own brand?",
+   "Do you export Amino acid 10%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/amino-acid-20",
+  "primary": "amino acid 20",
+  "secondary": [
+   "amino acid 20 manufacturer",
+   "amino acid 20 price",
+   "amino acid 20 uses",
+   "amino acid 20 supplier india"
+  ],
+  "questions": [
+   "What is Amino acid 20% used for?",
+   "How is Amino acid 20% applied?",
+   "Is Amino acid 20% an approved grade?",
+   "What is the price of Amino acid 20%?",
+   "Can I buy Amino acid 20% under my own brand?",
+   "Do you export Amino acid 20%?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/vinasse-residue-glutamic-acid-18-liquid",
+  "primary": "vinasse residue glutamic acid 18 liquid",
+  "secondary": [
+   "vinasse residue glutamic acid 18 manufacturer",
+   "vinasse residue glutamic acid 18 price",
+   "vinasse residue glutamic acid 18 uses",
+   "vinasse residue glutamic acid 18 supplier india"
+  ],
+  "questions": [
+   "What is Vinasse residue (glutamic acid 18%) used for?",
+   "How is Vinasse residue (glutamic acid 18%) applied?",
+   "Is Vinasse residue (glutamic acid 18%) an approved grade?",
+   "What is the price of Vinasse residue (glutamic acid 18%)?",
+   "Can I buy Vinasse residue (glutamic acid 18%) under my own brand?",
+   "Do you export Vinasse residue (glutamic acid 18%)?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/2-bromo-1h-indole-3-carboxaldehyde-1-ppm-liquid",
+  "primary": "2-bromo-1h-indole-3-carboxaldehyde 1 ppm liquid",
+  "secondary": [
+   "2-bromo-1h-indole-3-carboxaldehyde 1 ppm manufacturer",
+   "2-bromo-1h-indole-3-carboxaldehyde 1 ppm price",
+   "2-bromo-1h-indole-3-carboxaldehyde 1 ppm uses",
+   "2-bromo-1h-indole-3-carboxaldehyde 1 ppm supplier india"
+  ],
+  "questions": [
+   "What is 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm used for?",
+   "How is 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm applied?",
+   "Is 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm an approved grade?",
+   "What is the price of 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm?",
+   "Can I buy 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm under my own brand?",
+   "Do you export 2-Bromo-(1H)-indole-3-carboxaldehyde 1 ppm?"
+  ],
+  "intent": "Commercial",
+  "audience": "Formulators, brands, distributors, importers"
+ },
+ {
+  "path": "/products/azotobacter-biofertiliser",
+  "primary": "azotobacter biofertilizer",
+  "secondary": [
+   "azotobacter biofertilizer manufacturer",
+   "azotobacter uses",
+   "azotobacter for crops",
+   "liquid azotobacter"
+  ],
+  "questions": [
+   "What is Azotobacter?",
+   "Which crops is Azotobacter used for?",
+   "How is Azotobacter applied?",
+   "Can Azotobacter be mixed with chemical fertilizers or fungicides?",
+   "How should Azotobacter be stored?",
+   "Is Azotobacter an approved product?",
+   "What is the price of Azotobacter?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/carrier-based-consortia-biofertiliser",
+  "primary": "carrier-based consortia biofertilizer",
+  "secondary": [
+   "carrier-based consortia biofertilizer manufacturer",
+   "carrier-based consortia uses",
+   "carrier-based consortia for crops",
+   "liquid carrier-based consortia"
+  ],
+  "questions": [
+   "What is Carrier-based consortia?",
+   "Which crops is Carrier-based consortia used for?",
+   "How is Carrier-based consortia applied?",
+   "Can Carrier-based consortia be mixed with chemical fertilizers or fungicides?",
+   "How should Carrier-based consortia be stored?",
+   "Is Carrier-based consortia an approved product?",
+   "What is the price of Carrier-based consortia?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/azospirillum-biofertiliser",
+  "primary": "azospirillum biofertilizer",
+  "secondary": [
+   "azospirillum biofertilizer manufacturer",
+   "azospirillum uses",
+   "azospirillum for crops",
+   "liquid azospirillum"
+  ],
+  "questions": [
+   "What is Azospirillum?",
+   "Which crops is Azospirillum used for?",
+   "How is Azospirillum applied?",
+   "Can Azospirillum be mixed with chemical fertilizers or fungicides?",
+   "How should Azospirillum be stored?",
+   "Is Azospirillum an approved product?",
+   "What is the price of Azospirillum?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/liquid-consortia-npk-biofertiliser",
+  "primary": "liquid consortia biofertilizer",
+  "secondary": [
+   "liquid consortia biofertilizer manufacturer",
+   "liquid consortia uses",
+   "liquid consortia for crops",
+   "liquid liquid consortia"
+  ],
+  "questions": [
+   "What is Liquid consortia?",
+   "Which crops is Liquid consortia used for?",
+   "How is Liquid consortia applied?",
+   "Can Liquid consortia be mixed with chemical fertilizers or fungicides?",
+   "How should Liquid consortia be stored?",
+   "Is Liquid consortia an approved product?",
+   "What is the price of Liquid consortia?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/mycorrhizal-biofertiliser",
+  "primary": "mycorrhizal biofertilisers biofertilizer",
+  "secondary": [
+   "mycorrhizal biofertilisers biofertilizer manufacturer",
+   "mycorrhizal biofertilisers uses",
+   "mycorrhizal biofertilisers for crops",
+   "liquid mycorrhizal biofertilisers"
+  ],
+  "questions": [
+   "What is Mycorrhizal biofertilisers?",
+   "Which crops is Mycorrhizal biofertilisers used for?",
+   "How is Mycorrhizal biofertilisers applied?",
+   "Can Mycorrhizal biofertilisers be mixed with chemical fertilizers or fungicides?",
+   "How should Mycorrhizal biofertilisers be stored?",
+   "Is Mycorrhizal biofertilisers an approved product?",
+   "What is the price of Mycorrhizal biofertilisers?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/phosphate-solubilising-bacteria",
+  "primary": "phosphate solubilising bacteria biofertilizer",
+  "secondary": [
+   "phosphate solubilising bacteria biofertilizer manufacturer",
+   "phosphate solubilising bacteria uses",
+   "phosphate solubilising bacteria for crops",
+   "liquid phosphate solubilising bacteria"
+  ],
+  "questions": [
+   "What is Phosphate solubilising bacteria?",
+   "Which crops is Phosphate solubilising bacteria used for?",
+   "How is Phosphate solubilising bacteria applied?",
+   "Can Phosphate solubilising bacteria be mixed with chemical fertilizers or fungicides?",
+   "How should Phosphate solubilising bacteria be stored?",
+   "Is Phosphate solubilising bacteria an approved product?",
+   "What is the price of Phosphate solubilising bacteria?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/potash-mobilising-bacteria",
+  "primary": "potash mobilising bacteria biofertilizer",
+  "secondary": [
+   "potash mobilising bacteria biofertilizer manufacturer",
+   "potash mobilising bacteria uses",
+   "potash mobilising bacteria for crops",
+   "liquid potash mobilising bacteria"
+  ],
+  "questions": [
+   "What is Potash mobilising bacteria (KMB)?",
+   "Which crops is Potash mobilising bacteria (KMB) used for?",
+   "How is Potash mobilising bacteria (KMB) applied?",
+   "Can Potash mobilising bacteria (KMB) be mixed with chemical fertilizers or fungicides?",
+   "How should Potash mobilising bacteria (KMB) be stored?",
+   "Is Potash mobilising bacteria (KMB) an approved product?",
+   "What is the price of Potash mobilising bacteria (KMB)?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/acetobacter-biofertiliser",
+  "primary": "acetobacter biofertilizer",
+  "secondary": [
+   "acetobacter biofertilizer manufacturer",
+   "acetobacter uses",
+   "acetobacter for crops",
+   "liquid acetobacter"
+  ],
+  "questions": [
+   "What is Acetobacter?",
+   "Which crops is Acetobacter used for?",
+   "How is Acetobacter applied?",
+   "Can Acetobacter be mixed with chemical fertilizers or fungicides?",
+   "How should Acetobacter be stored?",
+   "Is Acetobacter an approved product?",
+   "What is the price of Acetobacter?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/rhizobium-biofertiliser",
+  "primary": "rhizobium biofertilizer",
+  "secondary": [
+   "rhizobium biofertilizer manufacturer",
+   "rhizobium uses",
+   "rhizobium for crops",
+   "liquid rhizobium"
+  ],
+  "questions": [
+   "What is Rhizobium?",
+   "Which crops is Rhizobium used for?",
+   "How is Rhizobium applied?",
+   "Can Rhizobium be mixed with chemical fertilizers or fungicides?",
+   "How should Rhizobium be stored?",
+   "Is Rhizobium an approved product?",
+   "What is the price of Rhizobium?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/zinc-solubilising-bacteria",
+  "primary": "zinc solubilising bacteria biofertilizer",
+  "secondary": [
+   "zinc solubilising bacteria biofertilizer manufacturer",
+   "zinc solubilising bacteria uses",
+   "zinc solubilising bacteria for crops",
+   "liquid zinc solubilising bacteria"
+  ],
+  "questions": [
+   "What is Zinc solubilising bacteria?",
+   "Which crops is Zinc solubilising bacteria used for?",
+   "How is Zinc solubilising bacteria applied?",
+   "Can Zinc solubilising bacteria be mixed with chemical fertilizers or fungicides?",
+   "How should Zinc solubilising bacteria be stored?",
+   "Is Zinc solubilising bacteria an approved product?",
+   "What is the price of Zinc solubilising bacteria?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/products/phosphate-solubilising-fungi",
+  "primary": "phosphate solubilising fungal biofertilisers biofertilizer",
+  "secondary": [
+   "phosphate solubilising fungal biofertilisers biofertilizer manufacturer",
+   "phosphate solubilising fungal biofertilisers uses",
+   "phosphate solubilising fungal biofertilisers for crops",
+   "liquid phosphate solubilising fungal biofertilisers"
+  ],
+  "questions": [
+   "What is Phosphate solubilising fungal biofertilisers?",
+   "Which crops is Phosphate solubilising fungal biofertilisers used for?",
+   "How is Phosphate solubilising fungal biofertilisers applied?",
+   "Can Phosphate solubilising fungal biofertilisers be mixed with chemical fertilizers or fungicides?",
+   "How should Phosphate solubilising fungal biofertilisers be stored?",
+   "Is Phosphate solubilising fungal biofertilisers an approved product?",
+   "What is the price of Phosphate solubilising fungal biofertilisers?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, growers"
+ },
+ {
+  "path": "/crops/sugarcane",
+  "primary": "best fertilizer for sugarcane",
+  "secondary": [
+   "best fertilizer for sugarcane growth",
+   "best fertilizer for sugarcane in india",
+   "best fertilizer for sugarcane tillering",
+   "best fertilizer for sugarcane top dressing",
+   "biofertilizer for sugarcane",
+   "acetobacter for sugarcane",
+   "humic acid for sugarcane",
+   "immunity sugarcane special"
+  ],
+  "questions": [
+   "What is the best fertilizer for sugarcane?",
+   "Which fertilizer is best for sugarcane tillering?",
+   "Which biofertilizer is used for sugarcane?",
+   "Is humic acid good for sugarcane?",
+   "What should be applied at sugarcane top dressing?",
+   "How can I improve ratoon sugarcane?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/potato",
+  "primary": "fertilizer for potato crop",
+  "secondary": [
+   "fertilizer for potato",
+   "fertilizer for potato tubers",
+   "fertilizer for potato growth",
+   "best fertilizer for potato size",
+   "seaweed for potato",
+   "immunity potato special"
+  ],
+  "questions": [
+   "What is the best fertilizer for potato tuber growth?",
+   "Which fertilizer increases potato size?",
+   "Is seaweed extract good for potato?",
+   "When should humic acid be applied to potato?",
+   "Which biofertilizers are used in potato?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/mango",
+  "primary": "fertilizer for mango tree",
+  "secondary": [
+   "fertilizer for mango tree during flowering",
+   "fertilizer for mango tree after flowering",
+   "fertilizer for mango tree for flowering",
+   "fertilizer for mango tree growth",
+   "mango fruit drop solution",
+   "organic fertilizer for mango tree",
+   "immunity mango special"
+  ],
+  "questions": [
+   "What is the best fertilizer for mango trees during flowering?",
+   "Which fertilizer should be used after mango flowering?",
+   "How can I reduce fruit drop in mango?",
+   "Which organic fertilizer is best for mango trees?",
+   "Can alternate bearing in mango be corrected?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/apple",
+  "primary": "fertilizer for apple trees",
+  "secondary": [
+   "best fertilizer for apple trees in india",
+   "apple orchard nutrition himachal",
+   "apple fruit size and colour fertilizer",
+   "apple tree decline",
+   "immunity apple special"
+  ],
+  "questions": [
+   "What is the best fertilizer for apple trees?",
+   "Which fertilizer improves apple fruit size and colour?",
+   "What should apple growers apply after hail?",
+   "Why are apple trees dying in my orchard?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/banana",
+  "primary": "fertilizer for banana plant in india",
+  "secondary": [
+   "fertilizer for banana plant",
+   "fertilizer for banana tree",
+   "best fertilizer for banana",
+   "banana bunch weight fertilizer",
+   "biofertilizer for banana",
+   "immunity banana special"
+  ],
+  "questions": [
+   "What is the best fertilizer for banana plants in India?",
+   "Which fertilizer increases banana bunch weight?",
+   "Can biostimulants cure Fusarium wilt or Sigatoka in banana?",
+   "Which biofertilizers are used for banana?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/cotton",
+  "primary": "best fertilizer for cotton crop",
+  "secondary": [
+   "fertilizer for cotton crop",
+   "fertilizer for cotton plant in india",
+   "micronutrient fertilizer for cotton",
+   "foliar fertilizer for cotton",
+   "fertilizer dose for cotton",
+   "cotton flower drop solution"
+  ],
+  "questions": [
+   "What is the best fertilizer for cotton crop?",
+   "Which micronutrient is important for cotton?",
+   "What foliar spray is used in cotton?",
+   "How can I reduce flower drop in cotton?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/citrus",
+  "primary": "fertilizer for citrus trees",
+  "secondary": [
+   "best fertilizer for citrus",
+   "citrus yellow leaves treatment",
+   "citrus fruit drop",
+   "zinc deficiency in citrus"
+  ],
+  "questions": [
+   "What is the best fertilizer for citrus trees?",
+   "Why are citrus leaves turning yellow?",
+   "How can I reduce fruit drop in citrus?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops/coconut",
+  "primary": "organic fertilizer for coconut tree",
+  "secondary": [
+   "how to use humic acid for coconut tree",
+   "fertilizer for coconut tree",
+   "coconut button shedding solution",
+   "best fertilizer for coconut"
+  ],
+  "questions": [
+   "What is the best organic fertilizer for coconut trees?",
+   "How do I use humic acid for coconut trees?",
+   "Why are coconut buttons falling?"
+  ],
+  "intent": "Informational / commercial",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/crops",
+  "primary": "crop wise fertilizer schedule",
+  "secondary": [
+   "crop nutrition programme",
+   "biostimulant for crops",
+   "fertilizer schedule for crops"
+  ],
+  "questions": [],
+  "intent": "Informational",
+  "audience": "Growers, distributors"
+ },
+ {
+  "path": "/research-development",
+  "primary": "biostimulant formulation company india",
+  "secondary": [
+   "fertilizer r&d company",
+   "biostimulant manufacturing process",
+   "in house r&d biostimulants",
+   "custom formulation biostimulants"
+  ],
+  "questions": [
+   "Does Gujarat Bio Organics have in-house R&D?",
+   "Can your R&D team formulate a product for my market?",
+   "Do you run field trials?",
+   "Can I get stability and specification data?"
+  ],
+  "intent": "Commercial / trust",
+  "audience": "Brand owners, importers"
+ },
+ {
+  "path": "/manufacturing-facility",
+  "primary": "biostimulant manufacturing plant india",
+  "secondary": [
+   "fertilizer manufacturing plant gujarat",
+   "humic acid manufacturing plant",
+   "third party fertilizer manufacturing",
+   "contract manufacturing biostimulants"
+  ],
+  "questions": [
+   "Where is your factory?",
+   "What is your production capacity?",
+   "What pack sizes can you fill?",
+   "How fast can you dispatch?",
+   "Can I visit the plant or send an inspector?"
+  ],
+  "intent": "Commercial / trust",
+  "audience": "Brand owners, importers"
+ },
+ {
+  "path": "/fco-schedule-vi-biostimulants",
+  "primary": "fco schedule vi biostimulants",
+  "secondary": [
+   "biostimulant registration india",
+   "biostimulant fco approval",
+   "schedule vi biostimulant list",
+   "provisional registration biostimulants cancelled",
+   "biostimulant regulation india 2025",
+   "approved biostimulants list india"
+  ],
+  "questions": [
+   "What is Schedule VI of the Fertiliser Control Order?",
+   "When did biostimulants come under the FCO?",
+   "What happened to provisional registrations?",
+   "How many biostimulants are approved?",
+   "Which categories count as biostimulants?",
+   "Are biofertilisers covered by Schedule VI?",
+   "What should a distributor or brand check before buying?",
+   "Which grades does Gujarat Bio Organics hold?"
+  ],
+  "intent": "Informational (GEO authority)",
+  "audience": "Distributors, brands, importers, regulators"
+ },
+ {
+  "path": "/resources/what-is-a-biostimulant",
+  "primary": "what is a biostimulant",
+  "secondary": [
+   "biostimulant meaning",
+   "biostimulant meaning in hindi",
+   "biostimulant products in agriculture",
+   "types of biostimulants",
+   "biostimulant examples",
+   "biostimulant fertilizer"
+  ],
+  "questions": [
+   "What is the difference between a biostimulant and a fertilizer?",
+   "What is the difference between a biostimulant and a biofertilizer?",
+   "Is a biostimulant a plant growth regulator?",
+   "What are examples of biostimulants?",
+   "What is biostimulant in Hindi?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/biostimulant-vs-fertilizer-vs-biofertilizer",
+  "primary": "difference between biostimulant and fertilizer",
+  "secondary": [
+   "difference between biostimulant and biofertilizer",
+   "difference between biostimulant and pgr",
+   "biostimulant vs fertilizer",
+   "difference between amino acid and biostimulant",
+   "difference between micronutrients and biostimulants"
+  ],
+  "questions": [
+   "Can biostimulants replace fertilizers?",
+   "Is humic acid a fertilizer or a biostimulant?",
+   "Can biofertilizers and chemical fertilizers be used together?",
+   "What is the difference between amino acids and biostimulants?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/humic-acid-vs-fulvic-acid",
+  "primary": "humic acid vs fulvic acid",
+  "secondary": [
+   "humic acid and fulvic acid",
+   "difference between humic and fulvic acid",
+   "fulvic acid uses",
+   "fulvic acid for plants",
+   "fulvic acid fertilizer",
+   "what is humic acid and fulvic acid"
+  ],
+  "questions": [
+   "Is fulvic acid better than humic acid?",
+   "Can humic and fulvic acid be used together?",
+   "What is fulvic acid used for in plants?",
+   "Where do humic and fulvic acids come from?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/humic-acid-uses-in-agriculture",
+  "primary": "humic acid uses in agriculture",
+  "secondary": [
+   "humic acid uses",
+   "humic acid for plants",
+   "what is humic acid used for",
+   "how to use humic acid for plants",
+   "how to use humic acid granules",
+   "humic acid benefits",
+   "humic acid kya kam karta hai",
+   "humic acid uses in hindi"
+  ],
+  "questions": [
+   "What is humic acid made of?",
+   "How do I use humic acid for plants?",
+   "How do I use humic acid granules?",
+   "Can humic acid be used for paddy?",
+   "What does humic acid do (humic acid kya kaam karta hai)?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/potassium-humate-vs-humic-acid",
+  "primary": "potassium humate vs humic acid",
+  "secondary": [
+   "potassium humate 98",
+   "potassium humate 49 powder",
+   "potassium humate uses",
+   "potassium humate fertilizer",
+   "potassium humate price",
+   "potassium humate flakes"
+  ],
+  "questions": [
+   "Is potassium humate the same as humic acid?",
+   "What is potassium humate 98?",
+   "What are the uses of potassium humate 49 powder?",
+   "Is potassium humate a fertilizer?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/seaweed-extract-uses-in-agriculture",
+  "primary": "seaweed extract uses in agriculture",
+  "secondary": [
+   "seaweed extract for plants",
+   "seaweed extract benefits",
+   "seaweed extract fertilizer uses",
+   "how is seaweed extract made",
+   "seaweed granules uses",
+   "seaweed extract and humic acid"
+  ],
+  "questions": [
+   "What are the benefits of seaweed extract for plants?",
+   "How is seaweed extract made?",
+   "Can seaweed extract be mixed with humic acid?",
+   "Is seaweed extract organic?",
+   "What are seaweed granules used for?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/kappaphycus-vs-ascophyllum-vs-sargassum",
+  "primary": "kappaphycus vs ascophyllum",
+  "secondary": [
+   "kappaphycus alvarezii uses in agriculture",
+   "kappaphycus alvarezii 24 liquid",
+   "ascophyllum nodosum 15 liquid",
+   "ascophyllum nodosum uses",
+   "sargassum seaweed extract",
+   "kappaphycus alvarezii common name"
+  ],
+  "questions": [
+   "Which seaweed extract is best?",
+   "What is Kappaphycus alvarezii used for in agriculture?",
+   "What is the common name of Kappaphycus alvarezii?",
+   "What does Ascophyllum nodosum 15 (liquid) mean?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/protein-hydrolysate-vs-amino-acid",
+  "primary": "protein hydrolysate and amino acid",
+  "secondary": [
+   "protein hydrolysate uses in agriculture",
+   "amino acid fertilizer uses",
+   "amino acid fertilizer benefits",
+   "plant based vs animal based amino acids",
+   "protein hydrolysate for plants"
+  ],
+  "questions": [
+   "Which is better, protein hydrolysate or amino acid?",
+   "What are the uses of protein hydrolysate in agriculture?",
+   "Is amino acid fertilizer organic?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/what-are-zyme-granules",
+  "primary": "what are zyme granules",
+  "secondary": [
+   "zyme granules uses",
+   "zyme granules composition",
+   "zyme granules price",
+   "bio zyme granules",
+   "zyme granules dose per acre"
+  ],
+  "questions": [
+   "What is the composition of zyme granules?",
+   "What are zyme granules used for?",
+   "Are zyme granules a fertilizer?",
+   "What is the dose of zyme granules per acre?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/slow-release-vs-water-soluble-fertilizer",
+  "primary": "slow release vs water soluble fertilizer",
+  "secondary": [
+   "slow release fertilizer examples",
+   "water soluble fertilizer grades",
+   "slow release fertilizer granules",
+   "controlled release fertilizer"
+  ],
+  "questions": [
+   "What are examples of slow-release fertilizers?",
+   "Is water-soluble fertilizer better than granular?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/can-humic-acid-be-mixed-with-fertilizers-and-pesticides",
+  "primary": "can i mix humic acid with npk",
+  "secondary": [
+   "can i mix humic acid with urea",
+   "can i mix humic acid with fungicide",
+   "can i mix humic acid with micronutrients",
+   "can i mix humic acid with seaweed extract",
+   "can we mix humic acid with calcium nitrate",
+   "can we mix humic acid with trichoderma"
+  ],
+  "questions": [
+   "Can I mix humic acid with NPK?",
+   "Can I mix humic acid with urea?",
+   "Can I mix humic acid with fungicide?",
+   "Can I mix humic acid with micronutrients?",
+   "Can I mix humic acid with calcium nitrate?",
+   "Can humic acid be mixed with Trichoderma?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/how-to-start-a-fertilizer-brand-private-label",
+  "primary": "how to start fertilizer brand",
+  "secondary": [
+   "private label fertilizer",
+   "white label fertilizer",
+   "private label liquid fertilizer",
+   "third party fertilizer manufacturing india",
+   "fertilizer label requirements",
+   "start organic fertilizer business"
+  ],
+  "questions": [
+   "Do I need a licence to sell fertilizer under my brand in India?",
+   "What is the minimum order for private label?",
+   "How long does a private-label launch take?",
+   "What is white label fertilizer?"
+  ],
+  "intent": "Informational",
+  "audience": "Entrepreneurs, brand owners, distributors"
+ },
+ {
+  "path": "/resources/how-to-import-biostimulants-from-india",
+  "primary": "import biostimulants from india",
+  "secondary": [
+   "humic acid supplier india export",
+   "seaweed extract exporter india",
+   "biostimulant exporter india",
+   "fertilizer import documents"
+  ],
+  "questions": [
+   "Do you supply samples to importers?",
+   "Which countries do you export to?",
+   "Can you pack under my brand for export?"
+  ],
+  "intent": "Informational",
+  "audience": "Importers"
+ },
+ {
+  "path": "/resources/types-of-biofertilizers",
+  "primary": "types of biofertilizers",
+  "secondary": [
+   "bio fertilizer names list",
+   "bio fertilizer example",
+   "bio fertilizer meaning",
+   "bio fertilizer in hindi",
+   "bio fertilizer products",
+   "liquid biofertilizer"
+  ],
+  "questions": [
+   "What is a biofertilizer?",
+   "What are examples of biofertilizers?",
+   "What is biofertilizer in Hindi?",
+   "Is liquid biofertilizer better than carrier-based?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/micronutrient-deficiency-symptoms-in-crops",
+  "primary": "micronutrient deficiency symptoms",
+  "secondary": [
+   "zinc deficiency symptoms in plants",
+   "boron deficiency in plants",
+   "iron deficiency in plants",
+   "micronutrient fertilizer uses"
+  ],
+  "questions": [
+   "Which micronutrient deficiency is most common in India?",
+   "How can micronutrient deficiency be corrected?"
+  ],
+  "intent": "Informational",
+  "audience": "Growers, buyers, distributors"
+ },
+ {
+  "path": "/resources/choosing-a-biostimulant-manufacturer-checklist",
+  "primary": "biostimulant manufacturers in india",
+  "secondary": [
+   "biostimulant companies in india",
+   "biostimulant manufacturing companies",
+   "organic fertilizer manufacturer india",
+   "how to choose fertilizer supplier"
+  ],
+  "questions": [
+   "What is the difference between a manufacturer and a trader?",
+   "Why do Schedule VI approvals matter?"
+  ],
+  "intent": "Informational",
+  "audience": "Distributors, brands, importers"
+ },
+ {
+  "path": "/resources",
+  "primary": "biostimulant guide",
+  "secondary": [
+   "humic acid guide",
+   "seaweed extract guide",
+   "organic fertilizer knowledge"
+  ],
+  "questions": [],
+  "intent": "Informational",
+  "audience": "All"
+ },
+ {
+  "path": "/glossary",
+  "primary": "biostimulant glossary",
+  "secondary": [
+   "fertilizer terms",
+   "what is chelated fertilizer",
+   "what is fertigation",
+   "fob vs cif"
+  ],
+  "questions": [],
+  "intent": "Informational",
+  "audience": "All"
+ },
+ {
+  "path": "/faq",
+  "primary": "gujarat bio organics faq",
+  "secondary": [
+   "biostimulant supplier faq",
+   "private label fertilizer faq"
+  ],
+  "questions": [
+   "Who is Gujarat Bio Organics?",
+   "Is there a minimum order quantity?",
+   "How long does dispatch take?",
+   "Do you give free samples?",
+   "What pack sizes do you offer?",
+   "What do you manufacture?",
+   "Do you make zyme granules?",
+   "Do you make crop-specific products?",
+   "Do you publish prices?",
+   "Are your biostimulants approved?",
+   "Can you provide test reports?",
+   "What changed for biostimulants in 2025?",
+   "Can you make products under my brand?",
+   "How do distributor margins work?",
+   "Which countries do you export to?"
+  ],
+  "intent": "Navigational / informational",
+  "audience": "All"
+ },
+ {
+  "path": "/",
+  "primary": "organic fertilizer and biostimulant manufacturer india",
+  "secondary": [
+   "biostimulant manufacturer gujarat",
+   "organic fertilizer manufacturer in gujarat",
+   "gujarat bio organics",
+   "fertilizer manufacturer bhavnagar"
+  ],
+  "questions": [],
+  "intent": "Navigational / commercial",
+  "audience": "All"
+ },
+ {
+  "path": "/products",
+  "primary": "organic fertilizer products list",
+  "secondary": [
+   "biostimulant products",
+   "biostimulant products in agriculture",
+   "bio fertilizer products"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "All"
+ },
+ {
+  "path": "/biostimulants-manufacturer-india",
+  "primary": "biostimulant manufacturers in india",
+  "secondary": [
+   "biostimulant companies in india",
+   "fco approved biostimulants",
+   "schedule vi biostimulant grades",
+   "biostimulant manufacturer"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, importers"
+ },
+ {
+  "path": "/biofertilisers-manufacturer-india",
+  "primary": "biofertilizer manufacturer india",
+  "secondary": [
+   "bio fertilizer products",
+   "liquid biofertilizer manufacturer",
+   "npk consortia manufacturer",
+   "biofertilizer supplier gujarat"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Distributors, brands"
+ },
+ {
+  "path": "/private-label-oem",
+  "primary": "private label fertilizer manufacturer india",
+  "secondary": [
+   "private label fertilizer",
+   "white label fertilizer",
+   "private label liquid fertilizer",
+   "third party biostimulant manufacturing",
+   "oem fertilizer manufacturer"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Brand owners"
+ },
+ {
+  "path": "/export",
+  "primary": "biostimulant exporter india",
+  "secondary": [
+   "humic acid exporter india",
+   "seaweed extract exporter",
+   "organic fertilizer exporter india"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Importers"
+ },
+ {
+  "path": "/bulk-supply",
+  "primary": "bulk humic acid supplier",
+  "secondary": [
+   "wholesale biostimulants",
+   "bulk seaweed extract",
+   "bulk amino acid fertilizer"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Formulators, repackers"
+ },
+ {
+  "path": "/become-a-distributor",
+  "primary": "organic fertilizer dealership",
+  "secondary": [
+   "fertilizer distributorship",
+   "biostimulant distributor india",
+   "agri input dealership"
+  ],
+  "questions": [],
+  "intent": "Commercial",
+  "audience": "Dealers"
+ },
+ {
+  "path": "/field-solutions",
+  "primary": "biostimulant for crop problems",
+  "secondary": [
+   "soil health solution",
+   "crop stress solution",
+   "flower drop solution"
+  ],
+  "questions": [],
+  "intent": "Informational",
+  "audience": "Growers"
+ },
+ {
+  "path": "/quality-compliance",
+  "primary": "gujarat bio organics noc",
+  "secondary": [
+   "fco approved biostimulant supplier",
+   "biostimulant company documents"
+  ],
+  "questions": [],
+  "intent": "Trust",
+  "audience": "Buyers"
+ },
+ {
+  "path": "/about",
+  "primary": "gujarat bio organics",
+  "secondary": [
+   "gujarat bio organics bhavnagar",
+   "immunity brand fertilizer"
+  ],
+  "questions": [],
+  "intent": "Navigational",
+  "audience": "All"
+ },
+ {
+  "path": "/contact",
+  "primary": "gujarat bio organics contact",
+  "secondary": [
+   "gujarat bio organics phone number",
+   "biostimulant quote"
+  ],
+  "questions": [],
+  "intent": "Navigational",
+  "audience": "All"
+ }
+]

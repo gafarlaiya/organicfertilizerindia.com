@@ -73,7 +73,7 @@
 
   /* grade explorer */
   var table=document.getElementById('grades');
-  if(table){
+  if(table&&table.tagName==='TABLE'&&document.getElementById('bar')){
     var rows=Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
     var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
     var bar=document.getElementById('bar'), count=document.getElementById('bar-count');
