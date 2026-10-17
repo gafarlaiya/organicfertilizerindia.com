@@ -122,7 +122,7 @@ def footer():
 <div><h2 class="fh">{NAME}</h2><address>Factory: {FACTORY}<br><br>Registered office: {REGOFF}</address>
 <p style="margin-top:1rem">CIN {CIN}<br>GSTIN {GST}</p></div>
 <div><h2 class="fh">Products</h2><ul><li><a href="/organic-fertilizer-manufacturer-india">Organic fertilizers</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/humic-acid-manufacturer-india">Humic acid</a></li><li><a href="/seaweed-extract-manufacturer-india">Seaweed extract</a></li><li><a href="/amino-acid-protein-hydrolysate-manufacturer-india">Amino acids</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/micronutrient-fertilizer-manufacturer-india">Micronutrients</a></li><li><a href="/water-soluble-fertilizer-special-grades">Special grades</a></li><li><a href="/slow-release-fertilizer">Slow release</a></li><li><a href="/zyme-granules-manufacturer">Zyme granules</a></li><li><a href="/custom-fertilizer-blends">Custom blends</a></li><li><a href="/crop-specific-fertilizers">Crop-specific</a></li></ul></div>
-<div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
+<div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/impact">Our story and grower videos</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
 <div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
 </div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Product images on this site are illustrative samples.</span></div></div></footer>
@@ -244,6 +244,12 @@ home = f'''
 {hub(CAT_HUB)}
 <div class="btn-row"><a class="btn btn-dark" href="/research-development">Our R&amp;D</a><a class="btn btn-ghost" href="/manufacturing-facility">Manufacturing facility</a></div>
 </div></section>
+
+<section class="section story"><div class="wrap"><div class="two"><div><h2>Twenty years on real farms</h2>
+<p>We have spent two decades solving growers' burning problems in sugarcane, potato, mango, apple, banana, citrus and coconut, in regions from the Himalayas to South Gujarat. Growers share their own experience in videos on YouTube and Facebook.</p>
+<div class="btn-row"><a class="btn btn-primary" href="/impact">See the field record</a></div></div>
+<div><h2>Open to the world</h2><p>Hazardous-chemical-free, sustainable food cultivation should be easy for everyone, for generations to come. The formula we proved in the field is now open to importers, brand owners, distributors and growers worldwide.</p>
+<div class="btn-row"><a class="btn btn-dark" href="/impact#open-to-the-world">Partner with us</a></div></div></div></div></section>
 
 <section class="section tint"><div class="wrap">
 <div class="sec-head"><h2>Our core biostimulant families</h2><p>Three material families, each in several grades. Every grade listed is covered by our Gujarat Directorate of Agriculture No Objection Certificate.</p></div>
@@ -510,6 +516,7 @@ ab = f'''{page_hero("About Gujarat Bio Organics", "A Bhavnagar manufacturer of b
 <section class="section"><div class="wrap"><div class="cols"><div>
 <div class="answer">Gujarat Bio Organics Pvt. Ltd. manufactures biostimulants and biofertilisers at Shihor, Bhavnagar, Gujarat. We combine 20 years of R&amp;D, product innovation and hard on-field work with growers.</div>
 <p>We make humic and fulvic acid, seaweed extract, protein hydrolysate, amino acid and biofertiliser products, and supply them three ways: under our Immunity brand, under your private label, or in bulk.</p>
+<p>Two decades of field work with growers across crops and regions sit behind every product. <a href="/impact">See the field record and hear growers</a>.</p>
 <p>Our plant has capacity for 100 KL of liquid and 2,500 tonnes of solid products every month. We ship worldwide, with no minimum order and free samples.</p>
 <h2>How we work</h2>
 <ul class="checks"><li>Start from the farmer's problem, not the product</li><li>Trial first, scale what works</li><li>One manufacturer from formulation to packing</li><li>Plain terms: no MOQ, free samples, FOB or CIF</li></ul>
@@ -542,7 +549,7 @@ os.replace(os.path.join(ROOT, "404", "index.html"), os.path.join(ROOT, "404.html
 os.rmdir(os.path.join(ROOT, "404"))
 
 # ------------------------------------------------------------------ extended content
-for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
+for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_45_impact.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
     exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
 json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, ensure_ascii=False)
 
@@ -574,6 +581,7 @@ open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. 
 
 ## Company
 - {SITE}/about
+- {SITE}/impact
 - {SITE}/research-development
 - {SITE}/manufacturing-facility
 - {SITE}/quality-compliance

@@ -1447,6 +1447,24 @@
   "audience": "Distributors, brands, importers, regulators"
  },
  {
+  "path": "/impact",
+  "primary": "organic fertilizer manufacturer with farmer results",
+  "secondary": [
+   "biostimulant company field proven india",
+   "farmer testimonials organic fertilizer",
+   "chemical free farming india"
+  ],
+  "questions": [
+   "How long has Gujarat Bio Organics been working with growers?",
+   "Which crops have you worked on?",
+   "Can I see growers talking about their results?",
+   "What does it mean that the formula is open to the world?",
+   "Do your products replace all chemical inputs?"
+  ],
+  "intent": "Trust / brand",
+  "audience": "Importers, brand owners, growers"
+ },
+ {
   "path": "/resources/what-is-a-biostimulant",
   "primary": "what is a biostimulant",
   "secondary": [

@@ -1,0 +1,4 @@
+{
+  "_help": "Add one object per real grower video. youtube: set \"yt\" to the 11-character video ID (the part after watch?v=). facebook: set \"fb\" to the full public video/post URL. Fields: crop, region, title, farmer (first name or 'Grower' only, as shown in the video). Leave the list empty to show channel links only.",
+  "videos": []
+}

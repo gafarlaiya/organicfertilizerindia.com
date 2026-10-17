@@ -95,5 +95,11 @@
     var h=(location.hash||'').replace('#','');
     apply(chips.some(function(c){return c.getAttribute('data-g')===h})?h:'all');
   }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('button.yt');if(!b)return;
+    var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(b.getAttribute('data-id'))+'?autoplay=1&rel=0';
+    f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=b.getAttribute('aria-label')||'Video';
+    b.replaceChildren(f);b.removeAttribute('aria-label');
+  });
   var y=document.getElementById('yr'); if(y)y.textContent=new Date().getFullYear();
 })();
