@@ -113,14 +113,14 @@ def header(path):
 
 def footer():
     return f'''<footer class="site-footer"><div class="wrap"><div class="fgrid">
-<div><h4>{NAME}</h4><address>Factory: {FACTORY}<br><br>Registered office: {REGOFF}</address>
+<div><h2 class="fh">{NAME}</h2><address>Factory: {FACTORY}<br><br>Registered office: {REGOFF}</address>
 <p style="margin-top:1rem">CIN {CIN}<br>GSTIN {GST}</p></div>
-<div><h4>Products</h4><ul><li><a href="/organic-fertilizer-manufacturer-india">Organic fertilizers</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/humic-acid-manufacturer-india">Humic acid</a></li><li><a href="/seaweed-extract-manufacturer-india">Seaweed extract</a></li><li><a href="/amino-acid-protein-hydrolysate-manufacturer-india">Amino acids</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/micronutrient-fertilizer-manufacturer-india">Micronutrients</a></li><li><a href="/water-soluble-fertilizer-special-grades">Special grades</a></li><li><a href="/slow-release-fertilizer">Slow release</a></li><li><a href="/zyme-granules-manufacturer">Zyme granules</a></li><li><a href="/custom-fertilizer-blends">Custom blends</a></li><li><a href="/crop-specific-fertilizers">Crop-specific</a></li></ul></div>
-<div><h4>Company</h4><ul><li><a href="/about">About us</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
-<div><h4>Knowledge</h4><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
-<div><h4>Talk to us</h4><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
+<div><h2 class="fh">Products</h2><ul><li><a href="/organic-fertilizer-manufacturer-india">Organic fertilizers</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/humic-acid-manufacturer-india">Humic acid</a></li><li><a href="/seaweed-extract-manufacturer-india">Seaweed extract</a></li><li><a href="/amino-acid-protein-hydrolysate-manufacturer-india">Amino acids</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/micronutrient-fertilizer-manufacturer-india">Micronutrients</a></li><li><a href="/water-soluble-fertilizer-special-grades">Special grades</a></li><li><a href="/slow-release-fertilizer">Slow release</a></li><li><a href="/zyme-granules-manufacturer">Zyme granules</a></li><li><a href="/custom-fertilizer-blends">Custom blends</a></li><li><a href="/crop-specific-fertilizers">Crop-specific</a></li></ul></div>
+<div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
+<div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
+<div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
 </div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Product images on this site are illustrative samples.</span></div></div></footer>
-<a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a>'''
+<aside aria-label="WhatsApp chat"><a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a></aside>'''
 
 def cta(title="Tell us what you need. We reply with a quote and a free sample.", sub="No minimum order quantity. Dispatch in about one week.", msg="Hello Gujarat Bio Organics, I would like a quote."):
     return f'''<section class="cta"><div class="wrap"><div><h2>{title}</h2><p>{sub}</p></div>
@@ -283,6 +283,7 @@ prod_faq = [("What product types do you manufacture?", "Humic and fulvic acid, s
 prods = f'''{page_hero("Biostimulants and biofertilisers from one manufacturer", "Choose a family below, or tell us your crop and we will recommend a grade.", "/products", "Products")}
 <section class="section"><div class="wrap">
 <div class="answer">Gujarat Bio Organics manufactures organic fertilizers, 36 biostimulant grades, 11 biofertiliser types, and micronutrient, water-soluble, slow-release and custom fertilizers at its plant in Shihor, Bhavnagar, Gujarat. Each is available in bulk, under your private label, or under our Immunity brand.</div>
+<h2>Product families</h2>
 {hub(CAT_HUB)}
 <h2 style="margin-top:3.4rem">Ways to buy</h2>
 <ul class="checks"><li><a href="/bulk-supply">Bulk supply</a>: IBC, drums and jumbo bags, no minimum order</li><li><a href="/private-label-oem">Private label and OEM</a>: your brand, our plant</li><li><a href="/export">Export</a>: FOB or CIF from Indian ports</li><li><a href="/become-a-distributor">Distributor</a>: bulk prices, you set your margin</li></ul>
@@ -467,7 +468,7 @@ fs_faq = [("Do your products guarantee a yield increase?", "No. Results depend o
 fs = f'''{page_hero("Field solutions: start from the problem", "Twenty years of R&amp;D, product innovation and on-field work, turned into a plain list of what growers ask us and which grades we recommend.", "/field-solutions", "Field solutions")}
 <section class="section"><div class="wrap">
 <div class="answer">Biostimulants and biofertilisers are tools for specific problems: soil structure, stress, flowering, recovery and nutrient uptake. Match the problem to the product family, run a small trial, and scale only what works on your farm.</div>
-{probs_html}
+<h2>Common problems and what growers use</h2>{probs_html}
 <p class="note-box">Results vary with crop, soil, weather and practice. Run a small trial first. These notes describe common uses and are not a guarantee of yield.</p>
 <div class="btn-row"><a class="btn btn-wa" href="{wa("Hello Gujarat Bio Organics, my crop is ___ in ___ and the problem is ___. Please suggest a product.")}">{WA_SVG}Describe your problem on WhatsApp</a><a class="btn btn-dark" href="/biostimulants-manufacturer-india">See all grades</a></div>
 </div></section>
@@ -517,7 +518,7 @@ ct_form = form("Send an enquiry", "enquiry",
      field("msg", "What do you need?", "textarea"), field("phone", "Phone or WhatsApp", "tel", req=True), field("email", "Email (for our reply)", "email")])
 ct = f'''{page_hero("Contact Gujarat Bio Organics", "WhatsApp is the fastest way to reach us. Or send the form and we reply by email or WhatsApp.", "/contact", "Contact")}
 <section class="section"><div class="wrap"><div class="cols"><div>
-<dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{PHONE}</a></dd></div><div><dt>Email</dt><dd><a href="mailto:{MAIL}">{MAIL}</a></dd></div><div><dt>Factory</dt><dd>{FACTORY}</dd></div><div><dt>Registered office</dt><dd>{REGOFF}</dd></div><div><dt>Facebook</dt><dd><a href="{FB}" rel="noopener">facebook.com/gujaratbio</a></dd></div><div><dt>YouTube</dt><dd><a href="{YT}" rel="noopener">youtube.com/@Gujaratbio</a></dd></div></dl>
+<h2>Contact details</h2><dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{PHONE}</a></dd></div><div><dt>Email</dt><dd><a href="mailto:{MAIL}">{MAIL}</a></dd></div><div><dt>Factory</dt><dd>{FACTORY}</dd></div><div><dt>Registered office</dt><dd>{REGOFF}</dd></div><div><dt>Facebook</dt><dd><a href="{FB}" rel="noopener">facebook.com/gujaratbio</a></dd></div><div><dt>YouTube</dt><dd><a href="{YT}" rel="noopener">youtube.com/@Gujaratbio</a></dd></div></dl>
 <div class="btn-row"><a class="btn btn-wa" href="https://wa.me/{WA}">{WA_SVG}Chat on WhatsApp</a><a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Gujarat+Bio+Organics+Shihor+Bhavnagar" rel="noopener">Open map</a></div>
 </div><div>{ct_form}</div></div></div></section>'''
 ct_ld = [{"@context": "https://schema.org", "@type": "ContactPage", "url": SITE + "/contact", "mainEntity": {"@id": SITE + "/#org"}}]

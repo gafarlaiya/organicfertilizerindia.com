@@ -171,7 +171,7 @@ for c in CROPS:
 
 ch = hero("Crop programmes", "Sugarcane, potato, mango, apple, banana, cotton, citrus and coconut: what each crop needs, stage by stage.", [("Crops", None)])
 ch += sec(answer("Gujarat Bio Organics builds crop programmes that combine nutrition, biostimulants and biofertilisers for each crop's stages and usual problems. The Immunity range has dedicated products for sugarcane, potato, mango, apple and banana.")
-          + hub([(f"/crops/{c['slug']}", c["name"], c["problems"][0]) for c in CROPS]) + CLAIM_NOTE)
+          + "<h2>Choose your crop</h2>" + hub([(f"/crops/{c['slug']}", c["name"], c["problems"][0]) for c in CROPS]) + CLAIM_NOTE)
 page("/crops", "Crop Programmes: Sugarcane, Potato, Mango, Apple & More | GBO", "Crop-wise nutrition and biostimulant programmes for sugarcane, potato, mango, apple, banana, cotton, citrus and coconut from Gujarat Bio Organics.",
      ch + cta(), [("Crops", None)], [itemlist_ld("Crop programmes", [(f"/crops/{c['slug']}", c["name"]) for c in CROPS])], "0.8")
 kw("/crops", "crop wise fertilizer schedule", ["crop nutrition programme", "biostimulant for crops", "fertilizer schedule for crops"], [], "Informational", "Growers, distributors")

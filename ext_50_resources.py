@@ -256,7 +256,7 @@ art("choosing-a-biostimulant-manufacturer-checklist", "Choosing a biostimulant m
 # ---------------------------------------------------------------- RESOURCES HUB
 rh = hero("Knowledge centre", "Plain answers to the questions growers, distributors, brands and importers ask us about biostimulants, organic fertilizers and biofertilisers.", [("Knowledge centre", None)])
 rh += sec(answer("Our knowledge centre explains biostimulants, organic and specialty fertilizers and biofertilisers in plain language: what they are, how they differ, how to use them and how to buy them, written by the Gujarat Bio Organics R&D team.")
-          + hub([(p, h, d) for p, h, d in ARTICLES] + [("/fco-schedule-vi-biostimulants", "FCO Schedule VI biostimulants", "How India regulates biostimulants and what buyers should check."),
+          + "<h2>Guides</h2>" + hub([(p, h, d) for p, h, d in ARTICLES] + [("/fco-schedule-vi-biostimulants", "FCO Schedule VI biostimulants", "How India regulates biostimulants and what buyers should check."),
                                                        ("/glossary", "Glossary", "Terms from biostimulant to Schedule VI, explained in a line or two."),
                                                        ("/faq", "Frequently asked questions", "The most common questions in one place.")]))
 page("/resources", "Knowledge Centre: Biostimulants, Humic Acid, Seaweed | GBO", "Guides on biostimulants, humic acid, seaweed extract, amino acids, biofertilisers, micronutrients and private-label fertilizer brands from Gujarat Bio Organics.",
