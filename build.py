@@ -63,6 +63,12 @@ NAV = [("/products", "Products"), ("/crops", "Crops"), ("/private-label-oem", "P
 # ------------------------------------------------------------------ components
 def img(name, alt, cls="", w=None, h=None, lazy=True, caption=None):
     a = f'<img src="/assets/img/{name}.webp" alt="{esc(alt)}"' + (' loading="lazy"' if lazy else '') + ' decoding="async"'
+    if not w:
+        try:
+            from PIL import Image as _I
+            w, h = _I.open(os.path.join(ROOT, "assets", "img", name + ".webp")).size
+        except Exception:
+            w = None
     if w: a += f' width="{w}" height="{h}"'
     a += (f' class="{cls}"' if cls else '') + '>'
     if caption:
@@ -167,13 +173,15 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="{FONT_URL}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>
 <style>{INLINE_CSS}</style>{ldh}</head>
-<body>{header(path)}<main id="main">{body}</main>{footer()}<script src="/assets/main.js" defer></script></body></html>'''
+<body>{header(path)}<main id="main">{body}</main>{footer()}<script src="/assets/main.js?v={JS_VER}" defer></script></body></html>'''
     d = ROOT if path == "/" else os.path.join(ROOT, path.strip("/"))
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(out)
     return path
 
 PAGES = []  # (path, priority)
+import hashlib as _hl
+JS_VER = _hl.md5(open(os.path.join(ROOT, "assets", "main.js"), "rb").read()).hexdigest()[:8]
 FONT_URL = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap"
 import re as _re0
 INLINE_CSS = _re0.sub(r"\s*([{};:,>])\s*", r"\1", _re0.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", "styles.css"), encoding="utf-8").read(), flags=_re0.S)).replace(";}", "}").strip()
