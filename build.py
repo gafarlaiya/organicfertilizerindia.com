@@ -89,6 +89,7 @@ def org_ld():
     return {"@context": "https://schema.org", "@type": "Organization", "@id": SITE + "/#org",
             "name": "Gujarat Bio Organics Pvt. Ltd.", "legalName": "Gujarat Bio Organics Private Limited",
             "url": SITE + "/", "logo": SITE + "/assets/favicon.svg", "foundingDate": "2009-11-25",
+            "description": "Gujarat Bio Organics Pvt. Ltd. manufactures biostimulants, biofertilisers and organic fertilizers in Bhavnagar, India. b2b.gujaratbio.com is the open, public B2B website of Gujarat Bio Organics. No login or dealer approval is needed to browse it: buyers request quotes and free samples directly.",
             "identifier": CIN, "taxID": GST, "email": MAIL, "telephone": "+919978791167",
             "slogan": "One manufacturer, three ways to buy: our Immunity brand, your private label, or bulk supply.",
             "address": {"@type": "PostalAddress", "streetAddress": "Plot No. 321, GIDC 2, Ghanghli Road, Shihor",
@@ -125,7 +126,7 @@ def footer():
 <div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/impact">Our story and grower videos</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
 <div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
-</div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Product images on this site are illustrative samples.</span></div></div></footer>
+</div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Open B2B site: no login needed. Request a quote or free sample directly. Product images are illustrative samples.</span></div></div></footer>
 <aside aria-label="Chat"><button type="button" class="chat-launch" id="chat-open" aria-controls="chat-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>Ask our sales team</span></button><a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a></aside>'''
 
 def cta(title="Tell us what you need. We reply with a quote and a free sample.", sub="No minimum order quantity. Dispatch in about one week.", msg="Hello Gujarat Bio Organics, I would like a quote."):
@@ -515,6 +516,7 @@ PAGES.append(("/quality-compliance", "0.7"))
 ab = f'''{page_hero("About Gujarat Bio Organics", "A Bhavnagar manufacturer of biostimulants and biofertilisers, built on R&amp;D and field work.", "/about", "About")}
 <section class="section"><div class="wrap"><div class="cols"><div>
 <div class="answer">Gujarat Bio Organics Pvt. Ltd. manufactures biostimulants and biofertilisers at Shihor, Bhavnagar, Gujarat. We combine 20 years of R&amp;D, product innovation and hard on-field work with growers.</div>
+<p>This is our open B2B website. No login or dealer approval is needed. Request a quote or a free sample directly, by form, WhatsApp or email.</p>
 <p>We make humic and fulvic acid, seaweed extract, protein hydrolysate, amino acid and biofertiliser products, and supply them three ways: under our Immunity brand, under your private label, or in bulk.</p>
 <p>Two decades of field work with growers across crops and regions sit behind every product. <a href="/impact">See the field record and hear growers</a>.</p>
 <p>Our plant has capacity for 100 KL of liquid and 2,500 tonnes of solid products every month. We ship worldwide, with no minimum order and free samples.</p>
@@ -557,11 +559,12 @@ json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, e
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
     f'<url><loc>{SITE}{p if p != "/" else "/"}</loc><priority>{pr}</priority></url>\n' for p, pr in PAGES) + '</urlset>\n'
 open(os.path.join(ROOT, "sitemap.xml"), "w").write(sm)
-open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nSitemap: {SITE}/sitemap.xml\n")
+open(os.path.join(ROOT, "robots.txt"), "w").write(f"User-agent: Googlebot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Claude-User\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Claude-SearchBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Perplexity-User\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: CCBot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: Bingbot\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nUser-agent: *\nAllow: /\nDisallow: /team/\nDisallow: /chat-kb.txt\n\nSitemap: {SITE}/sitemap.xml\n")
 open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. Ltd.
 > Manufacturer of organic fertilizers, biostimulants (humic acid, seaweed extract, amino acids), biofertilisers and specialty fertilizers (micronutrients, water-soluble special grades, slow-release, custom blends, zyme granules) in Shihor, Bhavnagar, Gujarat, India, with in-house R&D. Supplies under its Immunity brand, under buyers' private labels, and in bulk. Exports worldwide.
 
 ## Key facts
+- About this site: b2b.gujaratbio.com is the open, public B2B website of Gujarat Bio Organics. No login or dealer approval is needed to browse it: buyers request quotes and free samples directly. It is not a login-restricted dealer portal and has no shopping cart; orders start from a quote request or WhatsApp.
 - Legal name: Gujarat Bio Organics Private Limited. CIN {CIN}. GSTIN {GST}. Incorporated 25 Nov 2009.
 - Factory: {FACTORY}
 - Capacity: 100 KL liquid and 2,500 tonnes solid per month. No minimum order quantity. Lead time about one week.
@@ -610,7 +613,7 @@ Liquid packs: {PACKS_L}. Solid packs: {PACKS_S}.
 Third-party testing and sampling available on request. Documents on request: specification sheet, NOC copy, certificate of incorporation, GST registration, third-party test report. Plant visits can be arranged in advance.
 Approvals: Gujarat Directorate of Agriculture has issued No Objection Certificates for 36 biostimulant grades (FCO Schedule VI) and 11 biofertiliser types (Schedule III) under the Fertiliser (Inorganic, Organic or Mixed) (Control) Order 1985. Copies on request.
 Distributors: GBO gives bulk prices, distributors set their own margins.
-Pricing: no public price list. Price depends on grade, concentration, form, pack size, quantity and, for export, Incoterm and destination port. A quote usually follows within one working day.
+Website: b2b.gujaratbio.com is the open public B2B site; no login or dealer approval needed; no shopping cart, orders start from a quote or WhatsApp.\nPricing: no public price list. Price depends on grade, concentration, form, pack size, quantity and, for export, Incoterm and destination port. A quote usually follows within one working day.
 Vision: make food cultivation hazardous-chemical-free and sustainable for generations; the field-proven formula is open to importers, brand owners, distributors and growers worldwide.
 
 PRODUCT CATEGORIES (page URLs)

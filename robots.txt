@@ -1,3 +1,68 @@
+User-agent: Googlebot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: GPTBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Claude-User
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: CCBot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
+User-agent: Bingbot
+Allow: /
+Disallow: /team/
+Disallow: /chat-kb.txt
+
 User-agent: *
 Allow: /
 Disallow: /team/
