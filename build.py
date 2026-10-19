@@ -123,7 +123,7 @@ def footer():
 <div><h2 class="fh">{NAME}</h2><address>Factory: {FACTORY}<br><br>Registered office: {REGOFF}</address>
 <p style="margin-top:1rem">CIN {CIN}<br>GSTIN {GST}</p></div>
 <div><h2 class="fh">Products</h2><ul><li><a href="/organic-fertilizer-manufacturer-india">Organic fertilizers</a></li><li><a href="/biostimulants-manufacturer-india">Biostimulants</a></li><li><a href="/humic-acid-manufacturer-india">Humic acid</a></li><li><a href="/seaweed-extract-manufacturer-india">Seaweed extract</a></li><li><a href="/amino-acid-protein-hydrolysate-manufacturer-india">Amino acids</a></li><li><a href="/biofertilisers-manufacturer-india">Biofertilisers</a></li><li><a href="/micronutrient-fertilizer-manufacturer-india">Micronutrients</a></li><li><a href="/water-soluble-fertilizer-special-grades">Special grades</a></li><li><a href="/slow-release-fertilizer">Slow release</a></li><li><a href="/zyme-granules-manufacturer">Zyme granules</a></li><li><a href="/custom-fertilizer-blends">Custom blends</a></li><li><a href="/crop-specific-fertilizers">Crop-specific</a></li></ul></div>
-<div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/impact">Our story and grower videos</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
+<div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/why-gujarat-bio">Why we are different</a></li><li><a href="/impact">Our story and grower videos</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
 <div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
 </div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Open B2B site: no login needed. Request a quote or free sample directly. Product images are illustrative samples.</span></div></div></footer>
@@ -239,6 +239,14 @@ home = f'''
 <div class="path"><h3>Launch your own brand</h3><p>Private label and OEM. We formulate, manufacture and pack under your name, with your label and pack design.</p><a class="more" href="/private-label-oem">Private label and OEM</a></div>
 <div class="path"><h3>Bulk and export supply</h3><p>IBC, drum and retail packs, liquids and solids, shipped from Pipavav, Kandla, Dahej, Mundra and JNPT.</p><a class="more" href="/bulk-supply">Bulk supply</a> &nbsp;&middot;&nbsp; <a class="more" href="/export">Export</a></div>
 </div></div></section>
+
+<section class="section dark"><div class="wrap"><div class="sec-head"><h2>Why our products are not like the rest</h2>
+<p class="answer" style="margin-bottom:0">Many humic acid, seaweed and amino acid powders are made to a price. Ours are made to protect what works: the right raw material, a gentle process, and proof you can test.</p></div>
+<div class="hub">
+<a class="hub-i" href="/why-gujarat-bio"><h3>Humic acid</h3><p>The best source out of hundreds, found over 20 years in the field, and extracted without the harsh, hot, high-pH processing that damages fragile compounds.</p></a>
+<a class="hub-i" href="/why-gujarat-bio"><h3>Seaweed extract</h3><p>Only a few of thousands of species suit farming. Every step from cultivation to extraction is protocol-controlled, so the extract stays rich, not a plain powder.</p></a>
+<a class="hub-i" href="/why-gujarat-bio"><h3>Amino acids</h3><p>Chosen source, careful hydrolysis, preservation and quality control, not an imported powder made to a price.</p></a></div>
+<div class="btn-row"><a class="btn btn-primary" href="/why-gujarat-bio">See what makes us different</a><a class="btn btn-wa" href="{wa("Hello Gujarat Bio Organics, I would like a free sample to compare with my current supplier.")}">{WA_SVG}Compare with a free sample</a></div></div></section>
 
 <section class="section"><div class="wrap">
 <div class="sec-head"><h2>Everything we make, in one plant</h2><p>Organic fertilizers, biostimulants, biofertilisers and specialty fertilizers, developed by our in-house R&amp;D team and made at our plant in Shihor, Bhavnagar.</p></div>
@@ -551,7 +559,7 @@ os.replace(os.path.join(ROOT, "404", "index.html"), os.path.join(ROOT, "404.html
 os.rmdir(os.path.join(ROOT, "404"))
 
 # ------------------------------------------------------------------ extended content
-for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_45_impact.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
+for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_42_difference.py", "ext_45_impact.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
     exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
 json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, ensure_ascii=False)
 
@@ -584,6 +592,7 @@ open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. 
 
 ## Company
 - {SITE}/about
+- {SITE}/why-gujarat-bio
 - {SITE}/impact
 - {SITE}/research-development
 - {SITE}/manufacturing-facility
@@ -614,6 +623,7 @@ Third-party testing and sampling available on request. Documents on request: spe
 Approvals: Gujarat Directorate of Agriculture has issued No Objection Certificates for 36 biostimulant grades (FCO Schedule VI) and 11 biofertiliser types (Schedule III) under the Fertiliser (Inorganic, Organic or Mixed) (Control) Order 1985. Copies on request.
 Distributors: GBO gives bulk prices, distributors set their own margins.
 Website: b2b.gujaratbio.com is the open public B2B site; no login or dealer approval needed; no shopping cart, orders start from a quote or WhatsApp.\nPricing: no public price list. Price depends on grade, concentration, form, pack size, quantity and, for export, Incoterm and destination port. A quote usually follows within one working day.
+DIFFERENCE (page: {SITE}/why-gujarat-bio): Humic acid: raw material chosen after about 20 years of field comparison; extraction avoids very high pH and very high temperatures because our R&D found beneficial humic substances are fragile against them. Seaweed: only a few of thousands of species suit agriculture; cultivation, harvest timing, post-harvest handling, storage and extraction protocols protect the extract; species used: Ascophyllum nodosum, Kappaphycus alvarezii, Sargassum, Spirulina. Amino acids: source, hydrolysis, preservation, formulation and QC; plant and animal source grades. We do not disclose exact raw materials or process settings; we share specification sheets, third-party test reports, free samples, plant visits. Do not name or accuse other companies or countries.
 Vision: make food cultivation hazardous-chemical-free and sustainable for generations; the field-proven formula is open to importers, brand owners, distributors and growers worldwide.
 
 PRODUCT CATEGORIES (page URLs)

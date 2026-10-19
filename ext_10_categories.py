@@ -7,6 +7,12 @@ def grade_rows(group):
             out.append([f'<a href="{grade_path(n, f)}">{esc(n)}</a>', esc(f), esc(GRADE_NOTE[f"{n}|{f}"])])
     return out
 
+DIFF_SNIP = {
+ "/humic-acid-manufacturer-india": "Our humic acid starts with a raw material chosen over about 20 years of field comparison and is extracted without the extreme pH and heat that damage its more fragile beneficial substances.",
+ "/seaweed-extract-manufacturer-india": "Only a few of the world's seaweed species suit farming. We control each step from cultivation and harvest to storage and extraction so the extract keeps its minerals, amino acids and other active compounds.",
+ "/amino-acid-protein-hydrolysate-manufacturer-india": "We choose the source, the hydrolysis method, the preservation and the formulation with care, and test each batch, so our amino acids are not just an imported powder made to a price.",
+}
+
 def cat_page(d):
     p = d["path"]
     body = hero(d["h1"], d["lead"], [("Products", "/products"), (d["crumb"], None)])
@@ -18,6 +24,8 @@ def cat_page(d):
         inner += f'<h2>{d.get("forms_title", "What we make")}</h2>' + ul(d["forms"])
     inner += quote_btns(d["wa"])
     body += sec(inner)
+    if p in DIFF_SNIP:
+        body += sec(f'<div class="two"><div><h2>What makes ours different</h2><p>{DIFF_SNIP[p]}</p></div><div><a class="btn btn-dark" href="/why-gujarat-bio">Read why it matters</a></div></div>', cls="tint")
     if d.get("what"):
         body += sec(f'<div class="prose">{d["what"]}</div>', d.get("what_title", "How it works"), cls="tint")
     if d.get("uses"):

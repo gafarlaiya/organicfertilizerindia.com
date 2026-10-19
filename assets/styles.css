@@ -333,3 +333,4 @@ body.has-bar .chat-launch{bottom:78px}
 .chat-f input{flex:1;min-width:0;border:1px solid #bbb;border-radius:6px;padding:.6rem;font:inherit}
 .chat-s{background:#d89b21;color:#1b1b1b;border:0;border-radius:6px;padding:0 1rem;font:700 .95rem var(--display,system-ui);cursor:pointer}.chat-s:disabled{opacity:.5}
 @media(max-width:600px){.chat{left:0;right:0;bottom:0;width:100%;max-width:100%;height:82vh;border-radius:12px 12px 0 0}.chat-launch span{display:none}.chat-launch{padding:.85rem}}
+.dark .hub-i h3{color:#fff}.dark .hub-i p{color:#dcd8cc}.dark .hub-i{border-top-color:rgba(255,255,255,.35)}

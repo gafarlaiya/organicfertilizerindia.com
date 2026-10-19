@@ -1447,6 +1447,29 @@
   "audience": "Distributors, brands, importers, regulators"
  },
  {
+  "path": "/why-gujarat-bio",
+  "primary": "best humic acid manufacturer in india",
+  "secondary": [
+   "how is humic acid made",
+   "good quality seaweed extract",
+   "how to choose humic acid supplier",
+   "seaweed extract quality",
+   "high pH humic acid damage",
+   "best amino acid for agriculture"
+  ],
+  "questions": [
+   "What makes Gujarat Bio Organics' humic acid different from other humic acid?",
+   "Why do pH and temperature matter when making humic acid?",
+   "Is all seaweed extract the same?",
+   "Which seaweeds do you use?",
+   "Which amino acid source is best for agriculture?",
+   "Will you share your exact process and raw material?",
+   "Do you promise higher yields?"
+  ],
+  "intent": "Commercial / differentiation",
+  "audience": "Importers, brand owners, distributors"
+ },
+ {
   "path": "/impact",
   "primary": "organic fertilizer manufacturer with farmer results",
   "secondary": [
