@@ -7,6 +7,8 @@ SITE = "https://b2b.gujaratbio.com"
 WA = "919978791167"
 PHONE = "+91 99787 91167"
 MAIL = "sales@gujaratbio.com"
+GA4_ID = "G-HF0J0NF8G0"   # Google Analytics 4 measurement ID (public)
+GTM_ID = ""               # Google Tag Manager container, e.g. "GTM-XXXXXXX". When set, GTM loads and the direct GA4 tag is dropped.
 FB = "https://www.facebook.com/gujaratbio"
 YT = "https://www.youtube.com/@Gujaratbio"
 NAME = "Gujarat Bio Organics Pvt. Ltd."
@@ -126,7 +128,7 @@ def footer():
 <div><h2 class="fh">Company</h2><ul><li><a href="/about">About us</a></li><li><a href="/why-gujarat-bio">Why we are different</a></li><li><a href="/impact">Our story and grower videos</a></li><li><a href="/research-development">R&amp;D</a></li><li><a href="/manufacturing-facility">Manufacturing</a></li><li><a href="/quality-compliance">Quality and compliance</a></li><li><a href="/private-label-oem">Private label and OEM</a></li><li><a href="/bulk-supply">Bulk supply</a></li><li><a href="/export">Export</a></li><li><a href="/become-a-distributor">Become a distributor</a></li><li><a href="/contact">Contact</a></li></ul></div>
 <div><h2 class="fh">Knowledge</h2><ul><li><a href="/resources">Knowledge centre</a></li><li><a href="/crops">Crop programmes</a></li><li><a href="/field-solutions">Field solutions</a></li><li><a href="/fco-schedule-vi-biostimulants">FCO Schedule VI</a></li><li><a href="/glossary">Glossary</a></li><li><a href="/faq">FAQ</a></li></ul></div>
 <div><h2 class="fh">Talk to us</h2><ul><li><a href="https://wa.me/{WA}">WhatsApp {PHONE}</a></li><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{FB}" rel="noopener">Facebook</a></li><li><a href="{YT}" rel="noopener">YouTube</a></li></ul></div>
-</div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Open B2B site: no login needed. Request a quote or free sample directly. Product images are illustrative samples.</span></div></div></footer>
+</div><div class="fbot"><span>&copy; <span id="yr">2026</span> {NAME} Biostimulant and organic fertilizer manufacturer, Bhavnagar, Gujarat, India.</span><span>Open B2B site: no login needed. Request a quote or free sample directly. Product images are illustrative samples. <a href="/privacy-policy">Privacy and cookies</a> <button type="button" class="linkbtn" data-cookie-settings>Cookie settings</button></span></div></div></footer>
 <aside aria-label="Chat"><button type="button" class="chat-launch" id="chat-open" aria-controls="chat-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>Ask our sales team</span></button><a class="wa-float" href="https://wa.me/{WA}" aria-label="Chat on WhatsApp">{WA_SVG}<span>WhatsApp us</span></a></aside>'''
 
 def cta(title="Tell us what you need. We reply with a quote and a free sample.", sub="No minimum order quantity. Dispatch in about one week.", msg="Hello Gujarat Bio Organics, I would like a quote."):
@@ -154,6 +156,47 @@ def form(title, subject, fields, note=None):
 <p class="note">{note or "Free samples. Freight or courier, customs duty and other charges are paid by the buyer."}</p>
 <p class="form-msg" role="status" aria-live="polite"></p></form></div>'''
 
+
+EEA_GB_CH = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB","CH"]
+
+def page_type(path):
+    if path == "/": return "home"
+    if path == "/404": return "404"
+    if path.startswith("/products/"): return "product"
+    if path.startswith("/crops/"): return "crop"
+    if path.startswith("/resources/") or path.startswith("/glossary/"): return "article"
+    if path in ("/contact", "/bulk-supply", "/export", "/private-label-oem", "/become-a-distributor"): return "lead_page"
+    if path in ("/impact", "/why-gujarat-bio", "/about", "/research-development", "/manufacturing-facility", "/quality-compliance"): return "company"
+    if path == "/privacy-policy": return "legal"
+    if path.endswith("-india") or path in ("/products", "/slow-release-fertilizer", "/zyme-granules-manufacturer", "/crop-specific-fertilizers", "/custom-fertilizer-blends", "/field-solutions", "/crops", "/resources", "/faq", "/glossary", "/fco-schedule-vi-biostimulants", "/water-soluble-fertilizer-special-grades"): return "category"
+    return "other"
+
+def tracking_head(path):
+    """Consent defaults first, then either GTM or the direct GA4 tag. Runs before anything else on the page."""
+    pt = page_type(path)
+    gtm = GTM_ID.strip()
+    js = ("window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}"
+          "(function(){var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}"
+          "var eu=/^(Europe\\/|Atlantic\\/(Canary|Madeira|Azores|Faroe|Reykjavik))/.test(tz),c='',q=location.search,i='';"
+          "try{c=localStorage.getItem('gbo_consent')||'';if(/[?&]internal=1/.test(q))localStorage.setItem('gbo_internal','1');"
+          "if(/[?&]internal=0/.test(q))localStorage.removeItem('gbo_internal');i=localStorage.getItem('gbo_internal')?'internal':''}catch(e){}"
+          "var v=c||(eu?'denied':'granted');window.GBO_CONSENT=v;window.GBO_NEEDS_CHOICE=!c&&eu;window.GBO_PT='" + pt + "';window.GBO_GTM=" + ("true" if gtm else "false") + ";"
+          "function cs(s){return{ad_storage:s,ad_user_data:s,ad_personalization:s,analytics_storage:s}}"
+          "if(!c){var r=cs('denied');r.region=" + json.dumps(EEA_GB_CH) + ";gtag('consent','default',r)}"
+          "var d=cs(v);d.wait_for_update=500;gtag('consent','default',d);"
+          "var p={page_type:'" + pt + "'};if(i)p.traffic_type=i;")
+    if gtm:
+        js += ("dataLayer.push(p);(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
+               "var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f)})"
+               "(window,document,'script','dataLayer','" + gtm + "')})();")
+        return "<script>" + js + "</script>"
+    js += "gtag('js',new Date());gtag('config','" + GA4_ID + "',p)})();"
+    return f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script><script>' + js + "</script>"
+
+def tracking_noscript():
+    g = GTM_ID.strip()
+    return f'<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={g}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>' if g else ""
+
 def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_img="/assets/img/private-label-premium-enriched.webp"):
     url = SITE + (path if path != "/" else "/")
     ld = [org_ld()] if path == "/" else []
@@ -165,7 +208,7 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
     ldh = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     robots = '<meta name="robots" content="noindex,follow">' if noindex else '<meta name="robots" content="index,follow,max-image-preview:large">'
     out = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">{tracking_head(path)}<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">{robots}
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{NAME}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}{og_img}">
@@ -174,7 +217,7 @@ def render(path, title, desc, body, schemas=None, crumb=None, noindex=False, og_
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="{FONT_URL}" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>
 <style>{INLINE_CSS}</style>{ldh}</head>
-<body>{header(path)}<main id="main">{body}</main>{footer()}<script>window.GBO_CHAT_V="{JS_VER}"</script><script src="/assets/main.js?v={JS_VER}" defer></script></body></html>'''
+<body>{tracking_noscript()}{header(path)}<main id="main">{body}</main>{footer()}<script>window.GBO_CHAT_V="{JS_VER}"</script><script src="/assets/main.js?v={JS_VER}" defer></script></body></html>'''
     d = ROOT if path == "/" else os.path.join(ROOT, path.strip("/"))
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(out)
@@ -559,7 +602,7 @@ os.replace(os.path.join(ROOT, "404", "index.html"), os.path.join(ROOT, "404.html
 os.rmdir(os.path.join(ROOT, "404"))
 
 # ------------------------------------------------------------------ extended content
-for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_42_difference.py", "ext_45_impact.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
+for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_42_difference.py", "ext_45_impact.py", "ext_46_privacy.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
     exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
 json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, ensure_ascii=False)
 

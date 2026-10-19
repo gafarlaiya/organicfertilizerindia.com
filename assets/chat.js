@@ -53,18 +53,23 @@
     send.disabled=true;var typing=el('div','cb cb-a cb-t');typing.setAttribute('aria-label','Typing');typing.appendChild(el('i'));typing.appendChild(el('i'));typing.appendChild(el('i'));log.appendChild(typing);log.scrollTop=log.scrollHeight;
     var ctx={utm_source:ld('gbo_utm_source')||ld('gbo_src'),utm_medium:ld('gbo_utm_medium'),utm_campaign:ld('gbo_utm_campaign'),utm_content:ld('gbo_utm_content'),utm_term:ld('gbo_utm_term'),article:ld('gbo_article'),referrer:ld('gbo_ref'),landing:ld('gbo_landing')};
     try{ctx.timezone=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
+    var at=window.gboAttr?window.gboAttr():{};
+    ['gclid','fbclid','fbp','fbc','ga_client_id','consent'].forEach(function(k){if(at[k])ctx[k]=at[k]});
+    ctx.event_id='chat_'+sid;
+    if(!ss('gbo_chat_started')){ss('gbo_chat_started','1');if(window.gboTrack)gboTrack('chat_start')}
     var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},50000);
     fetch(EP,{method:'POST',signal:ctl?ctl.signal:undefined,headers:{'Content-Type':'application/json','apikey':KEY},body:JSON.stringify({session_id:sid,message:text,page:location.pathname,ctx:ctx})})
       .then(function(r){return r.json()}).then(function(d){
         clearTimeout(tm);typing.remove();var rep=d&&d.reply?d.reply:'Sorry, something went wrong. Please message us on WhatsApp: '+WA;
         bubble('assistant',rep);hist.push({r:'assistant',t:rep});save();
-        if(d&&d.lead_saved&&window.gtag){try{gtag('event','generate_lead',{method:'chatbot'})}catch(e){}}
+        if(d&&d.lead_saved&&!ss('gbo_chat_lead')){ss('gbo_chat_lead','1');if(window.gboTrack)gboTrack('generate_lead',{form_name:'chatbot',lead_channel:'chatbot',event_id:'chat_'+sid})}
       }).catch(function(){
         clearTimeout(tm);typing.remove();bubble('assistant','I could not connect just now. Please message our team on WhatsApp: '+WA);
       }).then(function(){busy=false;send.disabled=false;input.focus()});
   }
   var launcher=document.getElementById('chat-open');
-  function open(){build();box.classList.add('on');if(launcher)launcher.setAttribute('aria-expanded','true');setTimeout(function(){input.focus()},50)}
+  var opened=false;
+  function open(){if(!opened){opened=true;if(window.gboTrack)gboTrack('chat_open')}build();box.classList.add('on');if(launcher)launcher.setAttribute('aria-expanded','true');setTimeout(function(){input.focus()},50)}
   function close(){if(box)box.classList.remove('on');if(launcher){launcher.setAttribute('aria-expanded','false');launcher.focus()}}
   window.GBOChat={open:open,close:close};
 })();
