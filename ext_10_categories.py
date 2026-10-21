@@ -13,10 +13,39 @@ DIFF_SNIP = {
  "/amino-acid-protein-hydrolysate-manufacturer-india": "We choose the source, the hydrolysis method, the preservation and the formulation with care, and test each batch, so our amino acids are not just an imported powder made to a price.",
 }
 
+
+# Extra, keyword-matched content added to category pages (Ubersuggest competitor-gap work, Oct 2026).
+EXTRA_INTRO = {
+ "/organic-fertilizer-manufacturer-india": ('<p>Comparing an organic fertilizer company in India? Look for one that makes what it sells. '
+   'We are a manufacturer, not a trader: our plant is at GIDC Shihor, Bhavnagar, and our biostimulant and biofertiliser grades are covered by a '
+   'No Objection Certificate from the Directorate of Agriculture, Government of Gujarat. We quote against your specification, not a fixed catalogue.</p>'),
+ "/humic-acid-manufacturer-india": ('<p>Looking for potassium humate in India? We make potassium humate 49% powder, a soluble grade for drip, drench and liquid products, '
+   'at our own plant in Bhavnagar and supply it in bulk, under private label and for export. See <a href="/bulk-pricing-and-quotes">how bulk pricing works</a>.</p>'),
+ "/seaweed-extract-manufacturer-india": ('<p>These are seaweed liquid fertilizer grades made at our own plant in Bhavnagar, Gujarat, for buyers in India and abroad. '
+   'Pricing depends on the grade, pack and quantity: see <a href="/bulk-pricing-and-quotes">how bulk pricing works</a>.</p>'),
+ "/amino-acid-protein-hydrolysate-manufacturer-india": ('<p>Searching for amino acid fertilizer price in India? Price depends on the grade, source, form and quantity. '
+   'Read <a href="/bulk-pricing-and-quotes">how bulk pricing works</a>, then send us the grade and quantity for a quote.</p>'),
+ "/micronutrient-fertilizer-manufacturer-india": ('<p>We are a micronutrient fertilizers manufacturer that makes to order: mixtures, chelated forms and biostimulant-fortified products, '
+   'to the grade notified for your state or to your export specification.</p>'),
+}
+EXTRA_FAQ = {
+ "/organic-fertilizer-manufacturer-india": [
+   ("How do I choose an organic fertilizer company in India?", "Check four things with any supplier. First, the product category and its approval under the Fertiliser Control Order (organic, biofertiliser under Schedule III, or biostimulant under Schedule VI). Second, whether the company manufactures the product itself or trades it. Third, whether you can see a specification sheet and a test report. Fourth, the terms: pack sizes, minimum order and dispatch time. Ours are no minimum order quantity, dispatch in about one week, and free samples (the buyer pays freight, duty and other charges).")],
+ "/humic-acid-manufacturer-india": [
+   ("Where can I buy potassium humate in India?", "We manufacture potassium humate 49% powder at our plant in Shihor, Bhavnagar, Gujarat, and supply it across India and abroad in solid packs from 1 kg to 1000 kg jumbo bags. Send the quantity and destination for a quote."),
+   ("What is the price of potassium humate per kg in India?", PRICE_A + " See also: how bulk pricing works.")],
+ "/seaweed-extract-manufacturer-india": [
+   ("Are you a seaweed liquid fertilizer manufacturer in India?", "Yes. We manufacture 9 seaweed and algae grades at our own plant in Bhavnagar: Ascophyllum nodosum (15% and 7%), Kappaphycus alvarezii (24%, 9.5% and 7.2%), Sargassum tenerrimum 10%, Kappaphycus with Sargassum swartzii 1:1 and Spirulina 10% in liquid form, and Sargassum tenerrimum 2% as granules."),
+   ("Is seaweed extract fertilizer approved in India?", "In India, seaweed extract is regulated as a biostimulant under Schedule VI of the Fertiliser (Inorganic, Organic or Mixed) (Control) Order 1985. Our No Objection Certificate from the Directorate of Agriculture, Government of Gujarat covers our seaweed and algae grades.")],
+ "/micronutrient-fertilizer-manufacturer-india": [
+   ("Are you a micronutrient fertilizers manufacturer or a trader?", "We are a manufacturer. Micronutrient products are made to order at our plant in Shihor, Bhavnagar, as mixtures, chelated forms or biostimulant-fortified products, to the grade notified for your state or to your export specification."),
+   ("Do you supply chelated micronutrients in bulk?", "Yes, to order. Chelated micronutrients (EDTA and other chelates) can be made as powder or liquid. Tell us the nutrient, chelate, form, quantity and destination and we will quote.")],
+}
+
 def cat_page(d):
     p = d["path"]
     body = hero(d["h1"], d["lead"], [("Products", "/products"), (d["crumb"], None)])
-    inner = answer(d["answer"]) + d.get("intro", "")
+    inner = answer(d["answer"]) + d.get("intro", "") + EXTRA_INTRO.get(p, "")
     if d.get("grades"):
         inner += f'<h2>{d.get("grades_title", "Grades we manufacture")}</h2>' + table(["Grade", "Form", "What it is"], d["grades"])
         inner += '<p class="mute" style="margin-top:1rem">Every grade above is covered by our Gujarat Directorate of Agriculture NOC under Schedule VI. Click a grade for its page.</p>'
@@ -33,7 +62,7 @@ def cat_page(d):
     if d.get("methods"):
         body += sec(f'<div class="split"><div><h3>Application methods</h3>{ul(d["methods"])}</div><div><h3>Dose and timing</h3><p>{d.get("dose", "Dose depends on the grade, crop, growth stage and method. The dose is printed on every label, and we send a crop-wise dose chart with every quote.")}</p></div></div>', "How to use it", cls="tint")
     body += sec(f'<div class="split"><div><h3>Why buy from Gujarat Bio Organics</h3>{ul(d.get("why", WHY))}</div><div><h3>Buying terms</h3>{buy_block(d.get("liquid", True), d.get("solid", True))}</div></div>', "Manufacturer-direct supply")
-    faqs = d["faq"]
+    faqs = d["faq"] + EXTRA_FAQ.get(p, [])
     body += sec(faq_html(faqs) + links(d["related"]), "Questions buyers ask", cls="tint")
     body += cta(d.get("cta_t", "Tell us the grade, quantity and destination."), "We reply with a quote and a free sample.", d["wa"])
     sch = [faq_ld(faqs)]
@@ -79,7 +108,7 @@ cat_page(dict(
       ("Can I mix humic acid with NPK fertiliser, urea or micronutrients?", "Humic acid mixes with most fertilisers, including NPK, urea and micronutrients. Avoid mixing with strongly acidic products or concentrated calcium solutions without a jar test, because humic acid can settle out at low pH."),
       ("What is the dose of humic acid per acre?", "Dose depends on the grade and concentration, so a 1.5% granule and a 51% granule are used at very different rates. Follow the label, or ask us for the crop-wise dose chart for the grade you buy."),
       ("What does 'humic acid 98' mean?", "It usually refers to high-solubility potassium humate flakes or powder sold on a total-content basis. Our listed grade for sale in India is potassium humate 49% powder. For export, send us the specification you need and we will quote."),
-      ("What is the price of humic acid per kg?", PRICE_A),
+      ("What is the price of humic acid per kg in India?", PRICE_A),
       ("Do you make humic acid under private label?", "Yes. We pack any of our 8 humic grades under your brand, in liquid packs from 250 mL to 1000 L IBC and solid packs from 1 kg to 1000 kg jumbo bags.")],
  related=[("/products/potassium-humate-49-powder", "Potassium humate 49% powder", "Soluble humate grade"),
           ("/products/humic-acid-51-granular", "Humic acid 51% granular", "High-content granule"),
@@ -118,7 +147,7 @@ cat_page(dict(
       ("Seaweed granules or liquid seaweed: which should I use?", "Use granules for basal or broadcast application with fertiliser, and liquid for foliar sprays and drip. Many programmes use granules at sowing and liquid sprays at flowering."),
       ("Can seaweed extract be mixed with humic acid?", "Yes. Seaweed and humic acid are commonly applied together, and we make ready blends of humic acid plus seaweed extract in liquid, powder and granules."),
       ("What is the dose of seaweed extract per litre of water?", "It depends on the grade and concentration. Follow the label, or ask us for the dose chart for the grade you buy."),
-      ("What is the price of seaweed extract (25 kg or 25 L)?", PRICE_A),
+      ("What is the price of seaweed extract fertilizer in India (25 kg or 25 L)?", PRICE_A),
       ("Do you export seaweed extract?", "Yes. We ship to GCC countries, Africa, the Russian Federation, Europe and the Americas, FOB or CIF from Indian ports, in drums, IBCs or your private-label packs.")],
  related=[("/products/kappaphycus-alvarezii-24-liquid", "Kappaphycus alvarezii 24% liquid", ""),
           ("/products/ascophyllum-nodosum-15-liquid", "Ascophyllum nodosum 15% liquid", ""),
@@ -157,7 +186,7 @@ cat_page(dict(
       ("What are the uses of amino acid fertilizer?", "Supporting recovery after cold, heat, transplanting or pest damage, supporting early growth and canopy, supporting flowering and fruit set, and complexing micronutrients in foliar sprays."),
       ("What is the dose of amino acid fertilizer per acre?", "It depends on the grade and concentration. Follow the label, or ask us for the dose chart for the grade you buy."),
       ("Do you supply amino acid 80% soybean-based powder?", "Our grades listed for sale in India are shown above. For export or formulation, send us the specification you need and we will quote."),
-      ("What is the price of amino acid fertilizer (25 kg)?", PRICE_A),
+      ("What is the amino acid fertilizer price in India (25 kg)?", PRICE_A),
       ("Can amino acids be mixed with seaweed extract?", "Yes. Amino acids and seaweed extract are commonly sprayed together. Run a jar test with any other product in the tank.")],
  related=[("/products/amino-acid-20", "Amino acid 20%", "Most concentrated amino grade"),
           ("/products/protein-hydrolysate-animal-source-36-04-liquid", "Protein hydrolysate, animal source 36.04%", ""),
@@ -214,8 +243,8 @@ cat_page(dict(
 # =============================================================== MICRONUTRIENTS
 cat_page(dict(
  path="/micronutrient-fertilizer-manufacturer-india", crumb="Micronutrient fertilizers",
- title="Micronutrient Fertilizer Manufacturer India: Chelated & Mixtures | GBO",
- desc="Micronutrient fertilizers made to order in Gujarat: zinc, boron, iron, chelated EDTA and state-grade mixtures. Bulk, private label and export.",
+ title="Micronutrient Fertilizer Manufacturer India | GBO",
+ desc="Micronutrient fertilizer manufacturer in Gujarat. Chelated EDTA, zinc, boron, iron and state-grade mixtures, made to order. Bulk, private label and export.",
  h1="Micronutrient fertilizer manufacturer: chelated and mixtures",
  lead="Zinc, boron, iron, manganese, copper and molybdenum products, plain, chelated and combined with biostimulants, made to order for brands, distributors and importers.",
  answer="Micronutrients are nutrients crops need in small amounts, such as zinc, boron, iron, manganese, copper and molybdenum, whose deficiency limits yield even when NPK is sufficient. Gujarat Bio Organics makes micronutrient fertilizers to order, as mixtures, chelated forms and biostimulant-fortified products, for bulk, private-label and export buyers.",

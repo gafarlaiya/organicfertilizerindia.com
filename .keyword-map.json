@@ -25,8 +25,10 @@
    "Can I mix humic acid with NPK fertiliser, urea or micronutrients?",
    "What is the dose of humic acid per acre?",
    "What does 'humic acid 98' mean?",
-   "What is the price of humic acid per kg?",
-   "Do you make humic acid under private label?"
+   "What is the price of humic acid per kg in India?",
+   "Do you make humic acid under private label?",
+   "Where can I buy potassium humate in India?",
+   "What is the price of potassium humate per kg in India?"
   ],
   "intent": "Commercial",
   "audience": "B2B buyers, distributors, importers"
@@ -56,8 +58,10 @@
    "Seaweed granules or liquid seaweed: which should I use?",
    "Can seaweed extract be mixed with humic acid?",
    "What is the dose of seaweed extract per litre of water?",
-   "What is the price of seaweed extract (25 kg or 25 L)?",
-   "Do you export seaweed extract?"
+   "What is the price of seaweed extract fertilizer in India (25 kg or 25 L)?",
+   "Do you export seaweed extract?",
+   "Are you a seaweed liquid fertilizer manufacturer in India?",
+   "Is seaweed extract fertilizer approved in India?"
   ],
   "intent": "Commercial",
   "audience": "B2B buyers, distributors, importers"
@@ -85,7 +89,7 @@
    "What are the uses of amino acid fertilizer?",
    "What is the dose of amino acid fertilizer per acre?",
    "Do you supply amino acid 80% soybean-based powder?",
-   "What is the price of amino acid fertilizer (25 kg)?",
+   "What is the amino acid fertilizer price in India (25 kg)?",
    "Can amino acids be mixed with seaweed extract?"
   ],
   "intent": "Commercial",
@@ -112,7 +116,8 @@
    "What is the best organic fertilizer for plants?",
    "Which organic fertilizer is used for coconut, paddy and vegetables?",
    "Are you an organic fertilizer manufacturer in Gujarat?",
-   "Can you make organic fertilizer under my brand?"
+   "Can you make organic fertilizer under my brand?",
+   "How do I choose an organic fertilizer company in India?"
   ],
   "intent": "Commercial",
   "audience": "Distributors, brands, institutional buyers, growers"
@@ -138,7 +143,9 @@
    "What are micronutrient mixture grades?",
    "Can micronutrients be mixed with humic acid or amino acids?",
    "What is the price of micronutrient fertilizer (1 kg, 10 kg, 50 kg)?",
-   "Do you make micronutrients under private label?"
+   "Do you make micronutrients under private label?",
+   "Are you a micronutrient fertilizers manufacturer or a trader?",
+   "Do you supply chelated micronutrients in bulk?"
   ],
   "intent": "Commercial",
   "audience": "B2B buyers, distributors, importers"
@@ -1486,6 +1493,25 @@
   ],
   "intent": "Trust / brand",
   "audience": "Importers, brand owners, growers"
+ },
+ {
+  "path": "/bulk-pricing-and-quotes",
+  "primary": "bulk fertilizer price india",
+  "secondary": [
+   "organic fertilizer price",
+   "fertilizer manufacturer quote",
+   "biostimulant price per kg"
+  ],
+  "questions": [
+   "Do you publish a price list?",
+   "Is there a minimum order quantity?",
+   "How quickly can you dispatch?",
+   "Do you give free samples?",
+   "Which Incoterms and ports do you quote for export?",
+   "What should I send to get a quote?"
+  ],
+  "intent": "Commercial",
+  "audience": "Distributors, brands, importers"
  },
  {
   "path": "/resources/what-is-a-biostimulant",

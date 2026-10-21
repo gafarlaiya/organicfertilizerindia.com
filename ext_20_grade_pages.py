@@ -72,7 +72,8 @@ for b in BIOS:
                 f'<h3>Handling</h3>{ul(["Store cool and shaded, away from sunlight", "Keep apart from chemical fungicides and bactericides", "Use within the printed shelf life"])}</div></div>' + CLAIM_NOTE, f"About {esc(b)}", cls="tint")
     body += sec(faq_html(faq) + links(others + [("/biofertilisers-manufacturer-india", "All biofertiliser types", "Category page"), ("/resources/types-of-biofertilizers", "Types of biofertilizers", "Guide")], "Other biofertilisers"), "Questions about this biofertiliser")
     body += cta(f"Need {esc(b)}?", "Tell us the form, pack and quantity.", f"Hello Gujarat Bio Organics, please quote {b}.")
-    title = f"{b} Manufacturer India | GBO" if "biofertiliser" in b.lower() else f"{b} Biofertiliser Manufacturer | GBO"
+    _c = [f"{b} Manufacturer India | GBO", f"{b} Manufacturer | GBO", f"{b} | GBO"] if "biofertiliser" in b.lower() else [f"{b} Biofertiliser Manufacturer | GBO", f"{b} Biofertiliser | GBO"]
+    title = next((x for x in _c if len(x) <= 60), _c[-1])
     desc = f"{b} biofertiliser ({role.lower()}) made in Gujarat. Schedule III, Gujarat NOC. Bulk, private label and export."
     page(p, title, desc, body, trail, [product_ld(p, f"{b} biofertiliser", desc_txt, "Biofertiliser"), faq_ld(faq)], "0.6")
     bl = b.lower().replace("(kmb)", "").strip()

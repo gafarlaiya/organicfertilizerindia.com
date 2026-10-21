@@ -297,6 +297,9 @@ home = f'''
 <div class="btn-row"><a class="btn btn-dark" href="/research-development">Our R&amp;D</a><a class="btn btn-ghost" href="/manufacturing-facility">Manufacturing facility</a></div>
 </div></section>
 
+<section class="section"><div class="wrap"><div class="prose"><h2>A fertilizer manufacturing company in Bhavnagar, Gujarat</h2>
+<p>We are a manufacturer, not a trader. Our own plant at GIDC Shihor, Bhavnagar, has capacity for 100 KL of liquid and 2,500 tonnes of solid products every month, and our in-house R&amp;D team formulates for crops and markets. Buyers choose us for bulk supply, private label or export, with no minimum order quantity. Read <a href="/about">about the company</a>, tour <a href="/manufacturing-facility">the manufacturing facility</a>, or see <a href="/bulk-pricing-and-quotes">how bulk pricing works</a>.</p></div></div></section>
+
 <section class="section story"><div class="wrap"><div class="two"><div><h2>Twenty years on real farms</h2>
 <p>We have spent two decades solving growers' burning problems in sugarcane, potato, mango, apple, banana, citrus and coconut, in regions from the Himalayas to South Gujarat. Growers share their own experience in videos on YouTube and Facebook.</p>
 <div class="btn-row"><a class="btn btn-primary" href="/impact">See the field record</a></div></div>
@@ -349,6 +352,7 @@ prod_faq = [("What product types do you manufacture?", "Humic and fulvic acid, s
 prods = f'''{page_hero("Biostimulants and biofertilisers from one manufacturer", "Choose a family below, or tell us your crop and we will recommend a grade.", "/products", "Products")}
 <section class="section"><div class="wrap">
 <div class="answer">Gujarat Bio Organics manufactures organic fertilizers, 36 biostimulant grades, 11 biofertiliser types, and micronutrient, water-soluble, slow-release and custom fertilizers at its plant in Shihor, Bhavnagar, Gujarat. Each is available in bulk, under your private label, or under our Immunity brand.</div>
+<p>Gujarat Bio Organics is a fertilizer manufacturer, so every family below is made at our own plant rather than bought in. Humic and fulvic acid, seaweed and algae extracts, amino acids and protein hydrolysates are the core biostimulants. Biofertilisers cover nitrogen fixers, phosphate and potash mobilisers and other beneficial microbes. Micronutrients, water-soluble and slow-release fertilizers and custom blends complete the range. Choose a family to see its grades, uses and questions, or send us your crop and we will recommend one.</p>
 <h2>Product families</h2>
 {hub(CAT_HUB)}
 <h2 style="margin-top:3.4rem">Ways to buy</h2>
@@ -400,18 +404,25 @@ bf_img = [("acetobacter", "Acetobacter biofertiliser sample"), ("phosphate-solub
 bf_faq = [("What are biofertilisers?", "Biofertilisers are products that contain living microorganisms. Applied to seed, soil or plant, they help supply nutrients such as nitrogen and phosphorus, or make nutrients already in the soil easier for the crop to take up."),
           ("Which biofertiliser types do you make?", "Azotobacter, Azospirillum, Acetobacter, Rhizobium, phosphate solubilising bacteria, potash mobilising bacteria, zinc solubilising bacteria, phosphate solubilising fungi, mycorrhizal biofertilisers, and carrier-based and liquid consortia."),
           ("Are biofertilisers approved?", "The Directorate of Agriculture, Government of Gujarat has issued us a No Objection Certificate for 11 biofertiliser types under Schedule III of the Fertiliser Control Order."),
-          ("Do you supply liquid and carrier-based forms?", "Yes, liquid and carrier-based consortia are both on our list. Tell us the form and pack you need.")]
+          ("Do you supply liquid and carrier-based forms?", "Yes, liquid and carrier-based consortia are both on our list. Tell us the form and pack you need."),
+          ("Is it biofertilizer or biofertiliser?", "They are the same word in American and British spelling. Both mean a product that contains living microorganisms to help crops take up nutrients."),
+          ("What should I check before choosing a biofertilizer manufacturer in India?", "Check that the company makes the product itself, that the product type is covered by approval under Schedule III of the Fertiliser Control Order, that the form and shelf life are printed on the pack, and that the terms are clear: pack sizes, minimum order and dispatch time. Ours are no minimum order quantity, dispatch in about one week and free samples, with freight, duty and other charges paid by the buyer."),
+          ("Do you offer private label for bio fertilizer companies and brand owners?", "Yes. We manufacture any of the 11 types under your brand, in liquid and carrier-based packs, with no minimum order quantity.")]
 bf = f'''{page_hero("Biofertiliser manufacturer in India: 11 approved types", "Nitrogen fixers, phosphate, potash and zinc solubilisers, mycorrhizae and consortia, in liquid and carrier-based forms.", "/biofertilisers-manufacturer-india", "Biofertilisers")}
 <section class="section"><div class="wrap">
-<div class="answer">Gujarat Bio Organics makes 11 types of biofertiliser at Shihor, Bhavnagar, covered by our Gujarat Directorate of Agriculture NOC under Schedule III. Available in bulk, private label or under our brand.</div>
+<div class="answer">Gujarat Bio Organics makes 11 types of biofertiliser at Shihor, Bhavnagar, covered by our Gujarat Directorate of Agriculture NOC under Schedule III. Available in bulk, private label or under our brand. Biofertilizer and biofertiliser are two spellings of the same word.</div>
 <ul class="bio">{"".join(f'<li><a href="{BIO_INFO[b][0]}">{b}</a></li>' for b in BIOS)}</ul>
 <div class="btn-row"><a class="btn btn-wa" href="{wa("Hello Gujarat Bio Organics, please quote these biofertilisers: ")}">{WA_SVG}Ask for a quote</a><a class="btn btn-dark" href="/private-label-oem">Make it under my brand</a></div>
 </div></section>
-<section class="section tint"><div class="wrap"><div class="sec-head"><h2>Sample presentation</h2><p>Illustrative renderings of selected biofertiliser samples.</p></div>
+<section class="section tint"><div class="wrap"><div class="prose"><h2>A bio fertilizer manufacturing company, not a trader</h2>
+<p>If you are comparing bio fertilizer companies in India, ask each one where the product is made. We manufacture all 11 types ourselves at our plant in Shihor, Bhavnagar, Gujarat, in liquid and carrier-based forms, and we supply them in bulk, under your private label or under our Immunity brand.</p>
+<ul class="checks"><li>Own plant and in-house R&amp;D, one manufacturer from formulation to pack</li><li>Gujarat Directorate of Agriculture NOC for 11 types under Schedule III</li><li>No minimum order quantity and dispatch in about one week</li><li>Free samples, with freight, duty and other charges paid by the buyer</li></ul>
+<p><a href="/bulk-pricing-and-quotes">How bulk pricing works</a> &middot; <a href="/private-label-oem">Private label and OEM</a> &middot; <a href="/export">Export</a></p></div></div></section>
+<section class="section"><div class="wrap"><div class="sec-head"><h2>Sample presentation</h2><p>Illustrative renderings of selected biofertiliser samples.</p></div>
 <div class="gal three">{"".join(img(n, c, caption=c + ". Illustrative.") for n, c in bf_img)}</div></div></section>
 <section class="section"><div class="wrap"><div class="sec-head"><h2>Questions about biofertilisers</h2></div>{faq_html(bf_faq)}</div></section>{cta()}'''
-render("/biofertilisers-manufacturer-india", "Biofertiliser Manufacturer India: 11 Types | Gujarat Bio Organics",
-       "Azotobacter, Azospirillum, PSB, KMB, ZSB, Rhizobium, mycorrhizal and consortia from Bhavnagar, Gujarat. 11 types under Gujarat NOC. Bulk and private label.", bf, [faq_ld(bf_faq)], "Biofertilisers")
+render("/biofertilisers-manufacturer-india", "Biofertilizer Manufacturer India: 11 Types | GBO",
+       "Biofertilizer (biofertiliser) manufacturer in Bhavnagar, Gujarat: Azotobacter, Azospirillum, PSB, KMB, ZSB, Rhizobium, mycorrhizae and consortia. 11 types under Gujarat NOC. Bulk and private label.", bf, [faq_ld(bf_faq)], "Biofertilisers")
 PAGES.append(("/biofertilisers-manufacturer-india", "0.8"))
 
 # ------------------------------------------------------------------ PRIVATE LABEL
@@ -571,12 +582,14 @@ ab = f'''{page_hero("About Gujarat Bio Organics", "A Bhavnagar manufacturer of b
 <p>We make humic and fulvic acid, seaweed extract, protein hydrolysate, amino acid and biofertiliser products, and supply them three ways: under our Immunity brand, under your private label, or in bulk.</p>
 <p>Two decades of field work with growers across crops and regions sit behind every product. <a href="/impact">See the field record and hear growers</a>.</p>
 <p>Our plant has capacity for 100 KL of liquid and 2,500 tonnes of solid products every month. We ship worldwide, with no minimum order and free samples.</p>
+<h2>A fertilizer manufacturing company in India, not a trader</h2>
+<p>Gujarat Bio Organics is a fertilizer manufacturing company with its own plant at {FACTORY}. We formulate, manufacture and pack in one place, and our biostimulant and biofertiliser grades are covered by a No Objection Certificate from the Directorate of Agriculture, Government of Gujarat. <a href="/manufacturing-facility">See the manufacturing facility</a> and <a href="/quality-compliance">our compliance details</a>.</p>
 <h2>How we work</h2>
 <ul class="checks"><li>Start from the farmer's problem, not the product</li><li>Trial first, scale what works</li><li>One manufacturer from formulation to packing</li><li>Plain terms: no MOQ, free samples, FOB or CIF</li></ul>
 <div class="btn-row"><a class="btn btn-primary" href="/contact">Contact us</a><a class="btn btn-dark" href="/quality-compliance">Company and compliance details</a></div>
 </div><div>{img("private-label-premium-enriched","Seaweed and humic liquid products in 1 litre and 5 litre packs",caption="Illustrative sample image")}</div></div></div></section>'''
-render("/about", "About Gujarat Bio Organics | Biostimulant Manufacturer, Bhavnagar",
-       "Gujarat Bio Organics makes biostimulants and biofertilisers in Shihor, Bhavnagar, with 20 years of R&D and field work. Own brand, private label and bulk.", ab, None, "About")
+render("/about", "Fertilizer Manufacturing Company in India | About GBO",
+       "Gujarat Bio Organics is a fertilizer manufacturing company in Shihor, Bhavnagar, Gujarat. Biostimulants and biofertilisers, 20 years of R&D and field work. Own brand, private label and bulk.", ab, None, "About")
 PAGES.append(("/about", "0.5"))
 
 # ------------------------------------------------------------------ CONTACT
@@ -602,7 +615,7 @@ os.replace(os.path.join(ROOT, "404", "index.html"), os.path.join(ROOT, "404.html
 os.rmdir(os.path.join(ROOT, "404"))
 
 # ------------------------------------------------------------------ extended content
-for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_42_difference.py", "ext_45_impact.py", "ext_46_privacy.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
+for _f in ("ext_10_categories.py", "ext_20_grade_pages.py", "ext_30_crops.py", "ext_40_company.py", "ext_42_difference.py", "ext_45_impact.py", "ext_46_privacy.py", "ext_47_pricing.py", "ext_50_resources.py", "ext_60_glossary_faq.py"):
     exec(open(os.path.join(ROOT, _f), encoding="utf-8").read())
 json.dump(KWMAP, open(os.path.join(ROOT, ".keyword-map.json"), "w"), indent=1, ensure_ascii=False)
 
@@ -642,6 +655,7 @@ open(os.path.join(ROOT, "llms.txt"), "w").write(f"""# Gujarat Bio Organics Pvt. 
 - {SITE}/quality-compliance
 - {SITE}/private-label-oem
 - {SITE}/bulk-supply
+- {SITE}/bulk-pricing-and-quotes
 - {SITE}/export
 - {SITE}/become-a-distributor
 - {SITE}/contact
@@ -683,7 +697,7 @@ CROP PROGRAMMES
 Also worked with: citrus, coconut, cotton.
 
 OTHER PAGES
-- Private label / OEM {SITE}/private-label-oem ; Bulk supply {SITE}/bulk-supply ; Export {SITE}/export ; Distributor {SITE}/become-a-distributor
+- Private label / OEM {SITE}/private-label-oem ; Bulk supply {SITE}/bulk-supply ; How we quote (no price list, no minimum order) {SITE}/bulk-pricing-and-quotes ; Export {SITE}/export ; Distributor {SITE}/become-a-distributor
 - R&D {SITE}/research-development ; Manufacturing {SITE}/manufacturing-facility ; Quality {SITE}/quality-compliance ; Field record and grower videos {SITE}/impact ; Contact {SITE}/contact ; FCO Schedule VI explainer {SITE}/fco-schedule-vi-biostimulants
 
 FAQ
