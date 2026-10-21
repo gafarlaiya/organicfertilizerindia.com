@@ -232,7 +232,7 @@ cat_page(dict(
       ("Is humic acid an organic fertilizer?", "Humic acid is an organic soil conditioner. In India it is regulated as a biostimulant under Schedule VI of the Fertiliser Control Order, not as a nutrient fertilizer."),
       ("What is the best organic fertilizer for plants?", "There is no single best one. Match the input to the need: humic acid for tired soil, biofertilisers for nutrient supply, seaweed for stress and flowering, amino acids for recovery. Tell us your crop and we will recommend a programme."),
       ("Which organic fertilizer is used for coconut, paddy and vegetables?", "Coconut programmes commonly use humic products and biofertilisers; paddy uses Azospirillum, PSB and zinc solubilisers; vegetables use seaweed, amino acids and PSB and KMB. See our crop pages for detail."),
-      ("Are you an organic fertilizer manufacturer in Gujarat?", "Yes. Our plant is at Plot No. 321, GIDC 2, Ghanghli Road, Shihor, Bhavnagar, Gujarat, and we supply across India and abroad."),
+      ("Are you an organic fertilizer manufacturer in Gujarat?", "Yes. Our plant is at Plot No. 321, GIDC 2, Ghanghali Road, Shihor, Bhavnagar, Gujarat, and we supply across India and abroad."),
       ("Can you make organic fertilizer under my brand?", "Yes. We manufacture and pack under your private label, with no minimum order quantity.")],
  related=[("/biofertilisers-manufacturer-india", "Biofertilisers", "11 types"), ("/humic-acid-manufacturer-india", "Humic acid", "8 grades"),
           ("/crop-specific-fertilizers", "Crop-specific products", "Immunity range"), ("/resources/biostimulant-vs-fertilizer-vs-biofertilizer", "Biostimulant vs fertilizer vs biofertilizer", "Guide"),
