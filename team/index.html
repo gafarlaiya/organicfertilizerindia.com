@@ -26,6 +26,10 @@ main{max-width:1250px;margin:0 auto;padding:1rem}
 #login input{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:8px}
 #login .btn{width:100%;margin-top:1rem}
 .err{color:var(--hot);font-size:.9rem;margin-top:.7rem;min-height:1.2em}
+.ok{color:#1d6b3a;font-size:.9rem;margin-top:.7rem}
+.swap{display:block;margin-top:1rem;font-size:.9rem;text-align:center;color:var(--mut)}
+.swap a{color:inherit;font-weight:600}
+.hp{position:absolute;left:-9999px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-bottom:1rem}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
 .kpi b{display:block;font-size:1.6rem;line-height:1.1}
@@ -79,6 +83,19 @@ a.btn{text-decoration:none;display:inline-block;color:inherit}
     <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
     <button class="btn pri" type="submit">Sign in</button>
     <div class="err" id="lerr" role="alert"></div>
+    <p class="swap">New team member? <a href="#" id="toreq">Request access</a></p>
+  </form>
+  <form id="rf" class="hide">
+    <p style="color:var(--mut);margin:.2rem 0 0;font-size:.9rem">Choose your own password. You can sign in after the admin approves your request.</p>
+    <label for="rn">Your name</label><input id="rn" autocomplete="name" required maxlength="60">
+    <label for="re">Email</label><input id="re" type="email" autocomplete="email" required>
+    <label for="rp">Password (at least 8 characters)</label><input id="rp" type="password" autocomplete="new-password" minlength="8" required>
+    <label for="rp2">Repeat password</label><input id="rp2" type="password" autocomplete="new-password" minlength="8" required>
+    <input class="hp" id="rw" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn pri" type="submit" id="rbtn">Request access</button>
+    <div class="err" id="rerr" role="alert"></div>
+    <div class="ok hide" id="rok" role="status"></div>
+    <p class="swap"><a href="#" id="tolog">Back to sign in</a></p>
   </form>
 </section>
 
@@ -132,7 +149,24 @@ function signedOut(){tok=null;ls('gbo_rt',null);$('app').classList.add('hide');$
 $('lf').addEventListener('submit',async function(e){
   e.preventDefault();$('lerr').textContent='';
   try{await auth('password',{email:$('em').value.trim(),password:$('pw').value});$('pw').value='';await start()}
-  catch(x){$('lerr').textContent=x.message}
+  catch(x){$('lerr').textContent=/not confirmed/i.test(x.message)?'Your access request is waiting for approval. You will get an email when it is approved.':/banned/i.test(x.message)?'This login is not active. Please contact the admin.':x.message}
+});
+function showReq(on){$('lf').classList.toggle('hide',on);$('rf').classList.toggle('hide',!on);$('login').querySelector('h2').textContent=on?'Request access':'Team sign in'}
+$('toreq').onclick=function(e){e.preventDefault();showReq(true)};
+$('tolog').onclick=function(e){e.preventDefault();showReq(false)};
+$('rf').addEventListener('submit',async function(e){
+  e.preventDefault();$('rerr').textContent='';
+  if($('rp').value!==$('rp2').value){$('rerr').textContent='The two passwords do not match.';return}
+  $('rbtn').disabled=true;
+  try{
+    var r=await fetch(SB+'/functions/v1/team-access',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY},body:JSON.stringify({mode:'request',name:$('rn').value,email:$('re').value,password:$('rp').value,website:$('rw').value})});
+    var j=await r.json();
+    if(!r.ok)throw new Error(j.error||'Request failed');
+    $('rp').value='';$('rp2').value='';
+    $('rok').textContent=j.note||'Request sent. You will get an email when the admin approves it, then sign in with this email and password.';
+    $('rok').classList.remove('hide');
+  }catch(x){$('rerr').textContent=x.message}
+  finally{$('rbtn').disabled=false}
 });
 $('out').onclick=signedOut;
 $('refresh').onclick=function(){load().then(function(){toast('Updated')})};
@@ -145,6 +179,8 @@ async function load(){
 async function start(){
   try{
     if(!tok)await refresh();
+    var me=await api('team?select=email&limit=1');
+    if(!me||!me.length){signedOut();$('lerr').textContent='Your login works, but access is still waiting for approval.';return}
     $('login').classList.add('hide');$('app').classList.remove('hide');$('who').textContent=ls('gbo_em')||'';
     await load();
     if(!S.leads.length&&!S.quotes.length&&!S.samples.length){/* valid but empty is fine */}
