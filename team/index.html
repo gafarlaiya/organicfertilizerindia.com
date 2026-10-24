@@ -50,6 +50,7 @@ tbody tr{cursor:pointer}tbody tr:hover{background:#f6faf7}
 .Hot{background:var(--hot)}.Warm{background:var(--warm)}.Cold{background:var(--cold)}
 .stg{background:#e8f0ea;color:var(--g);padding:.1rem .5rem;border-radius:6px;font-size:.8rem;white-space:nowrap}
 .late{color:var(--hot);font-weight:600}
+.calls{list-style:none;padding:0;margin:.4rem 0 0;font-size:.88rem}.calls li{padding:.35rem 0;border-bottom:1px solid var(--line)}.calls audio{width:100%;height:32px;margin-top:.25rem}
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem;margin-top:1rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem}
 .card h3{margin:0 0 .5rem;font-size:.95rem}
@@ -194,7 +195,11 @@ async function start(){
 var DAY=864e5;
 function fd(d){if(!d)return '';var x=new Date(d);return x.toLocaleDateString('en-IN',{day:'2-digit',month:'short'})}
 function late(d){return d&&new Date(d)<new Date(new Date().toDateString())}
-function srcOf(l){return l.utm_source||(l.referrer?(function(){try{return new URL(l.referrer).hostname.replace(/^www\./,'')}catch(e){return 'referral'}})():'direct')}
+function srcOf(l){if(l.site==='telecall')return 'phone call';return l.utm_source||(l.referrer?(function(){try{return new URL(l.referrer).hostname.replace(/^www\./,'')}catch(e){return 'referral'}})():'direct')}
+function callCell(l){if(!l.call_count)return '<small>-</small>';var m=l.last_call_type==='missed';return (m?'<span class="late">Missed</span>':esc(l.call_count+' call'+(l.call_count>1?'s':'')))+'<br><small>'+fd(l.last_call_at)+'</small>'}
+function missedOpen(l){return l.last_call_type==='missed'&&['Won','Lost'].indexOf(l.stage)<0}
+function dur(s){if(s==null)return '';s=+s;return s<60?s+' s':Math.floor(s/60)+' min '+(s%60)+' s'}
+var DIR={in:'Incoming',out:'Outgoing',missed:'Missed'};
 function digits(p){return String(p||'').replace(/[^0-9]/g,'')}
 function groupCount(a,f){var m={};a.forEach(function(x){var k=f(x)||'(not given)';m[k]=(m[k]||0)+1});return Object.keys(m).map(function(k){return [k,m[k]]}).sort(function(a,b){return b[1]-a[1]})}
 
@@ -207,7 +212,8 @@ function kpis(){
   var open=S.quotes.filter(function(q){return ['Sent','Following up','Negotiation'].indexOf(q.status)>=0});
   var tr=S.samples.filter(function(s){return s.status==='Dispatched'}).length;
   var won=L.filter(function(l){return l.stage==='Won'}).length;
-  var h=[['Leads (7 days)',w],['Hot, open',hot,hot?'alert':''],['Follow-ups due',due,due?'alert':''],['Open quotes',open.length],['Samples in transit',tr],['Won',won]];
+  var mc=L.filter(missedOpen).length;
+  var h=[['Leads (7 days)',w],['Hot, open',hot,hot?'alert':''],['Follow-ups due',due,due?'alert':''],['Open quotes',open.length],['Samples in transit',tr],['Missed calls to return',mc,mc?'alert':''],['Won',won]];
   $('kpis').innerHTML=h.map(function(k){return '<div class="kpi '+(k[2]||'')+'"><b>'+k[1]+'</b><small>'+k[0]+'</small></div>'}).join('');
 }
 function render(){
@@ -228,11 +234,11 @@ function vLeads(){
    +'<select id="fp"><option value="">All priorities</option>'+['Hot','Warm','Cold'].map(function(s){return '<option'+(S.pri===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select>'
    +'<select id="fr"><option value="">All sources</option>'+srcs.map(function(s){return '<option'+(S.src===s?' selected':'')+'>'+esc(s)+'</option>'}).join('')+'</select></div>';
   if(!rows.length){$('view').innerHTML=o+'<div class="wrap"><div class="empty">'+(S.leads.length?'No leads match these filters.':'No leads yet. They appear here as soon as a form on the website is submitted.')+'</div></div>';bindBar();return}
-  o+='<div class="wrap"><table><thead><tr><th>Lead</th><th>Received</th><th>Priority</th><th>Stage</th><th>Contact</th><th>Country</th><th>Interest</th><th>Source</th><th>Follow-up</th></tr></thead><tbody>'
+  o+='<div class="wrap"><table><thead><tr><th>Lead</th><th>Received</th><th>Priority</th><th>Stage</th><th>Contact</th><th>Country</th><th>Interest</th><th>Source</th><th>Calls</th><th>Follow-up</th></tr></thead><tbody>'
   +rows.map(function(l){return '<tr data-id="'+l.id+'"><td><b>'+esc(l.name||'-')+'</b><br><small>'+esc(l.company||'')+'</small></td><td>'+fd(l.created_at)+'<br><small>'+esc(l.lead_no)+'</small></td>'
    +'<td><span class="pill '+l.priority+'">'+l.priority+'</span> <small>'+l.score+'</small></td><td><span class="stg">'+esc(l.stage)+'</span></td>'
    +'<td>'+esc(l.phone||'')+'<br><small>'+esc(l.email||'')+'</small></td><td>'+esc(l.country||'')+'</td><td>'+esc(l.interest||l.grades||'')+'</td>'
-   +'<td>'+esc(srcOf(l))+'</td><td class="'+(late(l.next_followup)&&['Won','Lost','Nurture'].indexOf(l.stage)<0?'late':'')+'">'+fd(l.next_followup)+'</td></tr>'}).join('')+'</tbody></table></div>';
+   +'<td>'+esc(srcOf(l))+'</td><td>'+callCell(l)+'</td><td class="'+(late(l.next_followup)&&['Won','Lost','Nurture'].indexOf(l.stage)<0?'late':'')+'">'+fd(l.next_followup)+'</td></tr>'}).join('')+'</tbody></table></div>';
   $('view').innerHTML=o;bindBar();
   $('view').querySelectorAll('tbody tr').forEach(function(tr){tr.onclick=function(){openLead(tr.dataset.id)}});
 }
@@ -269,6 +275,13 @@ function vInsights(){
 }
 
 /* ---- drawer ---- */
+async function loadCalls(id){
+  try{var c=await api('telecrm_calls?select=*&lead_id=eq.'+id+'&order=called_at.desc&limit=50');var box=$('d_calls');if(!box||!c.length)return;
+    box.innerHTML='<h3>Calls (TeleCRM)</h3><ul class="calls">'+c.map(function(x){var w=new Date(x.called_at).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'numeric',minute:'2-digit'});
+      return '<li><b class="'+(x.direction==='missed'?'late':'')+'">'+esc(DIR[x.direction]||x.type)+'</b> - '+esc(w)+(x.duration_sec?' - '+dur(x.duration_sec):'')+(x.agent?'<br><small>'+esc(x.agent)+(x.outcome?' - '+esc(x.outcome):'')+'</small>':(x.outcome?'<br><small>'+esc(x.outcome)+'</small>':''))
+        +(x.recording_url&&/^https:/.test(x.recording_url)?'<audio controls preload="none" src="'+esc(x.recording_url)+'"></audio>':'')+'</li>'}).join('')+'</ul>';
+  }catch(e){/* calls not connected yet */}
+}
 function close(){$('drawer').classList.add('hide')}
 function dl(pairs){return '<dl>'+pairs.filter(function(p){return p[1]}).map(function(p){return '<dt>'+p[0]+'</dt><dd>'+esc(p[1])+'</dd>'}).join('')+'</dl>'}
 function opts(a,v){return a.map(function(s){return '<option'+(s===v?' selected':'')+'>'+s+'</option>'}).join('')}
@@ -282,12 +295,13 @@ function openLead(id){
   var d=$('drawer');d.classList.remove('hide');
   d.innerHTML='<button class="btn" id="x" style="float:right">Close</button><h2>'+esc(l.name||'Lead')+'</h2><div><span class="pill '+l.priority+'">'+l.priority+' '+l.score+'</span> <small>'+esc(l.lead_no)+' - '+fd(l.created_at)+'</small></div>'
   +'<div class="acts">'+(ph?'<a class="btn pri" target="_blank" rel="noopener" href="https://wa.me/'+ph+'">WhatsApp</a>':'')+(l.email?'<a class="btn" href="mailto:'+esc(l.email)+'">Email</a>':'')+(l.phone?'<a class="btn" href="tel:'+esc(l.phone)+'">Call</a>':'')+'</div>'
-  +dl([['Company',l.company],['Phone',l.phone],['Email',l.email],['Country',l.country],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Destination',l.destination],['Form',l.form+(l.channel?' ('+l.channel+')':'')],['Source',srcOf(l)+(l.utm_medium?' / '+l.utm_medium:'')+(l.utm_campaign?' / '+l.utm_campaign:'')],['Article',l.article],['Landing page',l.landing]])
+  +dl([['Company',l.company],['Phone',l.phone],['Email',l.email],['Country',l.country],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Destination',l.destination],['Form',l.form+(l.channel?' ('+l.channel+')':'')],['Source',srcOf(l)+(l.utm_medium?' / '+l.utm_medium:'')+(l.utm_campaign?' / '+l.utm_campaign:'')],['Article',l.article],['Landing page',l.landing],['TeleCRM status',l.telecrm_status]])
   +(l.message?'<div class="msg">'+esc(l.message)+'</div>':'')
   +'<div class="f"><div><label>Stage</label><select id="d_stage">'+opts(STAGES,l.stage)+'</select></div><div><label>Priority</label><select id="d_pri">'+opts(['Hot','Warm','Cold'],l.priority)+'</select></div>'
   +'<div><label>Owner</label><input id="d_owner" value="'+esc(l.owner||'')+'"></div><div><label>Next follow-up</label><input id="d_next" type="date" value="'+dtv(l.next_followup)+'"></div>'
   +'<div class="full"><label>Notes</label><textarea id="d_notes" rows="4">'+esc(l.notes||'')+'</textarea></div></div>'
-  +'<div class="acts"><button class="btn pri" id="d_save">Save</button><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button></div><div id="d_extra"></div>';
+  +'<div class="acts"><button class="btn pri" id="d_save">Save</button><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button></div><div id="d_extra"></div><div id="d_calls"></div>';
+  if(l.call_count)loadCalls(id);
   $('x').onclick=close;
   $('d_save').onclick=async function(){try{var n=await patch('leads',id,{stage:val('d_stage'),priority:val('d_pri'),owner:val('d_owner')||null,next_followup:val('d_next')||null,notes:val('d_notes')||null});Object.assign(l,n);render()}catch(e){toast(e.message)}};
   $('d_q').onclick=function(){
