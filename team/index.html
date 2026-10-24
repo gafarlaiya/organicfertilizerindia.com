@@ -50,6 +50,7 @@ tbody tr{cursor:pointer}tbody tr:hover{background:#f6faf7}
 .Hot{background:var(--hot)}.Warm{background:var(--warm)}.Cold{background:var(--cold)}
 .stg{background:#e8f0ea;color:var(--g);padding:.1rem .5rem;border-radius:6px;font-size:.8rem;white-space:nowrap}
 .late{color:var(--hot);font-weight:600}
+.chat{display:flex;flex-direction:column;gap:.35rem;margin:.4rem 0 0;max-height:420px;overflow:auto;padding:.4rem;background:#f6f8f6;border:1px solid var(--line);border-radius:8px}.chat div{max-width:85%;padding:.4rem .55rem;border-radius:8px;font-size:.86rem;white-space:pre-wrap;word-break:break-word}.chat .in{align-self:flex-start;background:#fff;border:1px solid var(--line)}.chat .ai{align-self:flex-end;background:#dcf2e3}.chat .practice{align-self:flex-end;background:#fff7e0;border:1px dashed #d9b44a}.chat .human{align-self:flex-end;background:#e6eefc}.chat small{display:block;color:#667;font-size:.72rem;margin-top:.15rem}
 .calls{list-style:none;padding:0;margin:.4rem 0 0;font-size:.88rem}.calls li{padding:.35rem 0;border-bottom:1px solid var(--line)}.calls audio{width:100%;height:32px;margin-top:.25rem}
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem;margin-top:1rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem}
@@ -237,7 +238,7 @@ function vLeads(){
   o+='<div class="wrap"><table><thead><tr><th>Lead</th><th>Received</th><th>Priority</th><th>Stage</th><th>Contact</th><th>Country</th><th>Interest</th><th>Source</th><th>Calls</th><th>Follow-up</th></tr></thead><tbody>'
   +rows.map(function(l){return '<tr data-id="'+l.id+'"><td><b>'+esc(l.name||'-')+'</b><br><small>'+esc(l.company||'')+'</small></td><td>'+fd(l.created_at)+'<br><small>'+esc(l.lead_no)+'</small></td>'
    +'<td><span class="pill '+l.priority+'">'+l.priority+'</span> <small>'+l.score+'</small></td><td><span class="stg">'+esc(l.stage)+'</span></td>'
-   +'<td>'+esc(l.phone||'')+'<br><small>'+esc(l.email||'')+'</small></td><td>'+esc(l.country||'')+'</td><td>'+esc(l.interest||l.grades||'')+'</td>'
+   +'<td>'+esc(l.phone||'')+'<br><small>'+esc(l.email||'')+'</small></td><td>'+esc(l.country||'')+'</td><td>'+esc(l.crop||l.interest||l.grades||'')+(l.person_type&&l.person_type!=='farmer'?'<br><small>'+esc(l.person_type)+'</small>':(l.crop_stage?'<br><small>'+esc(l.crop_stage)+'</small>':''))+'</td>'
    +'<td>'+esc(srcOf(l))+'</td><td>'+callCell(l)+'</td><td class="'+(late(l.next_followup)&&['Won','Lost','Nurture'].indexOf(l.stage)<0?'late':'')+'">'+fd(l.next_followup)+'</td></tr>'}).join('')+'</tbody></table></div>';
   $('view').innerHTML=o;bindBar();
   $('view').querySelectorAll('tbody tr').forEach(function(tr){tr.onclick=function(){openLead(tr.dataset.id)}});
@@ -275,6 +276,16 @@ function vInsights(){
 }
 
 /* ---- drawer ---- */
+function aiBtn(l){if(l.channel!=='whatsapp'&&!l.ai_status)return '';var on=!(l.ai_status==='paused'||l.ai_status==='handover'||l.ai_status==='off');return '<button class="btn" id="d_ai">'+(on?'Pause AI on this chat':'Resume AI')+'</button>'}
+var WHO={customer:'Customer',ai:'AI agent',practice:'AI practice draft (not sent)',human:'Team'};
+async function loadWA(id){
+  try{var m=await api('wa_messages?select=direction,origin,kind,body,media_url,created_at&lead_id=eq.'+id+'&direction=neq.status&order=id.asc&limit=200');var box=$('d_wa');if(!box||!m.length)return;
+    box.innerHTML='<h3>WhatsApp conversation</h3><div class="chat">'+m.map(function(x){var cls=x.direction==='in'?'in':(x.origin||'ai');var w=new Date(x.created_at).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'numeric',minute:'2-digit'});
+      var media=x.media_url&&/^https:/.test(x.media_url)?'<a href="'+esc(x.media_url)+'" target="_blank" rel="noopener">['+esc(x.kind==='image'?'photo':x.kind)+']</a> ':(x.kind&&x.kind!=='text'&&x.kind!=='button'?'['+esc(x.kind)+'] ':'');
+      return '<div class="'+esc(cls)+'">'+media+esc(x.body||'')+'<small>'+esc(WHO[x.origin]||x.origin||'')+' - '+esc(w)+'</small></div>'}).join('')+'</div>';
+    var c=box.querySelector('.chat');c.scrollTop=c.scrollHeight;
+  }catch(e){/* agent not set up yet */}
+}
 async function loadCalls(id){
   try{var c=await api('telecrm_calls?select=*&lead_id=eq.'+id+'&order=called_at.desc&limit=50');var box=$('d_calls');if(!box||!c.length)return;
     box.innerHTML='<h3>Calls (TeleCRM)</h3><ul class="calls">'+c.map(function(x){var w=new Date(x.called_at).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'numeric',minute:'2-digit'});
@@ -295,13 +306,15 @@ function openLead(id){
   var d=$('drawer');d.classList.remove('hide');
   d.innerHTML='<button class="btn" id="x" style="float:right">Close</button><h2>'+esc(l.name||'Lead')+'</h2><div><span class="pill '+l.priority+'">'+l.priority+' '+l.score+'</span> <small>'+esc(l.lead_no)+' - '+fd(l.created_at)+'</small></div>'
   +'<div class="acts">'+(ph?'<a class="btn pri" target="_blank" rel="noopener" href="https://wa.me/'+ph+'">WhatsApp</a>':'')+(l.email?'<a class="btn" href="mailto:'+esc(l.email)+'">Email</a>':'')+(l.phone?'<a class="btn" href="tel:'+esc(l.phone)+'">Call</a>':'')+'</div>'
-  +dl([['Company',l.company],['Phone',l.phone],['Email',l.email],['Country',l.country],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Destination',l.destination],['Form',l.form+(l.channel?' ('+l.channel+')':'')],['Source',srcOf(l)+(l.utm_medium?' / '+l.utm_medium:'')+(l.utm_campaign?' / '+l.utm_campaign:'')],['Article',l.article],['Landing page',l.landing],['TeleCRM status',l.telecrm_status]])
+  +dl([['Company',l.company],['Phone',l.phone],['Email',l.email],['Country',l.country],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Destination',l.destination],['Form',l.form+(l.channel?' ('+l.channel+')':'')],['Source',srcOf(l)+(l.utm_medium?' / '+l.utm_medium:'')+(l.utm_campaign?' / '+l.utm_campaign:'')],['Article',l.article],['Landing page',l.landing],['TeleCRM status',l.telecrm_status],['Person type',l.person_type],['Crop',l.crop],['Crop stage',l.crop_stage],['Problem / goal',l.problem],['Area',l.acreage],['Location',[l.village,l.taluka,l.district,l.state].filter(Boolean).join(', ')],['AI summary',l.ai_summary]])
   +(l.message?'<div class="msg">'+esc(l.message)+'</div>':'')
   +'<div class="f"><div><label>Stage</label><select id="d_stage">'+opts(STAGES,l.stage)+'</select></div><div><label>Priority</label><select id="d_pri">'+opts(['Hot','Warm','Cold'],l.priority)+'</select></div>'
   +'<div><label>Owner</label><input id="d_owner" value="'+esc(l.owner||'')+'"></div><div><label>Next follow-up</label><input id="d_next" type="date" value="'+dtv(l.next_followup)+'"></div>'
   +'<div class="full"><label>Notes</label><textarea id="d_notes" rows="4">'+esc(l.notes||'')+'</textarea></div></div>'
-  +'<div class="acts"><button class="btn pri" id="d_save">Save</button><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button></div><div id="d_extra"></div><div id="d_calls"></div>';
+  +'<div class="acts"><button class="btn pri" id="d_save">Save</button><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button>'+aiBtn(l)+'</div><div id="d_extra"></div><div id="d_wa"></div><div id="d_calls"></div>';
   if(l.call_count)loadCalls(id);
+  loadWA(id);
+  var ab=$('d_ai');if(ab)ab.onclick=async function(){var off=!(l.ai_status==='paused'||l.ai_status==='handover'||l.ai_status==='off');try{var n=await patch('leads',id,off?{ai_status:'paused',ai_paused_until:'2099-01-01T00:00:00Z'}:{ai_status:'active',ai_paused_until:null});Object.assign(l,n);openLead(id)}catch(e){toast(e.message)}};
   $('x').onclick=close;
   $('d_save').onclick=async function(){try{var n=await patch('leads',id,{stage:val('d_stage'),priority:val('d_pri'),owner:val('d_owner')||null,next_followup:val('d_next')||null,notes:val('d_notes')||null});Object.assign(l,n);render()}catch(e){toast(e.message)}};
   $('d_q').onclick=function(){
