@@ -357,7 +357,8 @@ prods = f'''{page_hero("Biostimulants and biofertilisers from one manufacturer",
 {hub(CAT_HUB)}
 <h2 style="margin-top:3.4rem">Ways to buy</h2>
 <ul class="checks"><li><a href="/bulk-supply">Bulk supply</a>: IBC, drums and jumbo bags, no minimum order</li><li><a href="/private-label-oem">Private label and OEM</a>: your brand, our plant</li><li><a href="/export">Export</a>: FOB or CIF from Indian ports</li><li><a href="/become-a-distributor">Distributor</a>: bulk prices, you set your margin</li></ul>
-</div></section>{cta()}'''
+</div></section>
+<section class="section tint"><div class="wrap"><div class="sec-head"><h2>Common questions</h2></div>{faq_html(prod_faq)}</div></section>{cta()}'''
 render("/products", "Products: Organic Fertilizers, Biostimulants & More | GBO",
        "Organic fertilizers, humic acid, seaweed, amino acids, 11 biofertilisers, micronutrients, special grades and custom blends from Gujarat. Bulk, private label, export.", prods, [faq_ld(prod_faq)], "Products")
 PAGES.append(("/products", "0.9"))
