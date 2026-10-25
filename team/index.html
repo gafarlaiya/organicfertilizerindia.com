@@ -85,7 +85,22 @@ a.btn{text-decoration:none;display:inline-block;color:inherit}
     <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
     <button class="btn pri" type="submit">Sign in</button>
     <div class="err" id="lerr" role="alert"></div>
+    <p class="swap"><a href="#" id="tofgt">Forgot password?</a></p>
     <p class="swap">New team member? <a href="#" id="toreq">Request access</a></p>
+  </form>
+  <form id="ff" class="hide">
+    <p style="color:var(--mut);margin:.2rem 0 0;font-size:.9rem">Enter your email. We will send a link to set a new password.</p>
+    <label for="fe">Email</label><input id="fe" type="email" autocomplete="email" required>
+    <button class="btn pri" type="submit" id="fbtn">Send reset link</button>
+    <div class="err" id="ferr" role="alert"></div>
+    <p class="swap"><a href="#" class="toback">Back to sign in</a></p>
+  </form>
+  <form id="npf" class="hide">
+    <p style="color:var(--mut);margin:.2rem 0 0;font-size:.9rem">Choose a new password for your team login.</p>
+    <label for="np">New password (at least 8 characters)</label><input id="np" type="password" autocomplete="new-password" minlength="8" required>
+    <label for="np2">Repeat new password</label><input id="np2" type="password" autocomplete="new-password" minlength="8" required>
+    <button class="btn pri" type="submit" id="npbtn">Save new password</button>
+    <div class="err" id="nperr" role="alert"></div>
   </form>
   <form id="rf" class="hide">
     <p style="color:var(--mut);margin:.2rem 0 0;font-size:.9rem">Choose your own password. You can sign in after the admin approves your request.</p>
@@ -132,22 +147,24 @@ function toast(t){var e=$('toast');e.textContent=t;e.classList.remove('hide');cl
 
 /* ---- auth ---- */
 var tok=null;
-function saveSession(j){tok=j.access_token;ls('gbo_rt',j.refresh_token);ls('gbo_em',(j.user&&j.user.email)||ls('gbo_em')||'')}
+function saveSession(j){tok=j.access_token;ls('gbo_at',tok);ls('gbo_exp',String(Date.now()+((+j.expires_in||3600)-120)*1000));ls('gbo_rt',j.refresh_token);ls('gbo_em',(j.user&&j.user.email)||ls('gbo_em')||'')}
 async function auth(grant,body){
   var r=await fetch(SB+'/auth/v1/token?grant_type='+grant,{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});
-  var j=await r.json(); if(!r.ok)throw new Error(j.error_description||j.msg||'Sign in failed'); saveSession(j); return j;
+  var j=await r.json().catch(function(){return {}}); if(!r.ok){var er=new Error(j.error_description||j.msg||'Sign in failed'); er.rejected=r.status>=400&&r.status<500; throw er} saveSession(j); return j;
 }
-async function refresh(){var rt=ls('gbo_rt');if(!rt)throw new Error('no session');return auth('refresh_token',{refresh_token:rt})}
+/* one refresh at a time; only a refresh the server rejects ends the session (a weak phone signal does not) */
+var refreshing=null;
+function refresh(){if(refreshing)return refreshing;var rt=ls('gbo_rt');if(!rt)return Promise.reject(new Error('no session'));refreshing=auth('refresh_token',{refresh_token:rt}).finally(function(){refreshing=null});return refreshing}
 async function api(path,opt){
   opt=opt||{};
   function go(){return fetch(SB+'/rest/v1/'+path,{method:opt.method||'GET',headers:Object.assign({apikey:KEY,Authorization:'Bearer '+tok,'Content-Type':'application/json',Prefer:'return=representation'},opt.h||{}),body:opt.body?JSON.stringify(opt.body):undefined})}
   var r=await go();
-  if(r.status===401){try{await refresh();r=await go()}catch(e){signedOut();throw e}}
+  if(r.status===401){try{await refresh();r=await go()}catch(e){if(e.rejected||/no session/.test(e.message))signedOut();else e.message='No connection, please tap Refresh';throw e}}
   var t=await r.text(), j=t?JSON.parse(t):null;
   if(!r.ok)throw new Error((j&&j.message)||'Request failed');
   return j;
 }
-function signedOut(){tok=null;ls('gbo_rt',null);$('app').classList.add('hide');$('drawer').classList.add('hide');$('login').classList.remove('hide')}
+function signedOut(){tok=null;ls('gbo_rt',null);ls('gbo_at',null);ls('gbo_exp',null);$('app').classList.add('hide');$('drawer').classList.add('hide');$('login').classList.remove('hide')}
 $('lf').addEventListener('submit',async function(e){
   e.preventDefault();$('lerr').textContent='';
   try{await auth('password',{email:$('em').value.trim(),password:$('pw').value});$('pw').value='';await start()}
@@ -169,6 +186,30 @@ $('rf').addEventListener('submit',async function(e){
     $('rok').classList.remove('hide');
   }catch(x){$('rerr').textContent=x.message}
   finally{$('rbtn').disabled=false}
+});
+function showForm(id,title){['lf','rf','ff','npf'].forEach(function(f){$(f).classList.toggle('hide',f!==id)});$('login').querySelector('h2').textContent=title}
+$('tofgt').onclick=function(e){e.preventDefault();$('fe').value=$('em').value;showForm('ff','Reset password')};
+document.querySelectorAll('.toback').forEach(function(a){a.onclick=function(e){e.preventDefault();showForm('lf','Team sign in')}});
+$('ff').addEventListener('submit',async function(e){
+  e.preventDefault();$('ferr').textContent='';$('fbtn').disabled=true;
+  try{
+    var r=await fetch(SB+'/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin+'/team/'),{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify({email:$('fe').value.trim()})});
+    if(!r.ok&&r.status!==429){var j=await r.json().catch(function(){return {}});throw new Error(j.msg||j.error_description||'Could not send the email')}
+    $('ferr').style.color='var(--ok,#1a7f37)';$('ferr').textContent=r.status===429?'A link was sent a moment ago. Please check your email, or try again in a minute.':'Check your email and open the link on this device.';
+  }catch(x){$('ferr').style.color='';$('ferr').textContent=x.message}
+  finally{$('fbtn').disabled=false}
+});
+$('npf').addEventListener('submit',async function(e){
+  e.preventDefault();$('nperr').textContent='';
+  if($('np').value!==$('np2').value){$('nperr').textContent='The two passwords do not match.';return}
+  $('npbtn').disabled=true;
+  try{
+    var r=await fetch(SB+'/auth/v1/user',{method:'PUT',headers:{apikey:KEY,Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({password:$('np').value})});
+    var j=await r.json().catch(function(){return {}});
+    if(!r.ok)throw new Error(/same|different/i.test(j.msg||'')?'Please choose a password different from the old one.':(j.msg||j.error_description||'Could not save the password'));
+    $('np').value='';$('np2').value='';showForm('lf','Team sign in');toast('Password saved');await start();
+  }catch(x){$('nperr').textContent=x.message}
+  finally{$('npbtn').disabled=false}
 });
 $('out').onclick=signedOut;
 $('refresh').onclick=function(){load().then(function(){toast('Updated')})};
@@ -359,7 +400,17 @@ function openSample(id){
 }
 
 /* ---- boot ---- */
-if(ls('gbo_rt'))start();else $('login').classList.remove('hide');
+(function(){
+  var h=new URLSearchParams(location.hash.slice(1));
+  if(h.get('access_token')||h.get('error')){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+  if(h.get('access_token')&&h.get('type')==='recovery'){
+    saveSession({access_token:h.get('access_token'),refresh_token:h.get('refresh_token'),expires_in:h.get('expires_in')});
+    $('login').classList.remove('hide');showForm('npf','Set a new password');return;
+  }
+  if(h.get('error')){$('login').classList.remove('hide');showForm('ff','Reset password');$('ferr').textContent=/expired|invalid/i.test(h.get('error_description')||h.get('error_code')||'')?'That link has expired or was already used. Send a new one below.':(h.get('error_description')||'That link did not work. Send a new one below.');return}
+  if(ls('gbo_at')&&+ls('gbo_exp')>Date.now())tok=ls('gbo_at');
+  if(ls('gbo_rt'))start();else $('login').classList.remove('hide');
+})();
 })();
 </script>
 </body>
