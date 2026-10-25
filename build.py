@@ -9,6 +9,7 @@ PHONE = "+91 99787 91167"
 MAIL = "sales@gujaratbio.com"
 GA4_ID = "G-HF0J0NF8G0"   # Google Analytics 4 measurement ID (public)
 GTM_ID = "GTM-5JDXGL2S"  # Google Tag Manager container for b2b.gujaratbio.com. When set, GTM loads and the direct GA4 tag is dropped.
+CLARITY_ID = "z35w7p1ln5"  # Microsoft Clarity project "Gujarat Bio B2B Site"
 FB = "https://www.facebook.com/gujaratbio"
 YT = "https://www.youtube.com/@Gujaratbio"
 NAME = "Gujarat Bio Organics Pvt. Ltd."
@@ -184,7 +185,11 @@ def tracking_head(path):
           "function cs(s){return{ad_storage:s,ad_user_data:s,ad_personalization:s,analytics_storage:s}}"
           "if(!c){var r=cs('denied');r.region=" + json.dumps(EEA_GB_CH) + ";gtag('consent','default',r)}"
           "var d=cs(v);d.wait_for_update=500;gtag('consent','default',d);"
-          "var p={page_type:'" + pt + "'};if(i)p.traffic_type=i;")
+          "var p={page_type:'" + pt + "'};if(i)p.traffic_type=i;"
+          # Microsoft Clarity (heatmaps + recordings): after page load, only with consent and never for the team.
+          "if(v==='granted'&&!i){var cl=function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;"
+          "t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script','" + CLARITY_ID + "')};"
+          "if(document.readyState==='complete')setTimeout(cl,1);else addEventListener('load',function(){setTimeout(cl,1)})}")
     if gtm:
         js += ("dataLayer.push(p);(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
                "var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f)})"
