@@ -284,9 +284,13 @@ details.box[open] summary{margin-bottom:.6rem}
 var SB='https://filbmvtclfcrrvxckema.supabase.co', KEY='sb_publishable_qbndsVEhemxGLYZa6P3PyQ_iDNmsmmT';
 var STAGES=['New','Contacted','Qualified','Sample sent','Quote sent','Negotiation','Won','Lost','Nurture'];
 var CLOSED=['Won','Lost','Nurture'];
+var CROPS=['Sugarcane','Mango','Banana','Cotton','Potato','Groundnut','Wheat','Onion','Garlic','Chilli','Tomato','Vegetables','Papaya','Pomegranate','Citrus','Coconut','Chikoo','Apple','Paddy','Maize','Cumin','Castor','Tobacco'];
+var UNITS=['Vingha','Acre','Bigha','Hectare'];
+var DISTRICTS=['Ahmedabad','Amreli','Anand','Aravalli','Banaskantha','Bharuch','Bhavnagar','Botad','Chhota Udaipur','Dahod','Dang','Devbhoomi Dwarka','Gandhinagar','Gir Somnath','Jamnagar','Junagadh','Kheda','Kutch','Mahisagar','Mehsana','Morbi','Narmada','Navsari','Panchmahal','Patan','Porbandar','Rajkot','Sabarkantha','Surat','Surendranagar','Tapi','Vadodara','Valsad'];
+var STATES=['Gujarat','Maharashtra','Madhya Pradesh','Rajasthan','Karnataka','Tamil Nadu','Uttar Pradesh','Punjab','Haryana','Himachal Pradesh','Jammu and Kashmir','West Bengal','Andhra Pradesh','Telangana','Bihar'];
 var QST=['Sent','Following up','Negotiation','Won','Lost','Expired'];
 var SST=['Requested','Approved','Dispatched','Delivered','Feedback received','Declined'];
-var S={tab:'today',leads:[],quotes:[],samples:[],team:[],q:'',stage:'',pri:'',src:'',own:'',deal:'quotes',sel:null,limit:60,synced:0};
+var S={tab:'today',leads:[],quotes:[],samples:[],team:[],q:'',stage:'',pri:'',src:'',own:'',crop:'',deal:'quotes',sel:null,limit:60,synced:0};
 var $=function(i){return document.getElementById(i)};
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
@@ -418,6 +422,9 @@ function waNum(p){var d=digits(p);return d.length===10?'91'+d:d}
 function nice(p){var d=digits(p);if(d.length===12&&d.indexOf('91')===0)return '+91 '+d.slice(2,7)+' '+d.slice(7);return p||''}
 function title(l){return l.name||l.company||nice(l.phone)||l.lead_no||'Lead'}
 function groupCount(a,f){var m={};a.forEach(function(x){var k=f(x)||'(not given)';m[k]=(m[k]||0)+1});return Object.keys(m).map(function(k){return [k,m[k]]}).sort(function(a,b){return b[1]-a[1]})}
+function cropsInData(){var m={};S.leads.forEach(function(l){if(l.crop)m[l.crop.trim()]=1});return Object.keys(m).sort()}
+function splitArea(a){var m=String(a||'').match(/([0-9]+(?:\.[0-9]+)?)\s*([a-zA-Z]*)/);if(!m)return {n:'',u:'Vingha'};var u=UNITS.find(function(x){return m[2]&&x.toLowerCase().indexOf(m[2].toLowerCase().slice(0,3))===0})||'Vingha';return {n:m[1],u:u}}
+function dlist(id,a){return '<datalist id="'+id+'">'+a.map(function(x){return '<option value="'+esc(x)+'">'}).join('')+'</datalist>'}
 function myName(){var em=(ls('gbo_em')||'').toLowerCase();var t=S.team.find(function(x){return (x.email||'').toLowerCase()===em});return (t&&t.name)||em.split('@')[0]||''}
 function syncLabel(){var e=$('sync');if(e)e.textContent=S.synced?'Updated '+rel(S.synced):''}
 function isDesk(){return window.matchMedia('(min-width:1000px)').matches}
@@ -437,7 +444,7 @@ document.querySelectorAll('.nav button').forEach(function(t){t.onclick=function(
 
 function card(l){
   var ph=digits(l.phone);
-  var sub=[l.crop||l.interest||l.grades,[l.village,l.district||l.state].filter(Boolean).join(', ')||(l.country&&l.country!=='India'?l.country:'')].filter(Boolean).join(' - ')||(l.message?l.message.slice(0,80):'')||nice(l.phone);
+  var sub=[[l.crop||l.interest||l.grades,l.acreage].filter(Boolean).join(', '),[l.village,l.district||l.state].filter(Boolean).join(', ')||(l.country&&l.country!=='India'?l.country:'')].filter(Boolean).join(' - ')||(l.message?l.message.slice(0,80):'')||nice(l.phone);
   var tags='<span class="tag'+(l.stage==='New'?' blue':l.stage==='Lost'?' grey':'')+'">'+esc(l.stage)+'</span>';
   if(missedOpen(l))tags+='<span class="tag red">Missed call '+esc(rel(l.last_call_at))+'</span>';
   var fu=fuText(l.next_followup);if(fu&&isOpen(l)){var n=dayDiff(l.next_followup);tags+='<span class="tag '+(n<0?'red':n===0?'amber':'grey')+'">Follow-up: '+esc(fu)+'</span>'}
@@ -476,6 +483,7 @@ function leadRows(){
   return S.leads.filter(function(l){
     if(S.stage==='open'){if(!isOpen(l))return false}else if(S.stage&&l.stage!==S.stage)return false;
     if(S.pri&&l.priority!==S.pri)return false;if(S.src&&srcOf(l)!==S.src)return false;
+    if(S.crop&&(l.crop||'').toLowerCase()!==S.crop.toLowerCase())return false;
     if(S.own==='me'&&(l.owner||'').toLowerCase()!==me)return false;if(S.own==='none'&&l.owner)return false;
     if(S.q){var h=[l.name,l.company,l.phone,digits(l.phone),l.email,l.country,l.interest,l.grades,l.lead_no,l.crop,l.village,l.district,l.state,l.notes].join(' ').toLowerCase();if(h.indexOf(S.q.toLowerCase())<0)return false}
     return true});
@@ -489,10 +497,11 @@ function vLeads(){
    +'<div class="chips" role="group" aria-label="Stage">'+chips.map(function(c){return '<button class="chip" data-s="'+esc(c[0])+'" aria-pressed="'+(S.stage===c[0])+'">'+esc(c[1])+'<b>'+c[2]+'</b></button>'}).join('')+'</div>'
    +'<div class="selrow"><select id="fp" aria-label="Priority"><option value="">Any priority</option>'+['Hot','Warm','Cold'].map(function(s){return '<option'+(S.pri===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select>'
    +'<select id="fr" aria-label="Source"><option value="">Any source</option>'+srcs.map(function(s){return '<option'+(S.src===s?' selected':'')+'>'+esc(s)+'</option>'}).join('')+'</select>'
+   +'<select id="fc" aria-label="Crop"><option value="">Any crop</option>'+cropsInData().map(function(c){return '<option'+(S.crop===c?' selected':'')+'>'+esc(c)+'</option>'}).join('')+'</select>'
    +'<select id="fo" aria-label="Owner"><option value="">Anyone</option><option value="me"'+(S.own==='me'?' selected':'')+'>Mine</option><option value="none"'+(S.own==='none'?' selected':'')+'>Unassigned</option></select></div></div><div id="ll"></div>';
   var q=$('q');q.oninput=function(){S.q=q.value;S.limit=60;drawLeadList()};
   $('pane').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){S.stage=c.dataset.s;S.limit=60;$('pane').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===c))});drawLeadList()}});
-  $('fp').onchange=function(){S.pri=this.value;drawLeadList()};$('fr').onchange=function(){S.src=this.value;drawLeadList()};$('fo').onchange=function(){S.own=this.value;drawLeadList()};
+  $('fp').onchange=function(){S.pri=this.value;drawLeadList()};$('fr').onchange=function(){S.src=this.value;drawLeadList()};$('fo').onchange=function(){S.own=this.value;drawLeadList()};$('fc').onchange=function(){S.crop=this.value;drawLeadList()};
   drawLeadList();
 }
 function drawLeadList(){
@@ -557,13 +566,30 @@ function closeSheet(fromPop){
 }
 window.addEventListener('popstate',function(){if(!$('sheet').classList.contains('hide')&&!isDesk())closeSheet(true)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)closeSheet()});
-function reopen(){if(!cur)return;var sc=$('sheet').scrollTop;if(cur.type==='lead')openLead(cur.id,true);else if(cur.type==='quote')openQuote(cur.id,true);else openSample(cur.id,true);$('sheet').scrollTop=sc}
+var keepDraft=true;
+function reopen(){if(!cur)return;var sc=$('sheet').scrollTop;var draft={};if(cur.type==='lead'&&keepDraft)$('sheet').querySelectorAll('[id^="f_"],#d_note').forEach(function(e){if('value' in e&&e.tagName!=='BUTTON')draft[e.id]=e.value});
+  if(cur.type==='lead'){openLead(cur.id,true);Object.keys(draft).forEach(function(k){var e=$(k);if(e)e.value=draft[k]});var cs=$('f_crop');if(cs)$('f_crop2').classList.toggle('hide',cs.value!=='__other')}else if(cur.type==='quote')openQuote(cur.id,true);else openSample(cur.id,true);$('sheet').scrollTop=sc}
 function head(t,sub){return '<div class="sh-top"><button class="iconbtn back" data-close aria-label="Back">'+IC.back+'</button><div class="ttl"><b>'+esc(t)+'</b><small>'+sub+'</small></div><button class="iconbtn" data-close aria-label="Close">'+IC.x+'</button></div>'}
 function opts(a,v){return a.map(function(s){return '<option'+(s===v?' selected':'')+'>'+s+'</option>'}).join('')}
 function dtv(v){return v?String(v).slice(0,10):''}
 function val(id){return $(id).value.trim()}
 async function patch(table,id,body){var r=await api(table+'?id=eq.'+id,{method:'PATCH',body:body});return r[0]}
 function facts(pairs){var p=pairs.filter(function(x){return x[1]});return p.length?'<dl class="facts">'+p.map(function(x){return '<dt>'+x[0]+'</dt><dd>'+esc(x[1])+'</dd>'}).join('')+'</dl>':''}
+function farmBox(l){
+  var known=CROPS.concat(cropsInData()).filter(function(x,i,a){return a.indexOf(x)===i});
+  var c=l.crop||'',isKnown=!c||known.some(function(x){return x.toLowerCase()===c.toLowerCase()});
+  var ar=splitArea(l.acreage);
+  return '<div class="box"><h3>Farm details</h3><div class="f">'
+   +'<div><label for="f_crop">Crop</label><select id="f_crop"><option value="">Choose crop</option>'+known.map(function(x){return '<option'+(c.toLowerCase()===x.toLowerCase()?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'<option value="__other"'+(isKnown?'':' selected')+'>Other crop...</option></select>'
+   +'<input id="f_crop2" class="'+(isKnown?'hide':'')+'" style="margin-top:.4rem" placeholder="Type the crop" value="'+(isKnown?'':esc(c))+'"></div>'
+   +'<div><label for="f_cst">Crop stage</label><input id="f_cst" placeholder="e.g. 60 days, flowering" value="'+esc(l.crop_stage||'')+'"></div>'
+   +'<div><label for="f_area">Land</label><div style="display:flex;gap:.35rem"><input id="f_area" type="number" step="any" min="0" inputmode="decimal" placeholder="0" value="'+esc(ar.n)+'" style="flex:1;min-width:0"><select id="f_unit" aria-label="Unit" style="width:auto">'+UNITS.map(function(u){return '<option'+(u===ar.u?' selected':'')+'>'+u+'</option>'}).join('')+'</select></div></div>'
+   +'<div><label for="f_vil">Village</label><input id="f_vil" autocomplete="off" value="'+esc(l.village||'')+'"></div>'
+   +'<div><label for="f_tal">Taluka</label><input id="f_tal" autocomplete="off" value="'+esc(l.taluka||'')+'"></div>'
+   +'<div><label for="f_dis">District</label><input id="f_dis" list="dl_dis" autocomplete="off" value="'+esc(l.district||'')+'">'+dlist('dl_dis',DISTRICTS)+'</div>'
+   +'<div><label for="f_st">State</label><input id="f_st" list="dl_st" autocomplete="off" value="'+esc(l.state||(l.country==='India'||!l.country?'Gujarat':''))+'">'+dlist('dl_st',STATES)+'</div>'
+   +'</div><div class="acts2" style="margin-top:.6rem"><button class="btn pri" id="f_save">Save farm details</button></div></div>';
+}
 function aiOn(l){return !(l.ai_status==='paused'||l.ai_status==='handover'||l.ai_status==='off')}
 
 /* save a change straight away, show it at once, undo it if the save fails */
@@ -572,6 +598,7 @@ async function upd(l,body,msg){
   Object.assign(l,body);render(true);reopen();
   try{var n=await patch('leads',l.id,body);if(n)Object.assign(l,n);toast(msg||'Saved');render(true);reopen()}
   catch(e){Object.assign(l,old);render(true);reopen();toast('Not saved: '+e.message)}
+  finally{keepDraft=true}
 }
 
 function openLead(id,keep){
@@ -592,12 +619,13 @@ function openLead(id,keep){
   +'<div class="box"><h3>Next follow-up</h3><div class="fu-now'+(isOpen(l)&&n!=null&&n<0?' red':'')+'">'+(l.next_followup?esc(fuText(l.next_followup))+(n!=null&&Math.abs(n)>1?'':'')+' <span style="color:var(--faint);font-weight:400">('+esc(fd(l.next_followup))+')</span>':'No follow-up set')+'</div>'
   +'<div class="seg" id="fu"><button data-d="0">Today</button><button data-d="1">Tomorrow</button><button data-d="3">In 3 days</button><button data-d="7">Next week</button>'+(l.next_followup?'<button data-d="x">Clear</button>':'')+'</div>'
   +'<div class="inline"><label class="sr" for="d_next">Pick a date</label><input id="d_next" type="date" value="'+dtv(l.next_followup)+'"></div></div>'
+  +farmBox(l)
   +'<div class="box"><h3>Priority and owner</h3><div class="seg" id="pri">'+['Hot','Warm','Cold'].map(function(p){return '<button class="p-'+p+'" data-v="'+p+'" aria-pressed="'+(l.priority===p)+'">'+p+'</button>'}).join('')+'</div>'
   +'<div class="inline">'+(names.length?'<label class="sr" for="d_owner">Owner</label><select id="d_owner"><option value="">Unassigned</option>'+names.map(function(x){return '<option'+(l.owner===x?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select>':'<input id="d_owner" placeholder="Owner name" value="'+esc(l.owner||'')+'">')
   +(me&&l.owner!==me?'<button class="btn" id="d_mine">Assign to me</button>':'')+'</div></div>'
   +'<div class="box"><h3>Notes</h3><textarea class="note" id="d_note" placeholder="What did they say? What is the next step?"></textarea><div class="acts2" style="margin-top:.5rem"><button class="btn pri" id="d_addnote">Add note</button></div>'+(l.notes?'<div class="notes">'+esc(l.notes)+'</div>':'')+'</div>'
   +'<div class="box"><h3>About this lead</h3>'
-    +facts([['Crop',l.crop],['Crop stage',l.crop_stage],['Problem / goal',l.problem],['Area',l.acreage],['Location',loc||(l.country!=='India'?l.country:'')],['Person',l.person_type],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Company',l.company],['Country',l.country],['Destination',l.destination]])
+    +facts([['Problem / goal',l.problem],['Location',!loc&&l.country!=='India'?l.country:''],['Person',l.person_type],['Interest',l.interest],['Grades',l.grades],['Quantity',l.qty],['Company',l.company],['Country',l.country],['Destination',l.destination]])
     +(l.ai_summary?'<div class="aisum"><b>AI summary:</b> '+esc(l.ai_summary)+'</div>':'')
     +(l.message?'<div class="msg">'+esc(l.message)+'</div>':'')
   +'</div>'
@@ -617,7 +645,10 @@ function openLead(id,keep){
   var mine=$('d_mine');if(mine)mine.onclick=function(){upd(l,{owner:me},'Assigned to you')};
   $('d_addnote').onclick=function(){var t=$('d_note').value.trim();if(!t){$('d_note').focus();return}
     var line=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short'})+(me?', '+me:'')+': '+t;
-    upd(l,{notes:line+(l.notes?'\n'+l.notes:'')},'Note added')};
+    keepDraft=false;upd(l,{notes:line+(l.notes?'\n'+l.notes:'')},'Note added')};
+  var cs=$('f_crop');cs.onchange=function(){$('f_crop2').classList.toggle('hide',cs.value!=='__other');if(cs.value==='__other')$('f_crop2').focus()};
+  $('f_save').onclick=function(){var crop=cs.value==='__other'?$('f_crop2').value.trim():cs.value;var n=$('f_area').value.trim();
+    keepDraft=false;upd(l,{crop:crop||null,crop_stage:$('f_cst').value.trim()||null,acreage:n?n+' '+$('f_unit').value.toLowerCase():null,village:$('f_vil').value.trim()||null,taluka:$('f_tal').value.trim()||null,district:$('f_dis').value.trim()||null,state:$('f_st').value.trim()||null},'Farm details saved')};
   var ab=$('d_ai');if(ab)ab.onclick=function(){var on=aiOn(l);upd(l,on?{ai_status:'paused',ai_paused_until:'2099-01-01T00:00:00Z'}:{ai_status:'active',ai_paused_until:null},on?'AI paused for this chat':'AI resumed')};
   $('d_q').onclick=function(){
     $('d_extra').innerHTML='<div class="f" style="margin-top:.7rem"><div><label for="n_val">Value</label><input id="n_val" type="number" step="any" inputmode="decimal"></div><div><label for="n_cur">Currency</label><select id="n_cur"><option>INR</option><option>USD</option></select></div><div><label for="n_qty">Quantity (kg)</label><input id="n_qty" type="number" step="any" inputmode="decimal"></div><div><label for="n_valid">Valid until</label><input id="n_valid" type="date"></div><div class="full"><label for="n_gr">Grades</label><input id="n_gr" value="'+esc(l.grades||'')+'"></div></div><div class="acts2" style="margin-top:.6rem"><button class="btn pri" id="n_ok">Save quote</button></div>';
