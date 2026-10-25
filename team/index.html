@@ -186,6 +186,9 @@ details.box[open] summary{margin-bottom:.6rem}
 
 #toast{position:fixed;bottom:calc(84px + var(--safe-b));left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.55rem 1rem;border-radius:10px;z-index:9;font-size:.9rem;box-shadow:0 6px 20px rgba(0,0,0,.18);max-width:90vw}
 
+/* area partner: only their own leads */
+body.partner .nav [data-t=deals],body.partner .nav [data-t=reports],body.partner .team-only{display:none!important}
+body.partner #out{display:inline-flex!important}
 /* desktop: rail + list + detail side by side */
 @media(min-width:1000px){
   .desk-only{display:inline-flex!important}.mob-only{display:none!important}.acct{display:none}
@@ -378,9 +381,9 @@ var loading=false;
 async function load(silent){
   if(loading)return;loading=true;
   try{
-    var r=await Promise.all([api('leads?select=*&order=created_at.desc&limit=2000'),api('quotes?select=*&order=created_at.desc&limit=1000'),api('samples?select=*&order=created_at.desc&limit=1000')]);
+    var r=await Promise.all([api('leads?select=*&order=created_at.desc&limit=2000'),S.partner?[]:api('quotes?select=*&order=created_at.desc&limit=1000'),S.partner?[]:api('samples?select=*&order=created_at.desc&limit=1000')]);
     S.leads=r[0];S.quotes=r[1];S.samples=r[2];S.synced=Date.now();
-    if(!S.team.length){try{S.team=(await api('team?select=name,email&order=name.asc'))||[]}catch(e){S.team=[]}}
+    if(!S.team.length&&!S.partner){try{S.team=(await api('team?select=name,email&order=name.asc'))||[]}catch(e){S.team=[]}}
     render(silent);
   }finally{loading=false}
 }
@@ -388,7 +391,12 @@ async function start(){
   try{
     if(!tok)await refresh();
     var me=await api('team?select=email&limit=1');
-    if(!me||!me.length){signedOut();$('lerr').textContent='Your login works, but access is still waiting for approval.';return}
+    S.partner=null;document.body.classList.remove('partner');
+    if(!me||!me.length){
+      var pr=await api('lead_routes?select=key,person');
+      if(!pr||!pr.length){signedOut();$('lerr').textContent='Your login works, but access is still waiting for approval.';return}
+      S.partner=pr[0];document.body.classList.add('partner');document.querySelector('.top h1').textContent='GBO leads: '+S.partner.person;
+    }
     $('login').classList.add('hide');$('app').classList.remove('hide');
     await load();
     $('who').textContent=myName();
@@ -425,7 +433,7 @@ function groupCount(a,f){var m={};a.forEach(function(x){var k=f(x)||'(not given)
 function cropsInData(){var m={};S.leads.forEach(function(l){if(l.crop)m[l.crop.trim()]=1});return Object.keys(m).sort()}
 function splitArea(a){var m=String(a||'').match(/([0-9]+(?:\.[0-9]+)?)\s*([a-zA-Z]*)/);if(!m)return {n:'',u:'Vingha'};var u=UNITS.find(function(x){return m[2]&&x.toLowerCase().indexOf(m[2].toLowerCase().slice(0,3))===0})||'Vingha';return {n:m[1],u:u}}
 function dlist(id,a){return '<datalist id="'+id+'">'+a.map(function(x){return '<option value="'+esc(x)+'">'}).join('')+'</datalist>'}
-function myName(){var em=(ls('gbo_em')||'').toLowerCase();var t=S.team.find(function(x){return (x.email||'').toLowerCase()===em});return (t&&t.name)||em.split('@')[0]||''}
+function myName(){if(S.partner)return S.partner.person;var em=(ls('gbo_em')||'').toLowerCase();var t=S.team.find(function(x){return (x.email||'').toLowerCase()===em});return (t&&t.name)||em.split('@')[0]||''}
 function syncLabel(){var e=$('sync');if(e)e.textContent=S.synced?'Updated '+rel(S.synced):''}
 function isDesk(){return window.matchMedia('(min-width:1000px)').matches}
 
@@ -449,7 +457,7 @@ function card(l){
   if(missedOpen(l))tags+='<span class="tag red">Missed call '+esc(rel(l.last_call_at))+'</span>';
   var fu=fuText(l.next_followup);if(fu&&isOpen(l)){var n=dayDiff(l.next_followup);tags+='<span class="tag '+(n<0?'red':n===0?'amber':'grey')+'">Follow-up: '+esc(fu)+'</span>'}
   tags+='<span class="tag grey">'+esc(srcOf(l))+'</span>';
-  if(l.owner)tags+='<span class="tag grey">'+esc(l.owner)+'</span>';
+  if(l.owner&&!S.partner)tags+='<span class="tag grey">'+esc(l.owner)+'</span>';
   return '<article class="lc '+esc(l.priority||'')+'" data-id="'+l.id+'"'+(S.sel===l.id?' aria-current="true"':'')+' tabindex="0"><span class="bar"></span><div class="main"><div class="t"><b>'+esc(title(l))+'</b><span class="when">'+esc(rel(l.created_at))+'</span></div>'
    +'<div class="s">'+esc(sub)+'</div><div class="m">'+tags+'</div></div>'
    +(ph?'<div class="acts"><a href="tel:+'+waNum(l.phone)+'" aria-label="Call '+esc(title(l))+'">'+IC.phone+'</a><a class="wa" target="_blank" rel="noopener" href="https://wa.me/'+waNum(l.phone)+'" aria-label="WhatsApp '+esc(title(l))+'">'+IC.wa+'</a></div>':'')+'</article>';
@@ -484,7 +492,7 @@ function leadRows(){
     if(S.stage==='open'){if(!isOpen(l))return false}else if(S.stage&&l.stage!==S.stage)return false;
     if(S.pri&&l.priority!==S.pri)return false;if(S.src&&srcOf(l)!==S.src)return false;
     if(S.crop&&(l.crop||'').toLowerCase()!==S.crop.toLowerCase())return false;
-    if(S.own==='me'&&(l.owner||'').toLowerCase()!==me)return false;if(S.own==='none'&&l.owner)return false;
+    if(S.own==='me'){var o=(l.owner||'').toLowerCase();if(!o||!(o===me||o.indexOf(me+' ')===0||me.indexOf(o+' ')===0))return false}if(S.own==='none'&&l.owner)return false;
     if(S.q){var h=[l.name,l.company,l.phone,digits(l.phone),l.email,l.country,l.interest,l.grades,l.lead_no,l.crop,l.village,l.district,l.state,l.notes].join(' ').toLowerCase();if(h.indexOf(S.q.toLowerCase())<0)return false}
     return true});
 }
@@ -498,7 +506,7 @@ function vLeads(){
    +'<div class="selrow"><select id="fp" aria-label="Priority"><option value="">Any priority</option>'+['Hot','Warm','Cold'].map(function(s){return '<option'+(S.pri===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select>'
    +'<select id="fr" aria-label="Source"><option value="">Any source</option>'+srcs.map(function(s){return '<option'+(S.src===s?' selected':'')+'>'+esc(s)+'</option>'}).join('')+'</select>'
    +'<select id="fc" aria-label="Crop"><option value="">Any crop</option>'+cropsInData().map(function(c){return '<option'+(S.crop===c?' selected':'')+'>'+esc(c)+'</option>'}).join('')+'</select>'
-   +'<select id="fo" aria-label="Owner"><option value="">Anyone</option><option value="me"'+(S.own==='me'?' selected':'')+'>Mine</option><option value="none"'+(S.own==='none'?' selected':'')+'>Unassigned</option></select></div></div><div id="ll"></div>';
+   +'<select id="fo" class="team-only" aria-label="Owner"><option value="">Anyone</option><option value="me"'+(S.own==='me'?' selected':'')+'>Mine</option><option value="none"'+(S.own==='none'?' selected':'')+'>Unassigned</option></select></div></div><div id="ll"></div>';
   var q=$('q');q.oninput=function(){S.q=q.value;S.limit=60;drawLeadList()};
   $('pane').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){S.stage=c.dataset.s;S.limit=60;$('pane').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===c))});drawLeadList()}});
   $('fp').onchange=function(){S.pri=this.value;drawLeadList()};$('fr').onchange=function(){S.src=this.value;drawLeadList()};$('fo').onchange=function(){S.own=this.value;drawLeadList()};$('fc').onchange=function(){S.crop=this.value;drawLeadList()};
@@ -620,8 +628,8 @@ function openLead(id,keep){
   +'<div class="seg" id="fu"><button data-d="0">Today</button><button data-d="1">Tomorrow</button><button data-d="3">In 3 days</button><button data-d="7">Next week</button>'+(l.next_followup?'<button data-d="x">Clear</button>':'')+'</div>'
   +'<div class="inline"><label class="sr" for="d_next">Pick a date</label><input id="d_next" type="date" value="'+dtv(l.next_followup)+'"></div></div>'
   +farmBox(l)
-  +'<div class="box"><h3>Priority and owner</h3><div class="seg" id="pri">'+['Hot','Warm','Cold'].map(function(p){return '<button class="p-'+p+'" data-v="'+p+'" aria-pressed="'+(l.priority===p)+'">'+p+'</button>'}).join('')+'</div>'
-  +'<div class="inline">'+(names.length?'<label class="sr" for="d_owner">Owner</label><select id="d_owner"><option value="">Unassigned</option>'+names.map(function(x){return '<option'+(l.owner===x?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select>':'<input id="d_owner" placeholder="Owner name" value="'+esc(l.owner||'')+'">')
+  +'<div class="box"><h3>Priority<span class="team-only"> and owner</span></h3><div class="seg" id="pri">'+['Hot','Warm','Cold'].map(function(p){return '<button class="p-'+p+'" data-v="'+p+'" aria-pressed="'+(l.priority===p)+'">'+p+'</button>'}).join('')+'</div>'
+  +'<div class="inline team-only">'+(names.length?'<label class="sr" for="d_owner">Owner</label><select id="d_owner"><option value="">Unassigned</option>'+names.map(function(x){return '<option'+(l.owner===x?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select>':'<input id="d_owner" placeholder="Owner name" value="'+esc(l.owner||'')+'">')
   +(me&&l.owner!==me?'<button class="btn" id="d_mine">Assign to me</button>':'')+'</div></div>'
   +'<div class="box"><h3>Notes</h3><textarea class="note" id="d_note" placeholder="What did they say? What is the next step?"></textarea><div class="acts2" style="margin-top:.5rem"><button class="btn pri" id="d_addnote">Add note</button></div>'+(l.notes?'<div class="notes">'+esc(l.notes)+'</div>':'')+'</div>'
   +'<div class="box"><h3>About this lead</h3>'
@@ -630,7 +638,7 @@ function openLead(id,keep){
     +(l.message?'<div class="msg">'+esc(l.message)+'</div>':'')
   +'</div>'
   +'<div id="d_wa"></div><div id="d_calls"></div>'
-  +'<div class="box"><h3>More actions</h3><div class="acts2"><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button>'+((l.channel==='whatsapp'||l.ai_status)?'<button class="btn" id="d_ai">'+(aiOn(l)?'Pause AI on this chat':'Resume AI on this chat')+'</button>':'')+'</div><div id="d_extra"></div></div>'
+  +'<div class="box team-only"><h3>More actions</h3><div class="acts2"><button class="btn" id="d_q">Log a quote</button><button class="btn" id="d_s">Log a sample</button>'+((l.channel==='whatsapp'||l.ai_status)?'<button class="btn" id="d_ai">'+(aiOn(l)?'Pause AI on this chat':'Resume AI on this chat')+'</button>':'')+'</div><div id="d_extra"></div></div>'
   +'<details class="box"><summary>Where this lead came from</summary>'+facts([['Form',l.form+(l.channel?' ('+l.channel+')':'')],['Source',srcOf(l)+(l.utm_medium?' / '+l.utm_medium:'')+(l.utm_campaign?' / '+l.utm_campaign:'')],['Article',l.article],['Landing page',l.landing],['TeleCRM status',l.telecrm_status],['Score',l.score!=null?String(l.score):''],['Received',fdt(l.created_at)]])+'</details>'
   +'</div>';
   sheetOpen(h);
