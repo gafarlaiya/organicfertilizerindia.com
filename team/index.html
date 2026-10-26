@@ -549,7 +549,8 @@ function vReports(){
   var won=L.filter(function(l){return l.stage==='Won'}).length;
   var mc=L.filter(missedOpen).length;
   var un=L.filter(function(l){return isOpen(l)&&!l.owner}).length;
-  var k=[['New leads, last 7 days',w],['Missed calls to return',mc,mc?'alert':''],['Follow-ups due',due,due?'alert':''],['Hot and open',hot],['Open, no owner',un],['Open quotes',open],['Samples in transit',tr],['Won',won]];
+  var evL=L.filter(function(l){return /^Event: .*harvest/i.test(l.form||'')&&l.stage!=='Lost'});var evP=evL.reduce(function(t,l){return t+(parseInt(l.qty,10)||1)},0);
+  var k=[['Harvest meeting 28 Oct: people booked (of 100)',evP,evP>=90?'alert':''],['Harvest meeting bookings',evL.length],['New leads, last 7 days',w],['Missed calls to return',mc,mc?'alert':''],['Follow-ups due',due,due?'alert':''],['Hot and open',hot],['Open, no owner',un],['Open quotes',open],['Samples in transit',tr],['Won',won]];
   $('pane').innerHTML='<div class="kpis">'+k.map(function(x){return '<div class="kpi '+(x[2]||'')+'"><b>'+x[1]+'</b><small>'+x[0]+'</small></div>'}).join('')+'</div>'
    +'<div class="split">'+bars('Leads by stage',groupCount(L,function(l){return l.stage}))+bars('Leads by source',groupCount(L,srcOf))
    +bars('Leads by owner',groupCount(L.filter(isOpen),function(l){return l.owner||'Unassigned'}))+bars('Leads by crop or interest',groupCount(L,function(l){return l.crop||l.interest}))
