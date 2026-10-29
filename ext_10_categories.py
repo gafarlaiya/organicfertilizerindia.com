@@ -42,6 +42,19 @@ EXTRA_FAQ = {
    ("Do you supply chelated micronutrients in bulk?", "Yes, to order. Chelated micronutrients (EDTA and other chelates) can be made as powder or liquid. Tell us the nutrient, chelate, form, quantity and destination and we will quote.")],
 }
 
+BUYER_Q = {"/humic-acid-manufacturer-india": (
+ '<div class="split"><div class="prose">'
+ '<p>Not every humic acid works the same way in the field. These are the five questions we suggest every buyer asks any supplier, including us.</p>'
+ '<h3>1. What is the source?</h3><p>Humic substances come from several natural sources, and they differ in how much biologically active humic material they contain. Ask which raw material is used and why.</p>'
+ '<h3>2. How was it mined and stored?</h3><p>Quality starts before manufacturing. Mining, handling and storage conditions can change the raw material before extraction even begins.</p>'
+ '<h3>3. How was it extracted?</h3><p>Different extraction methods give very different end products. Gentle, well-controlled extraction helps preserve the natural complexity of humic substances.</p>'
+ '<h3>4. How was it formulated?</h3><p>The final formulation decides what reaches the crop. Ingredients, manufacturing quality, compatibility and formulation technology all affect field performance.</p>'
+ '<h3>5. How much active humic are you actually applying?</h3><p>Do not judge by the label alone. Compare the amount of active humic substances delivered per acre, not just the product weight or application rate.</p>'
+ '<p>Send us the grade and quantity you are comparing and we will share our specification. See <a href="/bulk-pricing-and-quotes">how bulk pricing works</a>.</p>'
+ '</div><figure class="fig"><img src="/assets/img/humic-acid-5-questions.webp" width="793" height="1983" loading="lazy" '
+ 'alt="Infographic: why is your humic acid not performing in the field? Five questions every buyer should ask: source, mining and storage, extraction, formulation, and how much active humic you actually apply per acre. Gujarat Bio Organics, Immunity">'
+ '<figcaption class="mute">Share or download this checklist.</figcaption></figure></div>')}
+
 def cat_page(d):
     p = d["path"]
     body = hero(d["h1"], d["lead"], [("Products", "/products"), (d["crumb"], None)])
@@ -57,6 +70,8 @@ def cat_page(d):
         body += sec(f'<div class="two"><div><h2>What makes ours different</h2><p>{DIFF_SNIP[p]}</p></div><div><a class="btn btn-dark" href="/why-gujarat-bio">Read why it matters</a></div></div>', cls="tint")
     if d.get("what"):
         body += sec(f'<div class="prose">{d["what"]}</div>', d.get("what_title", "How it works"), cls="tint")
+    if p in BUYER_Q:
+        body += sec(BUYER_Q[p], "Humic acid not performing in the field? Five questions to ask before you buy")
     if d.get("uses"):
         body += sec(table(d["uses_head"], d["uses"]) + CLAIM_NOTE, d.get("uses_title", "Where it is used"))
     if d.get("methods"):
